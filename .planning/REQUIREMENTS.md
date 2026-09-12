@@ -196,13 +196,68 @@ Quais fases cobrem quais requisitos. Atualizado durante a criação do roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| *(a preencher pelo roadmapper)* | — | Pending |
+| HERO-01 | Phase 2 | Pending |
+| HERO-02 | Phase 2 | Pending |
+| HERO-03 | Phase 2 | Pending |
+| CARD-01 | Phase 3 | Pending |
+| CARD-02 | Phase 3 | Pending |
+| CARD-03 | Phase 3 | Pending |
+| CARD-04 | Phase 3 | Pending |
+| CARD-05 | Phase 3 | Pending |
+| ALMO-01 | Phase 4 | Pending |
+| ALMO-02 | Phase 4 | Pending |
+| PROMO-01 | Phase 4 | Pending |
+| PROMO-02 | Phase 4 | Pending |
+| PROMO-03 | Phase 4 | Pending |
+| LOCAL-01 | Phase 2 | Pending |
+| LOCAL-02 | Phase 2 | Pending |
+| LOCAL-03 | Phase 2 | Pending |
+| LOCAL-04 | Phase 2 | Pending |
+| INTEGRA-01 | Phase 2 | Pending |
+| INTEGRA-02 | Phase 2 | Pending |
+| INTEGRA-03 | Phase 2 | Pending |
+| INTEGRA-04 | Phase 1 | Pending |
+| INTEGRA-05 | Phase 2 | Pending |
+| MARCA-01 | Phase 1 | Pending |
+| MARCA-02 | Phase 1 | Pending |
+| MARCA-03 | Phase 1 | Pending |
+| MARCA-04 | Phase 1 | Pending |
+| MARCA-05 | Phase 1 | Pending |
+| CONT-01 | Phase 1 | Pending |
+| CONT-02 | Phase 1 | Pending |
+| CONT-03 | Phase 1 | Pending |
+| SEO-01 | Phase 5 | Pending |
+| SEO-02 | Phase 5 | Pending |
+| SEO-03 | Phase 5 | Pending |
+| PERF-01 | Phase 1 | Pending |
+| PERF-02 | Phase 3 | Pending |
+| PERF-03 | Phase 1 | Pending |
+| ARQ-01 | Phase 1 | Pending |
+| ARQ-02 | Phase 1 | Pending |
+| ARQ-03 | Phase 1 | Pending |
+| SEC-01 | Phase 3 | Pending |
+| SEC-02 | Phase 5 | Pending |
+| SEC-03 | Phase 1 | Pending |
+| SEC-04 | Phase 1 | Pending |
+| SEC-05 | Phase 1 | Pending |
+| SEC-06 | Phase 1 | Pending |
+| SEC-07 | Phase 1 | Pending |
+| SEC-08 | Phase 5 | Pending |
+| SEC-09 | Phase 1 | Pending |
+| SEC-10 | Phase 1 | Pending |
+| SEC-11 | Phase 5 | Pending |
+| SEC-12 | Phase 1 | Pending |
+| SEC-13 | Phase 1 | Pending |
+| SEC-14 | Phase 1 | Pending |
+| SEC-15 | Phase 5 | Pending |
+| SEC-16 | Phase 5 | Pending |
+| SEC-17 | Phase 1 | Pending |
 
 **Coverage:**
 - Requisitos obrigatórios (bloco 1 + bloco 3 segurança): 56 total (39 funcionais + 17 segurança)
-- Critérios de aceite testáveis (bloco 4): 15 (11 testes automatizados + 4 verificações operacionais)
-- Mapeados para fases: 0 (pendente — roadmap ainda não criado)
+- Critérios de aceite testáveis (bloco 4): 15 (11 testes automatizados + 4 verificações operacionais) — não mapeados a uma fase única; informam os Success Criteria de cada fase (Lighthouse/CWV/segurança de produção concentrados na Phase 5)
+- Mapeados para fases: 56/56 (100% — Phase 1: 25, Phase 2: 11, Phase 3: 7, Phase 4: 5, Phase 5: 8)
 
 ---
 *Requirements defined: 2026-09-12*
-*Last updated: 2026-09-12 after client-requested restructuring (5 blocos, deduplicado)*
+*Last updated: 2026-09-12 after roadmap creation — traceability filled, 56/56 requirements mapped across 5 phases*
