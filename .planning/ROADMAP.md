@@ -43,8 +43,18 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Every outbound link (iFood, WhatsApp, Instagram, Maps) is built from one centralized, allowlisted integration module — no link string is hardcoded twice across components.
   4. The client has reviewed and approved first-draft Portuguese copy (tom jovem/descontraído/urbano) for hero, brand story, categories, CTAs, FAQs, SEO metadata, and contact/location before any page ships it.
   5. The production deployment serves over HTTPS with baseline security headers active and zero secrets in the repo/bundle, dependencies are locked and audited, and the GitHub repo enforces branch protection, required PR review, secret scanning, and MFA on GitHub/Vercel/domain-registrar — with SEC-17's rule (new threat-model review required before adding login/CMS/DB/checkout/AI features) documented as a standing constraint.
-**Plans**: TBD
+**Plans**: 6 plans in 3 waves
+
+Plans:
+- [ ] 01-01-PLAN.md — Project scaffold, toolchain & secret hygiene (Next.js 16 + TS + Tailwind v4, audited dependency set, Vitest, `.env*` excluded)
+- [ ] 01-02-PLAN.md — Walking Skeleton tracer: data → Zod schema → repository → page, plus the allowlisted outbound iFood CTA
+- [ ] 01-03-PLAN.md — PT-BR tone-of-voice guide and the typed, confirmed/pending content skeleton
+- [ ] 01-04-PLAN.md — Security baseline: header set + CSP, CI gate (npm ci/test/audit/secret scan), and the D-06 operational checklist
+- [ ] 01-05-PLAN.md — Brand identity: provisional logo vectorization (6 variants), Next.js icon conventions, design tokens
+- [ ] 01-06-PLAN.md — Accessible on-brand shell (landmarks, skip link, mobile-first) and `docs/brand-guidelines.md`
+
 **UI hint**: yes
+**Walking Skeleton**: see `.planning/phases/01-foundation-architecture-brand-identity-security-baseline/01-SKELETON.md` — records the architectural decisions Phases 2-5 build on.
 
 ### Phase 2: Hero, CTAs & Location
 **Goal**: A visitor lands on the homepage, instantly understands "Mais que um pão de alho!", and can act on iFood/WhatsApp/Maps CTAs or find the store's location and hours — with hours/links clearly marked provisional until the client confirms the two blocked pendências.
@@ -107,7 +117,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation, Architecture, Brand Identity & Security Baseline | 0/TBD | Not started | - |
+| 1. Foundation, Architecture, Brand Identity & Security Baseline | 0/6 | Planned | - |
 | 2. Hero, CTAs & Location | 0/TBD | Not started | - |
 | 3. Menu & Product Catalog | 0/TBD | Not started | - |
 | 4. Promotions, Almoço & Time-Aware Journey | 0/TBD | Not started | - |
