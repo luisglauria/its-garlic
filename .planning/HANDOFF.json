@@ -1,0 +1,56 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-09-12T19:22:24.714Z",
+  "phase": null,
+  "phase_name": null,
+  "phase_dir": null,
+  "plan": null,
+  "task": null,
+  "total_tasks": null,
+  "status": "paused",
+  "context": "research",
+  "completed_tasks": [
+    {"id": 1, "name": "Deep questioning (multiple rounds: brief, guided conversation, security threat model, final discovery round)", "status": "done"},
+    {"id": 2, "name": "Write and commit PROJECT.md", "status": "done", "commit": "be553bd"},
+    {"id": 3, "name": "Log full Q&A history to ask_questions/QA-LOG.md (client-requested)", "status": "done", "commit": "be553bd"},
+    {"id": 4, "name": "Workflow preferences → .planning/config.json", "status": "done", "commit": "8d5fef5"},
+    {"id": 5, "name": "Domain research (4 parallel agents: Stack/Features/Architecture/Pitfalls) + synthesis", "status": "done", "commit": "99fcda0"},
+    {"id": 6, "name": "Record hosting decision (Vercel) from research findings", "status": "done", "commit": "1665dee"},
+    {"id": 7, "name": "Write, client-review, restructure, and commit REQUIREMENTS.md (5 blocks, 56 v1 reqs)", "status": "done", "commit": "86c685b"},
+    {"id": 8, "name": "Create ROADMAP.md + STATE.md, update REQUIREMENTS.md traceability, generate .claude/CLAUDE.md", "status": "done", "commit": "eb46d8a"}
+  ],
+  "remaining_tasks": [
+    {"id": 9, "name": "Discuss Phase 1 (or run /gsd-ui-phase 1 first — Phase 1 has UI hint: yes)", "status": "not_started"},
+    {"id": 10, "name": "Plan Phase 1 (/gsd-plan-phase 1)", "status": "not_started"},
+    {"id": 11, "name": "Execute Phase 1 (/gsd-execute-phase 1)", "status": "not_started"},
+    {"id": 12, "name": "Phases 2-5 (Hero/CTAs/Location; Menu/Catalog; Promotions/Almoço; SEO/Performance/Security verification)", "status": "not_started"}
+  ],
+  "blockers": [
+    {"description": "Confirmed current operating hours unknown — only two divergent, 2.5-4.8-year-old Instagram story screenshots found in img/", "type": "human_action", "workaround": "Phases 2 and 4 ship with hours clearly labeled 'provisório'; fast-follow once client confirms"},
+    {"description": "Exact iFood store URL and official WhatsApp number unconfirmed", "type": "human_action", "workaround": "Phase 2 ships with a clearly-labeled placeholder destination through the Phase 1 integrations module, never a guessed link"}
+  ],
+  "async_jobs": [],
+  "human_actions_pending": [
+    {"action": "Confirm current operating hours (Seg-Dom)", "context": "Blocks the 'real' version of LOCAL-03, PROMO-02/03 — site ships with provisional/labeled hours meanwhile", "blocking": false},
+    {"action": "Provide exact iFood store URL and official WhatsApp number", "context": "Blocks INTEGRA-01/02/04 shipping real (non-placeholder) links", "blocking": false},
+    {"action": "Send real product/brand photos", "context": "Client committed to sending real photos (chose 'Vou enviar fotos reais' over placeholders/stock) — only logo.png + 4 old Instagram story screenshots exist in img/ so far, no product photography yet", "blocking": false},
+    {"action": "Decide who updates cardápio/preços/horários post-launch and how", "context": "Left as 'ainda não sei' — affects whether a simple non-code editing mechanism is needed later", "blocking": false},
+    {"action": "Decide whether sold-out products need marking on the site (CARD-V2-01) or stay iFood-only", "context": "Left as 'decidir depois'", "blocking": false},
+    {"action": "Confirm domain name (hosting already decided: Vercel)", "context": "Left as 'vou definir depois'", "blocking": false},
+    {"action": "Confirm whether a Google Meu Negócio (Google Business Profile) exists", "context": "Blocks SEO-04 (NAP consistency) only — rest of SEO work is unaffected", "blocking": false}
+  ],
+  "decisions": [
+    {"decision": "MVP is fully static (no backend/DB/auth/admin/checkout/analytics), architected with a repository + integrations layer so a backend (e.g. v2 WhatsApp AI bot) can be added later without rewriting the frontend", "rationale": "Client's explicit architecture requirement; minimizes attack surface for a showcase-only site", "phase": "all"},
+    {"decision": "iFood = primary order channel; WhatsApp = human-staffed secondary channel (not a bot) in the MVP", "rationale": "Client confirmed no AI bot exists today; bot deferred to v2 with mandatory new threat-model review (SEC-17) before implementation", "phase": "2"},
+    {"decision": "Stack: Next.js 16 (App Router) + React 19 + TypeScript + Tailwind v4 + Zod-style build-time data validation", "rationale": "Confirmed as current best-fit by dedicated stack research; no better alternative found", "phase": "1"},
+    {"decision": "Hosting: Vercel", "rationale": "Native next/image optimization (critical for LCP with food photography) + simplest CSP/HSTS header config, per research", "phase": "1"},
+    {"decision": "No live embedded Google Maps iframe or Instagram feed embed in the MVP — links/buttons only", "rationale": "Found during REQUIREMENTS.md client review: third-party embed scripts would make Lighthouse/CWV targets dependent on an external service's reliability", "phase": "2"},
+    {"decision": "REQUIREMENTS.md restructured into 5 explicit blocks at client's request: (1) mandatory MVP, (2) optional/v2, (3) security, (4a/4b automated-vs-operational acceptance criteria, (5) pending confirmations", "rationale": "Client wanted duplicates removed and testable criteria separated from process/operational checklist items", "phase": "n/a — planning doc structure"},
+    {"decision": "Phase order re-sequenced from research's suggestion (Foundation → Menu → Hero/Location → Promotions → Verification) to Foundation → Hero/CTAs/Location → Menu/Catalog → Promotions/Almoço → SEO/Perf/Security", "rationale": "Matches client's stated launch gate ('hero + cardápio funcionando já é lançável') exactly — that pair must be phases 2+3, not scattered", "phase": "roadmap"},
+    {"decision": "All Q&A during discovery logged verbatim to ask_questions/QA-LOG.md, kept updated across every round", "rationale": "Explicit client request before approving PROJECT.md", "phase": "n/a — process"},
+    {"decision": "Session-wide: respond to the user only in Portuguese (pt-BR) going forward, including verbatim skill/reference output that would normally be in English", "rationale": "Explicit user instruction early in this session; saved to user-level memory (~/.claude/.../memory/response-language-portuguese.md)", "phase": "n/a — session preference"}
+  ],
+  "uncommitted_files": ["?? ask_questions.txt"],
+  "next_action": "Run /gsd-ui-phase 1 (Phase 1 has UI hint: yes — brand identity/hero work benefits from a design contract first) or /gsd-discuss-phase 1 to gather implementation context, then /gsd-plan-phase 1.",
+  "context_notes": "Project init (/gsd-new-project) is fully complete and approved end-to-end: PROJECT.md, config.json, research/ (4 dims + SUMMARY), REQUIREMENTS.md (56 v1 reqs, client-reviewed and restructured twice), ROADMAP.md (5 vertical-MVP phases, 100% requirement coverage), STATE.md, .claude/CLAUDE.md, and ask_questions/QA-LOG.md are all written and committed. No phase work has started yet — this is a clean stopping point at the project-initialization boundary, not a mid-phase pause. The empty ask_questions.txt (0 bytes) at the project root is a stray leftover from the user's own action, unrelated to the real log at ask_questions/QA-LOG.md — flagged to the user but not deleted (never asked to remove it). A .planning/research/.cache/ directory (web-search cache from the research agents) got swept into the research commit; harmless but worth knowing it's there if repo cleanliness comes up."
+}
