@@ -138,12 +138,14 @@ site com um pedido feito no iFood ou uma conversa iniciada no WhatsApp — sem f
 | Conjunto de 17 requisitos de segurança (SEC-01–17) fechado nesta fase de descoberta | Cliente conduziu um threat model dedicado e pediu cobertura explícita (MFA, branch protection, secret scanning, etc.) | — Pending |
 | Meta de performance: Lighthouse ≥ 90 + Core Web Vitals (LCP/CLS/INP), testado em produção | Cliente pediu critério de aceite numérico e testável | — Pending |
 | Sem analytics/rastreamento de eventos no MVP | Decisão explícita do cliente, alinhada à postura de privacidade mínima | — Pending |
+| Stack: Next.js 16 (App Router) + React 19 + TypeScript + Tailwind v4 + Zod | Confirmado pela pesquisa de mercado como escolha atual e adequada; Zod valida dados editáveis em build-time | — Pending |
+| Hospedagem: Vercel | Suporte nativo a `next/image` (crítico para LCP com fotos de comida) e configuração simples de headers CSP/HSTS | — Pending |
 
 ## Pendências (não bloqueiam o início do desenvolvimento, mas precisam de resposta)
 
 - Responsável e processo de atualização de cardápio/preços/horários pós-lançamento
 - Se produtos esgotados serão marcados no site, ou só controlados no iFood
-- Domínio e hospedagem definitivos
+- Domínio definitivo (hospedagem já decidida: Vercel — ver Key Decisions)
 - Existência de um perfil no Google Meu Negócio (para SEO local/NAP)
 - Horário de funcionamento atual — únicas referências encontradas são stories antigas (2,5 a
   4,8 anos) e divergentes entre si
