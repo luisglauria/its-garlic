@@ -2,9 +2,9 @@
 gsd_state_version: "1.0"
 current_phase: 01
 current_phase_name: Foundation, Architecture, Brand Identity & Security Baseline
-status: verifying
-stopped_at: Completed 01-06-PLAN.md (Phase 01 complete, ready for verification)
-last_updated: "2026-09-13T17:32:36.560Z"
+status: phase-1-partial-advancing-to-phase-2
+stopped_at: Phase 01 UAT complete (1 passed, 1 accepted/deferred gap) — user authorized advance to Phase 2 with SEC-10 registrar leg still open
+last_updated: "2026-09-13T19:30:17.202Z"
 last_activity: 2026-09-13
 last_activity_desc: Phase 01 execution started
 state_head: 1faf984ce7562d69140f3c8bb600deab604457dd
@@ -29,10 +29,16 @@ fricção, mobile-first.
 
 ## Current Position
 
-Phase: 01 (Foundation, Architecture, Brand Identity & Security Baseline) — EXECUTING
-Plan: 6 of 6
-Status: Phase complete — ready for verification
-Last activity: 2026-09-13 — Phase 01 execution started
+Phase: 01 (Foundation, Architecture, Brand Identity & Security Baseline) — NOT formally marked complete
+Plan: 6 of 6 executed, all with SUMMARY.md
+Status: UAT complete (1 passed, 1 accepted/deferred gap — G-01-2, SEC-10 registrar leg). ROADMAP.md
+phase-1 checkbox intentionally left unchecked — the phase-completion predicate
+(`gsd_run phase uat-passed --require-verification`) does not pass while G-01-2 is open. User
+explicitly authorized starting Phase 2 anyway (2026-09-13) rather than waiting on the domain
+registrar purchase, which has no ETA. Re-run `/gsd-verify-work 01` to close G-01-2 once a
+registrar is chosen and MFA/registrar-lock are configured.
+Phase 02: Hero, CTAs & Location — about to start (discuss/plan)
+Last activity: 2026-09-13 — Phase 01 UAT complete, advancing to Phase 02 per user decision
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -99,6 +105,9 @@ Recent decisions affecting current work:
 - [Phase 01]: [Phase 01] 01-06: Header/Footer render only the landmark's inner content (a plain div); src/app/layout.tsx owns the single literal header/main/footer tags directly
 - [Phase 01]: [Phase 01] 01-06: docs/brand-guidelines.md contrast table is computed via the WCAG relative-luminance formula over the seven official hex values, not asserted qualitatively - white-on-charcoal (~15.5:1) is the recommended body-text pairing
 - [Phase 01]: [Phase 01] 01-06: create-next-app's light/dark scaffold vars removed from globals.css (referenced the now-removed --font-geist-* vars); design-tokens.css and tailwindcss imports kept intact
+- [Phase 01 UAT]: Test 1 (client copy approval) passed on verbal approval attested by the user, on behalf of the actual brand-owner (user's sister) — covers tone/structure as working base only, not final per-section copy.
+- [Phase 01 UAT]: Test 2 issue accepted as deferred (not a code defect): SEC-12/14 complete; SEC-13 accepted risk (sole maintainer, AR-07); SEC-10 registrar leg deferred with no ETA by explicit user decision (AR-08) — domain registrar purchase not happening this phase. User authorized starting Phase 2 despite Phase 1 remaining formally incomplete in ROADMAP.md.
+- [Phase 01]: Remote `origin` connected to https://github.com/luisglauria/its-garlic (audited file list before push, per user's explicit process); branch `phase-01-foundation` pushed (not `main`, no --force). `main` (local) still has no upstream tracking.
 
 ### Pending Todos
 
@@ -106,6 +115,11 @@ None yet.
 
 ### Blockers/Concerns
 
+- [Phase 1, carried forward — not a Phase 2 blocker] SEC-10 registrar-MFA leg and SEC-15
+  (registrar lock) remain open. User explicitly decided (2026-09-13) not to choose/purchase a
+  domain registrar during Phase 1 — deferred with no ETA (AR-08 in `01-SECURITY.md`, gap G-01-2
+  in `01-UAT.md`). Phase 1 is NOT marked complete in ROADMAP.md as a result. Does not block
+  Phase 2 (UI work does not depend on it) — re-run `/gsd-verify-work 01` once a registrar exists.
 - [Phase 2, Phase 4] Operating hours unconfirmed — only divergent 2.5–4.8-year-old Instagram
   stories found ("Seg-Qua 12h–22h..." vs. "Dom-Qua 11h15–21h30..."). Blocks only the *real*
   version of LOCAL-03 and PROMO-02/03; ships provisional/labeled in the meantime.
