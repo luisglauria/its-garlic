@@ -36,10 +36,14 @@ const eslintConfig = defineConfig([
   },
   {
     // The two sanctioned seams: repositories and integrations are allowed to import
-    // straight from src/data — everything else must go through them.
+    // straight from src/data — everything else must go through them. Test files (`*.test.ts`)
+    // are also exempt: a schema/data regression test legitimately needs the raw data module
+    // to prove the schema has teeth against the real shipped file (ARQ-03), which is a
+    // different concern than a UI component bypassing the repository seam.
     files: [
       "src/lib/repositories/**/*.{ts,tsx}",
       "src/lib/integrations/**/*.{ts,tsx}",
+      "src/**/*.test.{ts,tsx}",
     ],
     rules: {
       "no-restricted-imports": "off",

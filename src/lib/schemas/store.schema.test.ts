@@ -2,6 +2,7 @@
 import { describe, expect, test } from "vitest";
 import { storeInfoSchema } from "./store.schema";
 import { externalLinkSchema } from "./link.schema";
+import rawStore from "@/data/store";
 
 const validStore = {
   name: "It's Garlic",
@@ -46,6 +47,14 @@ describe("storeInfoSchema", () => {
       hours: { ...validStore.hours, provisional: false },
     });
     expect(result.success).toBe(false);
+  });
+
+  // ARQ-03 regression guard: the real shipped src/data/store.ts module must satisfy its own
+  // schema. Catches a future hand-edit to src/data/store.ts at test time rather than at
+  // deploy time.
+  test("the real shipped src/data/store.ts module parses cleanly", () => {
+    const result = storeInfoSchema.safeParse(rawStore);
+    expect(result.success).toBe(true);
   });
 });
 
