@@ -95,7 +95,7 @@ substitui o dado.
    **Motivo:** nenhum horário atual foi confirmado pelo cliente; inventar um horário é o tipo de
    erro que o guia proíbe explicitamente.
 
-3. **Reprovado:** "[Nome de produto fictício] por apenas R$ [preço fictício] — imperdível!"
+3. **Reprovado:** "[placeholder de nome de produto] por [placeholder de valor] — imperdível!"
    **Aprovado:** "Cardápio completo com as 10 categorias da casa — veja tudo antes de pedir."
    **Motivo:** nenhum produto ou preço específico está confirmado nesta fase; a versão aprovada
    fala da estrutura do cardápio sem citar um item ou valor que não existe ainda.
