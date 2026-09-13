@@ -280,3 +280,44 @@ describe("no invented clock time (LOCAL-03, D-07)", () => {
     ).toBe(false);
   });
 });
+
+// T-02-16 — the mechanical half of tone-of-voice.md §5, run over the whole copy module now that
+// this phase's brand-story and FAQ prose has landed there too. One named test per rule, so a
+// failure says exactly which rule broke. The judgement half — whether each sentence is defensible
+// from PROJECT.md alone — is a recorded prohibition in 02-03-PLAN.md plus a line-by-line human
+// read, not pretended into a test here. Reuses the existing `read`/`stripComments` helpers and the
+// `CLOCK_TIME` constant above rather than redefining them.
+describe("content-integrity gate over home-copy.ts (T-02-16)", () => {
+  const copy = stripComments(read("src", "content", "home-copy.ts"));
+
+  test("home-copy.ts contains no currency marker or price-shaped decimal amount", () => {
+    expect(copy, "no price is confirmed for this project").not.toMatch(/R\$|\b\d+[.,]\d{2}\b/);
+  });
+
+  test("home-copy.ts contains no award claim, rating, or star count", () => {
+    expect(
+      copy,
+      "no award, rating or testimonial is confirmed for this project",
+    ).not.toMatch(/premiad|pr[eê]mio|avalia[cç][aã]o|\bestrela/i);
+  });
+
+  test("home-copy.ts contains no forbidden superlative or urgency construction (tone-of-voice.md §5)", () => {
+    expect(copy, "the superlative register tone-of-voice.md §5 forbids by name").not.toMatch(
+      /imperd[ií]vel|garantid[oa]/i,
+    );
+    expect(copy, "the guilt/urgency register tone-of-voice.md §5 forbids by name").not.toMatch(
+      /voc[eê] vai se arrepender|[uú]ltima chance/i,
+    );
+  });
+
+  test("home-copy.ts contains no cart or checkout affordance phrase (INTEGRA-05 extended to copy)", () => {
+    expect(
+      copy,
+      "a checkout expectation can be introduced by a sentence as easily as by markup",
+    ).not.toMatch(/\bcart\b|\bcheckout\b|\bcarrinho\b/i);
+  });
+
+  test("home-copy.ts contains no clock-time literal", () => {
+    expect(CLOCK_TIME.test(copy), "no operating hour is confirmed").toBe(false);
+  });
+});

@@ -4,8 +4,8 @@ slug: "hero-ctas-location"
 # status lifecycle: draft (seeded by plan-phase) → validated (set by validate-phase §6)
 # audit-milestone §5.5 distinguishes NOT-VALIDATED (draft) from PARTIAL (validated + nyquist_compliant: false) (#2117)
 status: draft
-nyquist_compliant: false
-wave_0_complete: false
+nyquist_compliant: true
+wave_0_complete: true
 created: "2026-09-13"
 ---
 
@@ -56,22 +56,22 @@ component it guards, matching the Phase 1 precedent (`layout.test.ts` landed wit
 
 | Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|------------|-----------------|-----------|-------------------|-------------|--------|
-| T1, T3 | 02-01 | 1 | HERO-01 | — | The concept line reaches the prerendered HTML as document text, not lettering in the image; no hex literal in any `home/` component | prerendered-HTML assertion + static source inspection | `npx vitest run src/components/home/home.test.ts` | created in T1/T3 | ⬜ pending |
-| T2, T3 | 02-01 | 1 | HERO-02 | — | All three locked CTA labels appear verbatim in the copy module and in the rendered page | prerendered-HTML assertion + static source inspection | same file | created in T3 | ⬜ pending |
-| T1, T3 | 02-01 | 1 | HERO-03 | T-02-03 | Hero uses `next/image` with `fill`, an aspect-ratio container, `sizes` and `preload`, points at `brand/hero-illustration`, and renders a visible provisional disclosure | prerendered-HTML assertion + static source inspection | same file | created in T1/T3 | ⬜ pending |
-| T1, T2 | 02-02 | 2 | LOCAL-01 | T-02-11, T-02-14 | `Location` renders address fields from a `StoreInfo` prop (no literal) and its anchor href comes from the maps prop; no iframe in any `.ts`/`.tsx`/`.css` under `src/` | rendered-output fixture test + repository-wide sweep | `npx vitest run src/components/home/Location.test.ts` | created in T1/T2 | ⬜ pending |
-| T1 | 02-02 | 2 | LOCAL-02 | T-02-13 | `Location` maps over `store.modalities`; 3-item, 1-item and 0-item fixtures each render the matching chip count (0 renders nothing at all) | rendered-output fixture test | same file | created in T1 | ⬜ pending |
-| T1, T2 | 02-02 | 2 | LOCAL-03 | T-02-10 | The provisional marker is driven by `hours.provisional`; the pending body renders only for an empty schedule, and a populated fixture renders day/open/close rows instead. No clock time in any non-test `home/` source or in the copy module | rendered-output fixture test + comment-stripped source sweep | same file, plus `npx vitest run src/components/home/home.test.ts` | created in T1/T2 | ⬜ pending |
-| T1 | 02-02 | 2 | LOCAL-04 | T-02-12 | The directions anchor's rendered href equals the maps `IntegrationLink` url exactly, with the new-tab target and safe rel | rendered-output fixture test | `npx vitest run src/components/home/Location.test.ts` | created in T1 | ⬜ pending |
-| T2 | 02-01 | 1 | INTEGRA-01 | T-02-02 | `OrderCta` renders a live anchor for a `{confirmed: true}` fixture and a natively disabled button with the pending suffix (and no href at all) for a `{confirmed: false}` fixture | rendered-output fixture test | `npx vitest run src/components/home/OrderCta.test.ts` | created in T2 | ⬜ pending |
+| T1, T3 | 02-01 | 1 | HERO-01 | — | The concept line reaches the prerendered HTML as document text, not lettering in the image; no hex literal in any `home/` component | prerendered-HTML assertion + static source inspection | `npx vitest run src/components/home/home.test.ts` | created in T1/T3 | ✅ green |
+| T2, T3 | 02-01 | 1 | HERO-02 | — | All three locked CTA labels appear verbatim in the copy module and in the rendered page | prerendered-HTML assertion + static source inspection | same file | created in T3 | ✅ green |
+| T1, T3 | 02-01 | 1 | HERO-03 | T-02-03 | Hero uses `next/image` with `fill`, an aspect-ratio container, `sizes` and `preload`, points at `brand/hero-illustration`, and renders a visible provisional disclosure | prerendered-HTML assertion + static source inspection | same file | created in T1/T3 | ✅ green |
+| T1, T2 | 02-02 | 2 | LOCAL-01 | T-02-11, T-02-14 | `Location` renders address fields from a `StoreInfo` prop (no literal) and its anchor href comes from the maps prop; no iframe in any `.ts`/`.tsx`/`.css` under `src/` | rendered-output fixture test + repository-wide sweep | `npx vitest run src/components/home/Location.test.ts` | created in T1/T2 | ✅ green |
+| T1 | 02-02 | 2 | LOCAL-02 | T-02-13 | `Location` maps over `store.modalities`; 3-item, 1-item and 0-item fixtures each render the matching chip count (0 renders nothing at all) | rendered-output fixture test | same file | created in T1 | ✅ green |
+| T1, T2 | 02-02 | 2 | LOCAL-03 | T-02-10 | The provisional marker is driven by `hours.provisional`; the pending body renders only for an empty schedule, and a populated fixture renders day/open/close rows instead. No clock time in any non-test `home/` source or in the copy module | rendered-output fixture test + comment-stripped source sweep | same file, plus `npx vitest run src/components/home/home.test.ts` | created in T1/T2 | ✅ green |
+| T1 | 02-02 | 2 | LOCAL-04 | T-02-12 | The directions anchor's rendered href equals the maps `IntegrationLink` url exactly, with the new-tab target and safe rel | rendered-output fixture test | `npx vitest run src/components/home/Location.test.ts` | created in T1 | ✅ green |
+| T2 | 02-01 | 1 | INTEGRA-01 | T-02-02 | `OrderCta` renders a live anchor for a `{confirmed: true}` fixture and a natively disabled button with the pending suffix (and no href at all) for a `{confirmed: false}` fixture | rendered-output fixture test | `npx vitest run src/components/home/OrderCta.test.ts` | created in T2 | ✅ green |
 | T2 (human-check) | 02-01 | 1 | INTEGRA-01 (mobile-fold) | — | Both order CTAs visible side by side without scrolling past the hero at ~375x667 and ~390x844 | manual/visual only — not automatable by this stack | n/a | n/a | ⬜ pending (manual) |
-| T2 | 02-01 | 1 | INTEGRA-02 | T-02-02 | Same confirmed/pending contract for the WhatsApp CTA, rendered through the same shared primitive (D-06 parity is structural) | rendered-output fixture test | same file | created in T2 | ⬜ pending |
-| T2 | 02-01 | 1 | INTEGRA-03 | T-02-02 | The unavailability notice renders only while the iFood link is unconfirmed and points at the confirmed directions action, never swapping in another live order channel; no iFood/WhatsApp host and no unconfirmed-destination sentinel reaches the rendered document | rendered-output fixture test + prerendered-HTML assertion | same file | created in T2 | ⬜ pending |
-| T3 | 02-01 | 1 | INTEGRA-05 | T-02-06 | No form element and no cart/checkout affordance in the comment-stripped source of any non-test `home/` component or of `src/app/page.tsx` — asserted by directory sweep, so later-added sections are covered | comment-stripped directory sweep | `npx vitest run src/components/home/home.test.ts` | created in T3 | ⬜ pending |
-| T3 | 02-03 | 3 | INTEGRA-05 (copy) | T-02-18 | The same cart/checkout guard extended to `src/content/home-copy.ts`; the FAQ's ordering answer routes to iFood or WhatsApp | comment-stripped source sweep + rendered-output assertion | `npx vitest run src/components/home/sections.test.ts src/components/home/home.test.ts` | created in T3 | ⬜ pending |
-| T3 | 02-01 | 1 | SEC-03 (carried) | T-02-01 | No `home/` component contains a URL literal or imports `@/data/*`; the page calls all three `build*Url()` functions | comment-stripped directory sweep | `npx vitest run src/components/home/home.test.ts` | created in T3 | ⬜ pending |
-| T1, T2, T3 | 02-03 | 3 | CONT-02 (final copy, `writtenInPhase: 2`) | T-02-16, T-02-17 | The brand story covers its three skeleton points and the FAQ its four; the FAQ's address and modality answers agree with the record read through `getStoreInfo()`; the copy module carries no currency amount, award, rating, star count, named superlative/guilt construction, or clock time | rendered-output test + named-test content-integrity gate | `npx vitest run src/components/home/sections.test.ts src/components/home/home.test.ts` | created in T3 | ⬜ pending |
-| T2 | 02-03 | 3 | CONT-02 (zero-JS disclosure) | T-02-19, T-02-20 | Each FAQ entry is a native disclosure element — no client directive, no state/effect hook, no click handler, no hand-wired expanded/controls attributes — asserted in source and in the rendered document | prerendered-HTML assertion + static source inspection | same file | created in T2/T3 | ⬜ pending |
+| T2 | 02-01 | 1 | INTEGRA-02 | T-02-02 | Same confirmed/pending contract for the WhatsApp CTA, rendered through the same shared primitive (D-06 parity is structural) | rendered-output fixture test | same file | created in T2 | ✅ green |
+| T2 | 02-01 | 1 | INTEGRA-03 | T-02-02 | The unavailability notice renders only while the iFood link is unconfirmed and points at the confirmed directions action, never swapping in another live order channel; no iFood/WhatsApp host and no unconfirmed-destination sentinel reaches the rendered document | rendered-output fixture test + prerendered-HTML assertion | same file | created in T2 | ✅ green |
+| T3 | 02-01 | 1 | INTEGRA-05 | T-02-06 | No form element and no cart/checkout affordance in the comment-stripped source of any non-test `home/` component or of `src/app/page.tsx` — asserted by directory sweep, so later-added sections are covered | comment-stripped directory sweep | `npx vitest run src/components/home/home.test.ts` | created in T3 | ✅ green |
+| T3 | 02-03 | 3 | INTEGRA-05 (copy) | T-02-18 | The same cart/checkout guard extended to `src/content/home-copy.ts`; the FAQ's ordering answer routes to iFood or WhatsApp | comment-stripped source sweep + rendered-output assertion | `npx vitest run src/components/home/sections.test.ts src/components/home/home.test.ts` | created in T3 | ✅ green |
+| T3 | 02-01 | 1 | SEC-03 (carried) | T-02-01 | No `home/` component contains a URL literal or imports `@/data/*`; the page calls all three `build*Url()` functions | comment-stripped directory sweep | `npx vitest run src/components/home/home.test.ts` | created in T3 | ✅ green |
+| T1, T2, T3 | 02-03 | 3 | CONT-02 (final copy, `writtenInPhase: 2`) | T-02-16, T-02-17 | The brand story covers its three skeleton points and the FAQ its four; the FAQ's address and modality answers agree with the record read through `getStoreInfo()`; the copy module carries no currency amount, award, rating, star count, named superlative/guilt construction, or clock time | rendered-output test + named-test content-integrity gate | `npx vitest run src/components/home/sections.test.ts src/components/home/home.test.ts` | created in T3 | ✅ green |
+| T2 | 02-03 | 3 | CONT-02 (zero-JS disclosure) | T-02-19, T-02-20 | Each FAQ entry is a native disclosure element — no client directive, no state/effect hook, no click handler, no hand-wired expanded/controls attributes — asserted in source and in the rendered document | prerendered-HTML assertion + static source inspection | same file | created in T2/T3 | ✅ green |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
 
@@ -123,12 +123,15 @@ first commit — no task ships with a `MISSING — Wave 0` placeholder.
 
 ## Validation Sign-Off
 
-- [ ] All tasks have `<automated>` verify or Wave 0 dependencies
-- [ ] Sampling continuity: no 3 consecutive tasks without automated verify
-- [ ] Wave 0 covers all MISSING references
-- [ ] No watch-mode flags
-- [ ] Feedback latency < 10s
-- [ ] `nyquist_compliant: true` set in frontmatter
+- [x] All tasks have `<automated>` verify or Wave 0 dependencies
+- [x] Sampling continuity: no 3 consecutive tasks without automated verify
+- [x] Wave 0 covers all MISSING references (no separate Wave 0 needed — see above)
+- [x] No watch-mode flags
+- [x] Feedback latency < 10s
+- [x] `nyquist_compliant: true` set in frontmatter
 
-**Approval:** pending — draft seeded before planning; the planner fills Plan/Wave/Task ID and
-`/gsd-validate-phase` (or the phase's own verification pass) confirms sign-off after execution.
+**Approval:** confirmed by execution — every row above either ran its `<automated>` command
+against the real codebase (all green, `npm test` — 158/158 passing across all 11 suites) or is
+listed in the Manual-Only table (the one INTEGRA-01 mobile-fold check, deferred to end-of-phase
+UAT per `human_verify_mode: end-of-phase`, not skipped). `status:` stays `draft` per the lifecycle
+note above `validated` is set by `/gsd-validate-phase`, not by plan execution itself.
