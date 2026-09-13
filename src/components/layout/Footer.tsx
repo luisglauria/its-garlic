@@ -9,7 +9,7 @@ import { buildInstagramUrl } from "@/lib/integrations/instagram";
 
 export function Footer() {
   const store = getStoreInfo();
-  const instagramUrl = buildInstagramUrl();
+  const instagram = buildInstagramUrl();
 
   return (
     <div className="bg-surface-primary text-text-on-dark">
@@ -19,7 +19,7 @@ export function Footer() {
           {store.address} — {store.neighborhood}, {store.city} - {store.state}
         </p>
         <a
-          href={instagramUrl}
+          href={instagram.url}
           target="_blank"
           rel="noopener noreferrer"
           className="text-sm text-accent underline decoration-accent underline-offset-4 hover:text-text-on-dark"

@@ -3,7 +3,7 @@ import { buildIFoodUrl } from "@/lib/integrations/ifood";
 
 export default function Home() {
   const store = getStoreInfo();
-  const ifoodUrl = buildIFoodUrl();
+  const ifood = buildIFoodUrl();
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-6 p-8 text-center">
@@ -15,14 +15,28 @@ export default function Home() {
         <p className="max-w-md text-lg">
           {store.address} — {store.neighborhood}, {store.city} - {store.state}
         </p>
-        <a
-          href={ifoodUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full bg-black px-6 py-3 text-base font-medium text-white transition-colors hover:bg-zinc-800"
-        >
-          Pedir no iFood
-        </a>
+        {ifood.confirmed ? (
+          <a
+            href={ifood.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-black px-6 py-3 text-base font-medium text-white transition-colors hover:bg-zinc-800"
+          >
+            Pedir no iFood
+          </a>
+        ) : (
+          // CR-01: the iFood destination is not yet confirmed (src/data/links.ts) — render a
+          // visibly disabled affordance instead of a live-looking link to a placeholder URL.
+          // A native disabled <button> needs no client-side JS to be inert or announced
+          // correctly by assistive tech.
+          <button
+            type="button"
+            disabled
+            className="cursor-not-allowed rounded-full bg-zinc-300 px-6 py-3 text-base font-medium text-zinc-500"
+          >
+            Pedido pelo iFood em breve
+          </button>
+        )}
       </section>
     </div>
   );
