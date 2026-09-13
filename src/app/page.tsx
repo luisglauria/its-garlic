@@ -6,6 +6,7 @@ import { Hero } from "@/components/home/Hero";
 import { CtaGroup } from "@/components/home/CtaGroup";
 import { BrandStory } from "@/components/home/BrandStory";
 import { Location } from "@/components/home/Location";
+import { Faq } from "@/components/home/Faq";
 
 // Data/integration builders are called once here and passed down as typed props (RESEARCH.md
 // Pattern 1) — no `home/` component fetches its own data. Neither this file nor any `home/`
@@ -26,6 +27,7 @@ export default function Home() {
       <CtaGroup ifood={ifood} whatsapp={whatsapp} maps={maps} />
       <BrandStory />
       <Location store={store} maps={maps} />
+      <Faq />
     </>
   );
 }
