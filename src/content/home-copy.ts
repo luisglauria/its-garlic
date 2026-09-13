@@ -88,3 +88,60 @@ export const locationCopy: LocationCopy = {
   hoursHeading: "Horário de funcionamento",
   hoursPendingBody: "Em atualização — confirme no iFood ou no WhatsApp antes de vir.",
 };
+
+export interface BrandStoryCopy {
+  readonly heading: string;
+  readonly paragraphs: readonly string[];
+}
+
+// Final brand-story copy (CONT-02, skeleton.ts's `brand-story` entry, `writtenInPhase: 2`).
+// Covers exactly the three points that entry carries — what the house is, where it is, why the
+// stuffed garlic bread is the signature — and nothing beyond them. No product name, price, hour,
+// award, rating or superlative; every sentence is defensible from PROJECT.md alone
+// (tone-of-voice.md §5). Two tight paragraphs rather than an institutional brand manifesto
+// (tone-of-voice.md §3): the first sets what the house is and where, the second sets why the
+// garlic bread carries the name and names the wider range as the proof of "mais que um pão de
+// alho" — the concept line already locked by heroCopy.kicker above.
+export const brandStoryCopy: BrandStoryCopy = {
+  heading: "Mais que um pão de alho",
+  paragraphs: [
+    "A It's Garlic é um restaurante descontraído dentro do Mercado da Torre, em Recife — não uma hamburgueria genérica com um item de pão de alho perdido no meio do cardápio.",
+    "O pão de alho recheado é o motivo do nome e o ponto de partida da casa, não o teto dela: por aqui também tem sanduíche no pão de alho, petisco, espetinho, almoço e happy hour.",
+  ],
+};
+
+export interface FaqEntry {
+  readonly question: string;
+  readonly answer: string;
+}
+
+// Final FAQ copy (CONT-02, skeleton.ts's `faqs` entry, `writtenInPhase: 2`) — exactly the four
+// questions that entry carries, built only from facts PROJECT.md already confirms. This module
+// imports nothing from src/data/* (ARQ-02), so the address/modality answers below are literal
+// text, not a read of the record; sections.test.ts reads the real record through getStoreInfo()
+// and asserts these answers agree with it, which is what keeps this from becoming a second,
+// drifting source of the same facts. The ordering answer names iFood and WhatsApp as destinations
+// without promising a working link on this site — both are still unconfirmed (INTEGRA-05) — and
+// implies no cart, no checkout and no order form here.
+export const faqs: readonly FaqEntry[] = [
+  {
+    question: "Onde fica a It's Garlic?",
+    answer:
+      "A It's Garlic fica na Rua José Bonifácio, 747, no Mercado da Torre, em Recife - PE.",
+  },
+  {
+    question: "Como eu peço?",
+    answer:
+      "Pelo iFood, que é o canal principal de pedido, ou pelo WhatsApp, canal alternativo de atendimento. Os links diretos de cada um ainda estão em confirmação — procure \"It's Garlic\" no aplicativo que preferir enquanto isso.",
+  },
+  {
+    question: "Quais são as formas de atendimento?",
+    answer:
+      "Balcão, delivery e take away — você escolhe a forma que for melhor pra você.",
+  },
+  {
+    question: "Tem entrega (delivery)?",
+    answer:
+      "Sim, delivery é uma das formas de atendimento da casa, ao lado do balcão e do take away. Peça pelo iFood ou fale no WhatsApp para confirmar a entrega até você.",
+  },
+];
