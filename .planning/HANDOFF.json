@@ -1,0 +1,53 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-09-13T23:15:50.809Z",
+  "phase": "02",
+  "phase_name": "02-hero-ctas-location",
+  "phase_dir": "C:/Users/luisgx/Desktop/Projetos/Its garlic/.planning/phases/02-hero-ctas-location",
+  "plan": null,
+  "task": null,
+  "total_tasks": null,
+  "status": "paused",
+  "workflow": "gsd-verify-work",
+  "workflow_step": "present_ready",
+  "completed_tasks": [
+    { "id": "uat", "name": "Run conversational UAT for phase 02 (5 tests)", "status": "done", "commit": "5febfca" },
+    { "id": "diagnose", "name": "Diagnose 3 UAT gaps with parallel debug agents", "status": "done", "commit": "7cecb75 (+ 400f38c debug sessions)" },
+    { "id": "plan_gap_closure", "name": "gsd-planner creates gap-closure plans 02-04/02-05/02-06", "status": "done", "commit": "92c09bc" },
+    { "id": "verify_gap_plans", "name": "gsd-plan-checker verifies the 3 gap-closure plans", "status": "done", "progress": "VERIFICATION PASSED — all 3 dimensions checked (requirement coverage, task completeness, dependency graph, key links, scope, verification strategy) came back clean, no revision needed" }
+  ],
+  "remaining_tasks": [
+    { "id": "present_ready", "name": "Present gap-closure summary to user (already known: PASSED, 3/3 gaps fully addressed)", "status": "not_started" },
+    { "id": "execute_gap_plans", "name": "Execute 02-04-PLAN.md, 02-05-PLAN.md, 02-06-PLAN.md (waves 4→5→6, strict chain — do NOT parallelize)", "status": "not_started" },
+    { "id": "re_verify_work", "name": "Re-run /gsd-verify-work 02 to confirm the 3 UAT gaps (G-02-2, G-02-4, G-02-5) reconcile to resolved", "status": "not_started" }
+  ],
+  "blockers": [],
+  "async_jobs": [],
+  "human_actions_pending": [],
+  "decisions": [
+    {
+      "decision": "Resumed the existing 02-UAT.md session (5 tests, 0 done) rather than restarting it.",
+      "rationale": "User explicitly chose 'Retomar sessão existente' when asked.",
+      "phase": "02"
+    },
+    {
+      "decision": "Diagnosis ran sequentially (ISOLATION degraded from harness-worktree to none) rather than in parallel.",
+      "rationale": "worktree.base-check reported local HEAD ahead of origin/HEAD (base mismatch) — auto-degrade per diagnose-issues.md #2649 to avoid a stale worktree fork base.",
+      "phase": "02"
+    },
+    {
+      "decision": "gsd-planner sequenced the 3 gap-closure plans as a strict wave chain (02-04 → 02-05 → 02-06), not parallel waves.",
+      "rationale": "G-02-5 (dead brand-color tokens) is a blocking prerequisite for G-02-4 (separators are invisible until backgrounds render correctly), and restoring the real font tokens changes line counts that G-02-2's fold-layout fix is tuned against. 02-05 and 02-06 also both edit src/app/page.tsx so cannot share a wave.",
+      "phase": "02"
+    }
+  ],
+  "uncommitted_files": [
+    "?? .planning/research/.cache/0963ec514b1a3d8239c3a30f7d08a1b1917a0d584025ca0471a1974ed4c8fd94.json",
+    "?? .planning/research/.cache/2dd7d6bb9ae0537be13ff58e2474f6e42226aa8c234f6b856281b94a379fa06c.json",
+    "?? .planning/research/.cache/566cf28f7cd5411d3d8f1c12121eda65e70201776c51fd47120a688ba5e8de7c.json",
+    "?? .planning/research/.cache/e00a633ee67238a330589d9326d18ab3101b6b595f8631c484c80a648a8ec65e.json",
+    "?? .planning/research/.cache/f639939124bddab6ceff6092fd600bc28078be2de11d96853327eb8e1e8a39ae.json"
+  ],
+  "next_action": "Run `/gsd-execute-phase 02` (or `/gsd-execute-phase 02 --gaps-only`) to execute 02-04-PLAN.md → 02-05-PLAN.md → 02-06-PLAN.md in strict wave order (4→5→6, no parallelization — 02-05 and 02-06 both edit src/app/page.tsx and 02-04 must land first since it unblocks visibility of the other two fixes). After execution produces SUMMARY.md files for all 3 plans, re-run `/gsd-verify-work 02` to reconcile gaps G-02-2, G-02-4, G-02-5 to resolved and complete the phase.",
+  "context_notes": "All 5 UAT tests for phase 02 are resolved (2 pass, 3 issues found, fully diagnosed with root causes, gap-closure plans written AND plan-checker-verified as VERIFICATION PASSED — nothing else needs to happen before execution). The most important finding: G-02-5's root cause is NOT scoped to the focus ring — a CSS custom-property self-reference cycle in src/styles/design-tokens.css (@theme inline mirroring every brand token onto itself) combined with the @import order in src/app/globals.css kills the ENTIRE brand color palette AND both font families site-wide (confirmed empirically by the planner by compiling a probe through the project's own @tailwindcss/postcss). This is why 02-04-PLAN.md exists and must land before 02-05/02-06 — G-02-4 (missing section separators) is literally unobservable until backgrounds render correctly again. All 3 gap-closure plans are written, committed (92c09bc) and plan-checker-verified. User invoked /gsd-pause-work right as the plan-checker's PASSED verdict came back — no revision loop was needed, execution simply hasn't started yet. IMPORTANT: this session's user preference is to always respond in Portuguese (see project memory response-language-preference) — carry that into the resumed session's user-facing output."
+}
