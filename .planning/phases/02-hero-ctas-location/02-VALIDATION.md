@@ -40,39 +40,74 @@ created: "2026-09-13"
 
 ## Per-Task Verification Map
 
-*Draft — seeded from RESEARCH.md's Phase Requirements → Test Map before planning; Plan/Wave/Task ID
-columns are filled by the planner once PLAN.md tasks exist.*
+*Plan/Wave/Task ID columns filled by the planner on 2026-09-13. Status is filled from real runs
+during execution; `/gsd-validate-phase` (or plan 02-03 Task 3) confirms sign-off afterwards.*
+
+**Planner note — test style upgraded, with no new dependency.** The draft assumed no DOM renderer
+was available (RESEARCH.md Alternatives Considered) and proposed source-regex for the branch rows.
+Probed during planning: a Vitest test in this repo's `node` environment imports a `.tsx` Server
+Component and renders it with `react-dom/server`'s `renderToStaticMarkup` — including a component
+using `next/image` — with only the already-installed `react-dom`. Both probes passed. So the
+"fixture-prop unit test" rows below assert **rendered markup**, not source text. The RTL/jsdom
+stack stays not-adopted and no package is installed.
+
+**File Exists** — there is no separate Wave 0: each test file is created in the same task as the
+component it guards, matching the Phase 1 precedent (`layout.test.ts` landed with `Header`/`Footer`).
 
 | Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|------------|-----------------|-----------|-------------------|-------------|--------|
-| TBD | TBD | TBD | HERO-01 | — | Hero source contains "Mais que um pão de alho!" and uses design tokens (no hex literal) | static source inspection | `npx vitest run src/components/home/home.test.ts` | ❌ Wave 0 | ⬜ pending |
-| TBD | TBD | TBD | HERO-02 | — | Hero/CtaGroup source contains all three CTA labels verbatim | static source inspection | same file | ❌ Wave 0 | ⬜ pending |
-| TBD | TBD | TBD | HERO-03 | — | Hero source uses `next/image` (not `<img>`), a sized container, and renders the "Imagem ilustrativa" provisional label | static source inspection | same file | ❌ Wave 0 | ⬜ pending |
-| TBD | TBD | TBD | LOCAL-01 | outbound redirect integrity | `Location` renders address fields via props (not hardcoded) and calls `buildMapsUrl()`; no `<iframe` anywhere in repo | static source inspection + fixture-prop unit test | same file | ❌ Wave 0 | ⬜ pending |
-| TBD | TBD | TBD | LOCAL-02 | — | `Location` maps over `store.modalities` (array), not hardcoded chips | fixture-prop unit test (1-item vs 3-item array) | same file | ❌ Wave 0 | ⬜ pending |
-| TBD | TBD | TBD | LOCAL-03 | — | Provisional-hours notice renders when `hours.schedule.length === 0`; not rendered for a non-empty fixture | fixture-prop unit test | same file | ❌ Wave 0 | ⬜ pending |
-| TBD | TBD | TBD | LOCAL-04 | outbound redirect integrity | "Como chegar" anchor `href` equals `buildMapsUrl().url` | static source inspection | same file | ❌ Wave 0 | ⬜ pending |
-| TBD | TBD | TBD | INTEGRA-01 | outbound redirect integrity | `OrderCta` renders live `<a>` when `{confirmed: true}`, disabled `<button>` with "(em breve)" when `{confirmed: false}` | fixture-prop unit test | `npx vitest run src/components/home/OrderCta.test.ts` | ❌ Wave 0 | ⬜ pending |
-| TBD | TBD | TBD | INTEGRA-01 (mobile-fold) | — | CTAs visible without scrolling on a ~375–390px-tall mobile viewport | manual/visual only — not automatable by this stack | n/a | n/a | ⬜ pending (manual) |
-| TBD | TBD | TBD | INTEGRA-02 | outbound redirect integrity | Same confirmed/disabled contract as INTEGRA-01, WhatsApp CTA | fixture-prop unit test | same file as OrderCta | ❌ Wave 0 | ⬜ pending |
-| TBD | TBD | TBD | INTEGRA-03 | Spoofing (of commercial claims) | Unavailability notice renders only when `!ifood.confirmed`, and always points at the Maps CTA, never a nonexistent `/cardapio` route | fixture-prop unit test | same file as CtaGroup | ❌ Wave 0 | ⬜ pending |
-| TBD | TBD | TBD | INTEGRA-05 | — | No `<form`, no `checkout`/`cart` literal anywhere under `src/components/home/` or `src/app/page.tsx` | repo-wide static grep guard | `npx vitest run src/components/home/home.test.ts` | ❌ Wave 0 | ⬜ pending |
-| TBD | TBD | TBD | SEC-03 (carried) | Tampering / Spoofing | New `home/` components call `build*Url()` / `assertAllowedHost()` — no raw `https://` literal | static source inspection | same file | ❌ Wave 0 | ⬜ pending |
+| T1, T3 | 02-01 | 1 | HERO-01 | — | The concept line reaches the prerendered HTML as document text, not lettering in the image; no hex literal in any `home/` component | prerendered-HTML assertion + static source inspection | `npx vitest run src/components/home/home.test.ts` | created in T1/T3 | ⬜ pending |
+| T2, T3 | 02-01 | 1 | HERO-02 | — | All three locked CTA labels appear verbatim in the copy module and in the rendered page | prerendered-HTML assertion + static source inspection | same file | created in T3 | ⬜ pending |
+| T1, T3 | 02-01 | 1 | HERO-03 | T-02-03 | Hero uses `next/image` with `fill`, an aspect-ratio container, `sizes` and `preload`, points at `brand/hero-illustration`, and renders a visible provisional disclosure | prerendered-HTML assertion + static source inspection | same file | created in T1/T3 | ⬜ pending |
+| T1, T2 | 02-02 | 2 | LOCAL-01 | T-02-11, T-02-14 | `Location` renders address fields from a `StoreInfo` prop (no literal) and its anchor href comes from the maps prop; no iframe in any `.ts`/`.tsx`/`.css` under `src/` | rendered-output fixture test + repository-wide sweep | `npx vitest run src/components/home/Location.test.ts` | created in T1/T2 | ⬜ pending |
+| T1 | 02-02 | 2 | LOCAL-02 | T-02-13 | `Location` maps over `store.modalities`; 3-item, 1-item and 0-item fixtures each render the matching chip count (0 renders nothing at all) | rendered-output fixture test | same file | created in T1 | ⬜ pending |
+| T1, T2 | 02-02 | 2 | LOCAL-03 | T-02-10 | The provisional marker is driven by `hours.provisional`; the pending body renders only for an empty schedule, and a populated fixture renders day/open/close rows instead. No clock time in any non-test `home/` source or in the copy module | rendered-output fixture test + comment-stripped source sweep | same file, plus `npx vitest run src/components/home/home.test.ts` | created in T1/T2 | ⬜ pending |
+| T1 | 02-02 | 2 | LOCAL-04 | T-02-12 | The directions anchor's rendered href equals the maps `IntegrationLink` url exactly, with the new-tab target and safe rel | rendered-output fixture test | `npx vitest run src/components/home/Location.test.ts` | created in T1 | ⬜ pending |
+| T2 | 02-01 | 1 | INTEGRA-01 | T-02-02 | `OrderCta` renders a live anchor for a `{confirmed: true}` fixture and a natively disabled button with the pending suffix (and no href at all) for a `{confirmed: false}` fixture | rendered-output fixture test | `npx vitest run src/components/home/OrderCta.test.ts` | created in T2 | ⬜ pending |
+| T2 (human-check) | 02-01 | 1 | INTEGRA-01 (mobile-fold) | — | Both order CTAs visible side by side without scrolling past the hero at ~375x667 and ~390x844 | manual/visual only — not automatable by this stack | n/a | n/a | ⬜ pending (manual) |
+| T2 | 02-01 | 1 | INTEGRA-02 | T-02-02 | Same confirmed/pending contract for the WhatsApp CTA, rendered through the same shared primitive (D-06 parity is structural) | rendered-output fixture test | same file | created in T2 | ⬜ pending |
+| T2 | 02-01 | 1 | INTEGRA-03 | T-02-02 | The unavailability notice renders only while the iFood link is unconfirmed and points at the confirmed directions action, never swapping in another live order channel; no iFood/WhatsApp host and no unconfirmed-destination sentinel reaches the rendered document | rendered-output fixture test + prerendered-HTML assertion | same file | created in T2 | ⬜ pending |
+| T3 | 02-01 | 1 | INTEGRA-05 | T-02-06 | No form element and no cart/checkout affordance in the comment-stripped source of any non-test `home/` component or of `src/app/page.tsx` — asserted by directory sweep, so later-added sections are covered | comment-stripped directory sweep | `npx vitest run src/components/home/home.test.ts` | created in T3 | ⬜ pending |
+| T3 | 02-03 | 3 | INTEGRA-05 (copy) | T-02-18 | The same cart/checkout guard extended to `src/content/home-copy.ts`; the FAQ's ordering answer routes to iFood or WhatsApp | comment-stripped source sweep + rendered-output assertion | `npx vitest run src/components/home/sections.test.ts src/components/home/home.test.ts` | created in T3 | ⬜ pending |
+| T3 | 02-01 | 1 | SEC-03 (carried) | T-02-01 | No `home/` component contains a URL literal or imports `@/data/*`; the page calls all three `build*Url()` functions | comment-stripped directory sweep | `npx vitest run src/components/home/home.test.ts` | created in T3 | ⬜ pending |
+| T1, T2, T3 | 02-03 | 3 | CONT-02 (final copy, `writtenInPhase: 2`) | T-02-16, T-02-17 | The brand story covers its three skeleton points and the FAQ its four; the FAQ's address and modality answers agree with the record read through `getStoreInfo()`; the copy module carries no currency amount, award, rating, star count, named superlative/guilt construction, or clock time | rendered-output test + named-test content-integrity gate | `npx vitest run src/components/home/sections.test.ts src/components/home/home.test.ts` | created in T3 | ⬜ pending |
+| T2 | 02-03 | 3 | CONT-02 (zero-JS disclosure) | T-02-19, T-02-20 | Each FAQ entry is a native disclosure element — no client directive, no state/effect hook, no click handler, no hand-wired expanded/controls attributes — asserted in source and in the rendered document | prerendered-HTML assertion + static source inspection | same file | created in T2/T3 | ⬜ pending |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
+
+**Sampling continuity check (planner):** no three consecutive tasks lack an automated verify — all
+eight tasks across the three plans carry at least one runnable `<automated>` command with a stated
+failing direction, and every command is either a script proven in Phase 1 (`npm --prefix . run
+build`, `npm --prefix . run lint`, `npm --prefix . test`, the prerendered-HTML assertion pattern) or
+a `npx vitest run <path>` against a file the same task creates.
 
 ---
 
 ## Wave 0 Requirements
 
-- [ ] `src/components/home/home.test.ts` (or one file per component, matching the granularity the
-  planner chooses) — covers HERO-01/02/03, LOCAL-01/02/03/04, INTEGRA-05, and the SEC-03 no-raw-URL
-  guard.
-- [ ] `src/components/home/OrderCta.test.ts` — covers INTEGRA-01/02/03's confirmed/disabled branches
-  via fixture props (no framework change needed).
-- No new test *framework* or config gap — `vitest.config.ts`'s `node` environment already covers
-  this phase's testing style; the RTL/jsdom path was researched and explicitly not adopted (see
-  RESEARCH.md Alternatives Considered).
+**Planner resolution: this phase has no separate Wave 0.** Each test file is created in the same
+task as the component it guards, which is this project's established precedent
+(`src/components/layout/layout.test.ts` was written and extended inside the same tasks that built
+`Header`/`Footer` in plan 01-06). Every task therefore carries a real `<automated>` verify from its
+first commit — no task ships with a `MISSING — Wave 0` placeholder.
+
+- [ ] `src/components/home/home.test.ts` — the phase's cumulative guard suite. Created in plan
+  02-01 Task 3 (HERO-01/02/03 source facts, INTEGRA-05 no-checkout sweep, SEC-03 no-raw-URL /
+  no-direct-data-import / no-hex sweep, PERF-03 no-fixed-pixel sweep), extended in plan 02-02 Task 2
+  (LOCAL-01/04 seams, repository-wide no-iframe, the `CLOCK_TIME` guard) and in plan 02-03 Task 3
+  (the content-integrity gate over `src/content/home-copy.ts`).
+- [ ] `src/components/home/OrderCta.test.ts` — created in plan 02-01 Task 2; covers
+  INTEGRA-01/02/03's confirmed and pending branches against rendered markup.
+- [ ] `src/components/home/Location.test.ts` — created in plan 02-02 Task 1; covers LOCAL-01/02/03/04,
+  including the zero/one/many modality cardinalities and the populated-schedule branch real data
+  never produces today.
+- [ ] `src/components/home/sections.test.ts` — created in plan 02-03 Task 3; covers the brand story's
+  required points and every FAQ entry, asserted against the copy arrays' own lengths and against the
+  store record read through `getStoreInfo()`.
+- No new test *framework* or config gap — `vitest.config.mts`'s `node` environment already covers
+  this phase's testing style. The RTL/jsdom path stays not-adopted (RESEARCH.md Alternatives
+  Considered); the rendered-output assertions use the already-installed `react-dom/server`, verified
+  working in this repo during planning.
 
 ---
 

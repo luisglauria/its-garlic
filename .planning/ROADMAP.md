@@ -81,7 +81,21 @@ Plans:
   3. The location section shows the full address with a working "Como chegar" link to Google Maps (no embedded iframe), the service modalities (balcão/delivery/take away), and operating hours — hours are visibly labeled "provisório" pending client confirmation.
   4. No page offers its own checkout — every order path ends at iFood or WhatsApp.
 
-**Plans**: TBD
+**Plans**: 3 plans in 3 waves
+
+Plans:
+**Wave 1**
+
+- [ ] 02-01-PLAN.md — Tracer: hero identity (labelled provisional illustration) and the three-CTA row — gated iFood/WhatsApp "em breve" buttons, live Maps link
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
+- [ ] 02-02-PLAN.md — Location: address and modalities from the validated record, the honest provisional-hours block, and the confirmed "Como chegar" link
+
+**Wave 3** *(blocked on Wave 2 completion)*
+
+- [ ] 02-03-PLAN.md — Brand story and FAQ final copy (native zero-JS disclosure) plus the content-integrity gate over the phase's copy
+
 **UI hint**: yes
 
 **Blocked pendências carried into this phase**: (1) exact iFood store URL and official WhatsApp number unconfirmed — ships with a clearly-labeled placeholder destination through the Phase 1 integrations module, never a guessed link; (2) current operating hours unconfirmed (only divergent 2.5–4.8-year-old Instagram stories found) — LOCAL-03 ships with provisional hours, labeled, pending client confirmation. Both are follow-up passes once the client responds, not launch blockers.
@@ -142,7 +156,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation, Architecture, Brand Identity & Security Baseline | 6/6 | In Progress|  |
-| 2. Hero, CTAs & Location | 0/TBD | Not started | - |
+| 2. Hero, CTAs & Location | 0/3 | Not started | - |
 | 3. Menu & Product Catalog | 0/TBD | Not started | - |
 | 4. Promotions, Almoço & Time-Aware Journey | 0/TBD | Not started | - |
 | 5. SEO, Performance & Security Verification | 0/TBD | Not started | - |
