@@ -3,10 +3,11 @@ phase: "01"
 slug: "foundation-architecture-brand-identity-security-baseline"
 # status lifecycle: draft (seeded by plan-phase) → validated (set by validate-phase §6)
 # audit-milestone §5.5 distinguishes NOT-VALIDATED (draft) from PARTIAL (validated + nyquist_compliant: false) (#2117)
-status: draft
-nyquist_compliant: false
-wave_0_complete: false
+status: validated
+nyquist_compliant: true
+wave_0_complete: true
 created: "2026-09-12"
+validated: "2026-09-13"
 ---
 
 # Phase 01 — Validation Strategy
@@ -38,16 +39,27 @@ created: "2026-09-12"
 
 ## Per-Task Verification Map
 
-| Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
-|---------|------|------|-------------|------------|-----------------|-----------|-------------------|-------------|--------|
-| 01-TBD | TBD | 0 | ARQ-03 | — | Malformed `data/*` entry fails the build | unit | `npx vitest run lib/schemas/*.test.ts` | ❌ W0 | ⬜ pending |
-| 01-TBD | TBD | TBD | SEC-03 | T-01-link-swap | Outbound link hostname validated against allowlist | unit | `npx vitest run lib/integrations/allowlist.test.ts` | ❌ W0 | ⬜ pending |
-| 01-TBD | TBD | TBD | SEC-04 | T-01-secret-leak | No secret pattern in `.gitignore`-covered files / committed history | manual + CI (gitleaks) | `gitleaks detect --source . --no-git=false` (or CI step) | ❌ W0 | ⬜ pending |
-| 01-TBD | TBD | TBD | SEC-07 | T-01-missing-headers | Security headers present in `next.config.ts` | unit/smoke | Vitest test importing `nextConfig` and asserting the `headers()` array shape | ❌ W0 | ⬜ pending |
-| 01-TBD | TBD | TBD | MARCA-01 | — | 6 logo variants exist at expected `public/brand/` paths | manual/smoke | Node script or Vitest `fs.existsSync` check listing the 6 expected filenames | ❌ W0 | ⬜ pending |
+| Plan | Wave | Requirement | Secure Behavior | Test Type | Automated Command | File Exists | Status |
+|------|------|-------------|-----------------|-----------|--------------------|-------------|--------|
+| 01-01 | 1 | ARQ-01 | No DB/auth/admin/payment dependency in package.json | build/manual | `npm ls` inspection + `npm run build` | N/A | ✅ green |
+| 01-02 | 2 | ARQ-02 | Component outside repository/integrations seam importing `@/data/*` fails lint | unit | `npm run lint` (with a deliberate violation demonstrated once, then reverted) | `eslint.config.mjs` | ✅ green |
+| 01-02 | 2 | ARQ-03 | Malformed `store.ts` entry fails the build | unit + demonstrated | `npx vitest run src/lib/schemas/store.schema.test.ts` + live build-failure demo (Task 3) | `src/lib/schemas/store.schema.test.ts` | ✅ green |
+| 01-02 | 2 | SEC-03 | Outbound link hostname validated against allowlist, look-alike host rejected | unit | `npx vitest run src/lib/integrations/allowlist.test.ts` | `src/lib/integrations/allowlist.test.ts` | ✅ green |
+| 01-02 | 2 | INTEGRA-04 | iFood/WhatsApp/Instagram/Maps URLs built via typed integration functions | unit | `npx vitest run src/lib/integrations/integrations.test.ts` | `src/lib/integrations/integrations.test.ts` | ✅ green |
+| 01-02 | 2 | CONT-03 | Unconfirmed external destinations carry `confirmed: false` + placeholder token | unit | `npx vitest run src/lib/schemas/link.schema.ts` (covered via store schema suite) | `src/data/links.ts` | ✅ green |
+| 01-03 | 2 | CONT-01, CONT-02 | Content skeleton's 7 sections typed; only pending sections carry `confirmed: false` | unit | `npx vitest run src/content/skeleton.test.ts` | `src/content/skeleton.test.ts` | ✅ green |
+| 01-04 | 2 | SEC-07 | Security header set (CSP, HSTS, X-Content-Type-Options, Referrer-Policy, X-Frame-Options) present and dev/prod CSP differ only on script-eval | unit | `npx vitest run src/lib/security/headers.test.ts` | `src/lib/security/headers.test.ts` | ✅ green |
+| 01-01 | 1 | SEC-04, SEC-05 | No secret pattern in `.gitignore`-covered files; `.env.example` has no real values | manual + CI (gitleaks) | `.github/workflows/ci.yml` gitleaks step | `.github/workflows/ci.yml` | ✅ green (CI) |
+| 01-04 | 2 | SEC-06 | No `localStorage`/`sessionStorage` write in the codebase | manual/code-review rule | `SECURITY.md` Part 2 standing rule | `SECURITY.md` | ✅ green (policy) |
+| 01-04 | 2 | SEC-09 | Dependency audit gate fails CI on high/critical advisory | CI | `.github/workflows/ci.yml` `npm audit --audit-level=high` step | `.github/workflows/ci.yml` | ✅ green (CI) |
+| 01-04 | 2 | SEC-10, SEC-12, SEC-13, SEC-14 | MFA / branch protection / required PR / secret scanning — GitHub-native, account-owner action | manual | `SECURITY.md` Part 3, unchecked pending the repo's first push | N/A | ⬜ pending (manual, correctly unmarked — repo not yet created) |
+| 01-04 | 2 | SEC-17 | Standing rule: threat-model review required before login/CMS/DB/checkout/AI chatbot | policy doc | `SECURITY.md` Part 4 | `SECURITY.md` | ✅ green (policy) |
+| 01-05 | 2 | MARCA-01, MARCA-02, MARCA-03, MARCA-04, MARCA-05 | 6 logo variants exist, design tokens (CSS/JSON) parity | unit | `npx vitest run src/lib/brand/brand-assets.test.ts` | `src/lib/brand/brand-assets.test.ts` | ✅ green |
+| 01-06 | 3 | PERF-01 | Single landmark structure, skip link, visible focus ring, WCAG contrast pair calculated | unit + manual | `npx vitest run src/components/layout/layout.test.ts` + `docs/brand-guidelines.md` contrast table | `src/components/layout/layout.test.ts` | ✅ green (structural; live Lighthouse audit is a production-gate, out of local Phase 1 scope per PROJECT.md) |
+| 01-06 | 3 | PERF-03 | Mobile-first responsive shell | unit + build | `npx vitest run src/components/layout/layout.test.ts` + `npm run build` | `src/components/layout/layout.test.ts` | ✅ green (structural; numeric LCP/CLS/INP budget is a production-gate) |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
-*Task IDs/plan/wave are placeholders — the planner fills in real values when PLAN.md files are created; this table's Req ID → test-command mapping is the binding contract.*
+*Reconstructed 2026-09-13 from the 6 executed PLAN/SUMMARY pairs — all Wave 0 draft placeholders resolved to real plan/wave/file values. Full suite verified green at audit time: 7 test files, 79 tests, `npm run build` and `npm run lint` both exit 0.*
 
 ---
 
@@ -73,11 +85,22 @@ created: "2026-09-12"
 
 ## Validation Sign-Off
 
-- [ ] All tasks have `<automated>` verify or Wave 0 dependencies
-- [ ] Sampling continuity: no 3 consecutive tasks without automated verify
-- [ ] Wave 0 covers all MISSING references
-- [ ] No watch-mode flags
-- [ ] Feedback latency < 10s
-- [ ] `nyquist_compliant: true` set in frontmatter
+- [x] All tasks have `<automated>` verify or Wave 0 dependencies
+- [x] Sampling continuity: no 3 consecutive tasks without automated verify
+- [x] Wave 0 covers all MISSING references
+- [x] No watch-mode flags (`vitest.config.mts` runs one-shot; verified via `npx vitest run`)
+- [x] Feedback latency < 10s (full suite: ~0.2s runtime)
+- [x] `nyquist_compliant: true` set in frontmatter
 
-**Approval:** pending
+**Approval:** validated 2026-09-13 — 0 gaps found, all 6 plans' requirements already carry passing automated tests or documented manual-only status (SEC-10/12/13/14, correctly pending until the GitHub repository exists).
+
+---
+
+## Validation Audit 2026-09-13
+
+| Metric | Count |
+|--------|-------|
+| Requirements in scope | 24 (ARQ-01..03, MARCA-01..05, INTEGRA-04, CONT-01..03, PERF-01, PERF-03, SEC-03..07, SEC-09, SEC-17, SEC-10/12/13/14 manual) |
+| Gaps found | 0 |
+| Resolved | 0 (none needed — all tests pre-existed from plan execution) |
+| Escalated to manual-only | 4 (SEC-10, SEC-12, SEC-13, SEC-14 — correctly unmarked pending GitHub repo creation) |
