@@ -54,7 +54,7 @@ MVP **estático**: sem backend, sem CMS, sem login, sem checkout, sem analytics 
 - [ ] **INTEGRA-01**: Botão "Pedir no iFood" visível de forma proeminente (fixo ou facilmente acessível), mobile-first
 - [ ] **INTEGRA-02**: Botão/link do WhatsApp disponível como canal de atendimento e pedido alternativo (humano — sem bot no MVP)
 - [ ] **INTEGRA-03**: Se o iFood estiver indisponível, o site exibe um aviso, sem trocar o CTA principal
-- [ ] **INTEGRA-04**: Todos os links externos (iFood, WhatsApp, Instagram, avaliações, Maps) centralizados em um único módulo de configuração, nunca duplicados entre componentes
+- [x] **INTEGRA-04**: Todos os links externos (iFood, WhatsApp, Instagram, avaliações, Maps) centralizados em um único módulo de configuração, nunca duplicados entre componentes
 - [ ] **INTEGRA-05**: Nenhum checkout próprio — todo pedido é redirecionado para iFood ou WhatsApp
 
 ### Identidade Visual
@@ -71,7 +71,7 @@ MVP **estático**: sem backend, sem CMS, sem login, sem checkout, sem analytics 
 
 - [ ] **CONT-01**: Primeira versão de todos os textos do site escrita em português, tom jovem/descontraído/urbano, sem inventar produtos/avaliações/promessas comerciais
 - [ ] **CONT-02**: Textos cobrem hero, apresentação da marca, categorias de produto, CTAs, FAQs, SEO title/meta description e contato/localização
-- [ ] **CONT-03**: Todo dado sensível (preço, horário, ingrediente, disponibilidade) tratado como editável e marcado para validação do cliente antes de publicar
+- [x] **CONT-03**: Todo dado sensível (preço, horário, ingrediente, disponibilidade) tratado como editável e marcado para validação do cliente antes de publicar
 
 ### SEO Local
 
@@ -92,8 +92,8 @@ MVP **estático**: sem backend, sem CMS, sem login, sem checkout, sem analytics 
 ### Arquitetura
 
 - [x] **ARQ-01**: Site estático orientado a dados — sem banco de dados, autenticação, painel administrativo ou pagamento online
-- [ ] **ARQ-02**: Separação clara entre apresentação, dados e integrações externas, permitindo adicionar um backend no futuro sem reescrever o frontend
-- [ ] **ARQ-03**: Dados de produto, categoria, promoção, horário e loja validados automaticamente antes do build, para impedir que dado malformado vá ao ar
+- [x] **ARQ-02**: Separação clara entre apresentação, dados e integrações externas, permitindo adicionar um backend no futuro sem reescrever o frontend
+- [x] **ARQ-03**: Dados de produto, categoria, promoção, horário e loja validados automaticamente antes do build, para impedir que dado malformado vá ao ar
 
 ---
 
@@ -114,7 +114,7 @@ Resultado da rodada de threat model dedicada (ver `ask_questions/QA-LOG.md` para
 
 - [ ] **SEC-01**: Entradas não confiáveis (busca, parâmetros de URL, dados externos) renderizadas como texto puro por padrão
 - [ ] **SEC-02**: Payloads XSS comuns testados manualmente na busca/parâmetros de URL — não executam HTML/JS
-- [ ] **SEC-03**: Links de pedido/contato (iFood, WhatsApp, Instagram, Maps) só apontam para destinos oficiais pré-aprovados; validação automatizada dos destinos
+- [x] **SEC-03**: Links de pedido/contato (iFood, WhatsApp, Instagram, Maps) só apontam para destinos oficiais pré-aprovados; validação automatizada dos destinos
 - [x] **SEC-04**: Nenhuma credencial/chave/token commitado no repositório, em `public/` ou exposto no bundle do navegador
 - [x] **SEC-05**: `NEXT_PUBLIC_*` contém só dados genuinamente públicos
 - [ ] **SEC-06**: Nenhum dado pessoal, credencial ou token em localStorage/sessionStorage
@@ -216,7 +216,7 @@ Quais fases cobrem quais requisitos. Atualizado durante a criação do roadmap.
 | INTEGRA-01 | Phase 2 | Pending |
 | INTEGRA-02 | Phase 2 | Pending |
 | INTEGRA-03 | Phase 2 | Pending |
-| INTEGRA-04 | Phase 1 | Pending |
+| INTEGRA-04 | Phase 1 | Complete |
 | INTEGRA-05 | Phase 2 | Pending |
 | MARCA-01 | Phase 1 | Pending |
 | MARCA-02 | Phase 1 | Pending |
@@ -225,7 +225,7 @@ Quais fases cobrem quais requisitos. Atualizado durante a criação do roadmap.
 | MARCA-05 | Phase 1 | Pending |
 | CONT-01 | Phase 1 | Pending |
 | CONT-02 | Phase 1 | Pending |
-| CONT-03 | Phase 1 | Pending |
+| CONT-03 | Phase 1 | Complete |
 | SEO-01 | Phase 5 | Pending |
 | SEO-02 | Phase 5 | Pending |
 | SEO-03 | Phase 5 | Pending |
@@ -233,11 +233,11 @@ Quais fases cobrem quais requisitos. Atualizado durante a criação do roadmap.
 | PERF-02 | Phase 3 | Pending |
 | PERF-03 | Phase 1 | Pending |
 | ARQ-01 | Phase 1 | Complete |
-| ARQ-02 | Phase 1 | Pending |
-| ARQ-03 | Phase 1 | Pending |
+| ARQ-02 | Phase 1 | Complete |
+| ARQ-03 | Phase 1 | Complete |
 | SEC-01 | Phase 3 | Pending |
 | SEC-02 | Phase 5 | Pending |
-| SEC-03 | Phase 1 | Pending |
+| SEC-03 | Phase 1 | Complete |
 | SEC-04 | Phase 1 | Complete |
 | SEC-05 | Phase 1 | Complete |
 | SEC-06 | Phase 1 | Pending |

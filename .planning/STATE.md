@@ -3,16 +3,16 @@ gsd_state_version: "1.0"
 current_phase: 01
 current_phase_name: Foundation, Architecture, Brand Identity & Security Baseline
 status: executing
-stopped_at: Completed 01-01-PLAN.md
-last_updated: "2026-09-13T16:31:03.034Z"
+stopped_at: Completed 01-02-PLAN.md
+last_updated: "2026-09-13T16:40:29.329Z"
 last_activity: 2026-09-13
 last_activity_desc: Phase 01 execution started
-state_head: 489e83cb163d699c9940efdce57e909a15cb9099
+state_head: deb84b757ba845a2309f8ab5003088dc68b794b2
 progress:
   total_phases: 5
   completed_phases: 0
   total_plans: 6
-  completed_plans: 1
+  completed_plans: 2
   percent: 0
 ---
 
@@ -30,7 +30,7 @@ fricção, mobile-first.
 ## Current Position
 
 Phase: 01 (Foundation, Architecture, Brand Identity & Security Baseline) — EXECUTING
-Plan: 2 of 6
+Plan: 3 of 6
 Status: Ready to execute
 Last activity: 2026-09-13 — Phase 01 execution started
 
@@ -61,6 +61,7 @@ Progress: [░░░░░░░░░░] 0%
 | Plan | Duration | Tasks | Files |
 |------|----------|-------|-------|
 | Phase 01 P01 | 31min | 3 tasks | 22 files |
+| Phase 01 P02 | ~7min | 3 tasks | 15 files |
 
 ## Accumulated Context
 
@@ -82,6 +83,9 @@ Recent decisions affecting current work:
 - [Phase 01]: 01-01: TypeScript pinned to scaffold's ^5 (5.9.3), not npm latest 7.0.2, per RESEARCH.md Open Question 2
 - [Phase 01]: 01-01: @types/node bumped ^20 -> ^24 (dev-only) to resolve vitest@5 peer conflict; engines.node stays >=20.9
 - [Phase 01]: 01-01: git.allow_default_branch_commits=true added to config.json — repo has no remote, branching_strategy already none, prior GSD commits already on master
+- [Phase 01]: [Phase 01] 01-02: storeInfoSchema follows PATTERNS.md literally with z.literal for neighborhood/city/state (single confirmed location); a second location would be a schema change, not a data edit
+- [Phase 01]: [Phase 01] 01-02: link.schema.ts uses Zod v4 top-level z.url() with a .refine() enforcing confirmed:false requires a non-empty pendingConfirmation
+- [Phase 01]: [Phase 01] 01-02: ARQ-02 ESLint no-restricted-imports exemption extended to *.test.ts files so schema regression tests can import the real src/data/store.ts module to prove ARQ-03 has teeth
 
 ### Pending Todos
 
@@ -114,8 +118,8 @@ Items acknowledged and deferred at milestone close, most recent first:
 
 ## Session Continuity
 
-Last session: 2026-09-13T16:31:03.017Z
-Stopped at: Completed 01-01-PLAN.md
+Last session: 2026-09-13T16:40:22.203Z
+Stopped at: Completed 01-02-PLAN.md
 Resume file: None
 before the planner finished and committed) were cleared during resume on 2026-09-13.
 Next: /gsd-execute-phase 1
