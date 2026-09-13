@@ -7,7 +7,10 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-6 p-8 text-center">
-      <main className="flex flex-col items-center gap-6">
+      {/* A <section>, not a second <main> — src/app/layout.tsx (plan 01-06) already renders
+          the page's one <main id="main-content"> landmark; nesting a second <main> here would
+          violate PERF-01's single-landmark rule. */}
+      <section className="flex flex-col items-center gap-6">
         <h1 className="text-3xl font-semibold tracking-tight">{store.name}</h1>
         <p className="max-w-md text-lg">
           {store.address} — {store.neighborhood}, {store.city} - {store.state}
@@ -20,7 +23,7 @@ export default function Home() {
         >
           Pedir no iFood
         </a>
-      </main>
+      </section>
     </div>
   );
 }
