@@ -91,7 +91,7 @@ MVP **estático**: sem backend, sem CMS, sem login, sem checkout, sem analytics 
 
 ### Arquitetura
 
-- [ ] **ARQ-01**: Site estático orientado a dados — sem banco de dados, autenticação, painel administrativo ou pagamento online
+- [x] **ARQ-01**: Site estático orientado a dados — sem banco de dados, autenticação, painel administrativo ou pagamento online
 - [ ] **ARQ-02**: Separação clara entre apresentação, dados e integrações externas, permitindo adicionar um backend no futuro sem reescrever o frontend
 - [ ] **ARQ-03**: Dados de produto, categoria, promoção, horário e loja validados automaticamente antes do build, para impedir que dado malformado vá ao ar
 
@@ -115,12 +115,12 @@ Resultado da rodada de threat model dedicada (ver `ask_questions/QA-LOG.md` para
 - [ ] **SEC-01**: Entradas não confiáveis (busca, parâmetros de URL, dados externos) renderizadas como texto puro por padrão
 - [ ] **SEC-02**: Payloads XSS comuns testados manualmente na busca/parâmetros de URL — não executam HTML/JS
 - [ ] **SEC-03**: Links de pedido/contato (iFood, WhatsApp, Instagram, Maps) só apontam para destinos oficiais pré-aprovados; validação automatizada dos destinos
-- [ ] **SEC-04**: Nenhuma credencial/chave/token commitado no repositório, em `public/` ou exposto no bundle do navegador
-- [ ] **SEC-05**: `NEXT_PUBLIC_*` contém só dados genuinamente públicos
+- [x] **SEC-04**: Nenhuma credencial/chave/token commitado no repositório, em `public/` ou exposto no bundle do navegador
+- [x] **SEC-05**: `NEXT_PUBLIC_*` contém só dados genuinamente públicos
 - [ ] **SEC-06**: Nenhum dado pessoal, credencial ou token em localStorage/sessionStorage
 - [ ] **SEC-07**: HTTPS obrigatório com redirect de HTTP; headers de segurança (CSP, anti-clickjacking, X-Content-Type-Options, Referrer-Policy) configurados em produção
 - [ ] **SEC-08**: CSP compatível com os recursos efetivamente usados, sem `unsafe-inline`/`unsafe-eval` desnecessários
-- [ ] **SEC-09**: Dependências em versões suportadas, lockfile versionado, auditoria de vulnerabilidades antes de cada release, com revisão manual dos resultados
+- [x] **SEC-09**: Dependências em versões suportadas, lockfile versionado, auditoria de vulnerabilidades antes de cada release, com revisão manual dos resultados
 - [ ] **SEC-10**: MFA obrigatório nas três contas críticas: GitHub, hospedagem (Vercel) e registrador de domínio
 - [ ] **SEC-11**: Headers de segurança e CSP verificados no domínio real de produção, não apenas local
 - [ ] **SEC-12**: Branch principal (`main`) protegida — sem push direto, só via Pull Request
@@ -232,18 +232,18 @@ Quais fases cobrem quais requisitos. Atualizado durante a criação do roadmap.
 | PERF-01 | Phase 1 | Pending |
 | PERF-02 | Phase 3 | Pending |
 | PERF-03 | Phase 1 | Pending |
-| ARQ-01 | Phase 1 | Pending |
+| ARQ-01 | Phase 1 | Complete |
 | ARQ-02 | Phase 1 | Pending |
 | ARQ-03 | Phase 1 | Pending |
 | SEC-01 | Phase 3 | Pending |
 | SEC-02 | Phase 5 | Pending |
 | SEC-03 | Phase 1 | Pending |
-| SEC-04 | Phase 1 | Pending |
-| SEC-05 | Phase 1 | Pending |
+| SEC-04 | Phase 1 | Complete |
+| SEC-05 | Phase 1 | Complete |
 | SEC-06 | Phase 1 | Pending |
 | SEC-07 | Phase 1 | Pending |
 | SEC-08 | Phase 5 | Pending |
-| SEC-09 | Phase 1 | Pending |
+| SEC-09 | Phase 1 | Complete |
 | SEC-10 | Phase 1 | Pending |
 | SEC-11 | Phase 5 | Pending |
 | SEC-12 | Phase 1 | Pending |
@@ -254,6 +254,7 @@ Quais fases cobrem quais requisitos. Atualizado durante a criação do roadmap.
 | SEC-17 | Phase 1 | Pending |
 
 **Coverage:**
+
 - Requisitos obrigatórios (bloco 1 + bloco 3 segurança): 56 total (39 funcionais + 17 segurança)
 - Critérios de aceite testáveis (bloco 4): 15 (11 testes automatizados + 4 verificações operacionais) — não mapeados a uma fase única; informam os Success Criteria de cada fase (Lighthouse/CWV/segurança de produção concentrados na Phase 5)
 - Mapeados para fases: 56/56 (100% — Phase 1: 25, Phase 2: 11, Phase 3: 7, Phase 4: 5, Phase 5: 8)

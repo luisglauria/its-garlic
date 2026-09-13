@@ -3,16 +3,16 @@ gsd_state_version: "1.0"
 current_phase: 01
 current_phase_name: Foundation, Architecture, Brand Identity & Security Baseline
 status: executing
-stopped_at: Phase 1 planned (6 plans across 3 waves), ready to execute Wave 1
-last_updated: "2026-09-13T00:00:00.000Z"
-last_activity: 2026-09-12
-last_activity_desc: Phase 1 planning complete — 01-01 through 01-06 PLAN.md + 01-SKELETON.md + 01-PATTERNS.md committed (e01d932, b6e6a95); execution not yet started
-state_head: b6e6a95f48c3cb9653fb5938c8f2cb82b9f0ee71
+stopped_at: Completed 01-01-PLAN.md
+last_updated: "2026-09-13T16:31:03.034Z"
+last_activity: 2026-09-13
+last_activity_desc: Phase 01 execution started
+state_head: 489e83cb163d699c9940efdce57e909a15cb9099
 progress:
   total_phases: 5
   completed_phases: 0
   total_plans: 6
-  completed_plans: 0
+  completed_plans: 1
   percent: 0
 ---
 
@@ -25,14 +25,14 @@ See: .planning/PROJECT.md (updated 2026-09-12)
 **Core value:** Fazer o visitante entender em segundos que a It's Garlic é "mais que um pão de
 alho" e sair do site com um pedido feito no iFood ou uma conversa iniciada no WhatsApp — sem
 fricção, mobile-first.
-**Current focus:** Phase 1 — Foundation, Architecture, Brand Identity & Security Baseline
+**Current focus:** Phase 01 — Foundation, Architecture, Brand Identity & Security Baseline
 
 ## Current Position
 
-Phase: 01 (Foundation, Architecture, Brand Identity & Security Baseline) — PLANNED, READY TO EXECUTE
-Plan: 0 of 6 executed (3 waves: Wave 1 = 01-01; Wave 2 = 01-02, 01-03, 01-04, 01-05; Wave 3 = 01-06)
-Status: Ready to execute Wave 1
-Last activity: 2026-09-12 — Phase 1 planning completed (6 plans/3 waves + Walking Skeleton doc), committed
+Phase: 01 (Foundation, Architecture, Brand Identity & Security Baseline) — EXECUTING
+Plan: 2 of 6
+Status: Ready to execute
+Last activity: 2026-09-13 — Phase 01 execution started
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -56,6 +56,11 @@ Progress: [░░░░░░░░░░] 0%
 - Trend: N/A (project not started)
 
 *Updated after each plan completion*
+**Per-Plan Metrics:**
+
+| Plan | Duration | Tasks | Files |
+|------|----------|-------|-------|
+| Phase 01 P01 | 31min | 3 tasks | 22 files |
 
 ## Accumulated Context
 
@@ -74,6 +79,9 @@ Recent decisions affecting current work:
 - [Roadmapping]: Both [BLOQUEADOR de fase] pendências (confirmed operating hours; confirmed iFood
   URL + WhatsApp number) do not block phases outright — Phases 2 and 4 ship with clearly-labeled
   provisional/placeholder data and carry an explicit follow-up note once the client confirms.
+- [Phase 01]: 01-01: TypeScript pinned to scaffold's ^5 (5.9.3), not npm latest 7.0.2, per RESEARCH.md Open Question 2
+- [Phase 01]: 01-01: @types/node bumped ^20 -> ^24 (dev-only) to resolve vitest@5 peer conflict; engines.node stays >=20.9
+- [Phase 01]: 01-01: git.allow_default_branch_commits=true added to config.json — repo has no remote, branching_strategy already none, prior GSD commits already on master
 
 ### Pending Todos
 
@@ -106,8 +114,8 @@ Items acknowledged and deferred at milestone close, most recent first:
 
 ## Session Continuity
 
-Last session: 2026-09-12T22:01:53.000Z
-Stopped at: Phase 1 planning complete (6 plans/3 waves + 01-SKELETON.md), ready to execute
-Resume file: none — stale .continue-here.md / HANDOFF.json checkpoints (written mid-planning,
+Last session: 2026-09-13T16:31:03.017Z
+Stopped at: Completed 01-01-PLAN.md
+Resume file: None
 before the planner finished and committed) were cleared during resume on 2026-09-13.
 Next: /gsd-execute-phase 1
