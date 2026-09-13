@@ -22,7 +22,15 @@ awaiting: user response
 
 ### 1. Aprovação do cliente sobre o copy PT-BR de primeira versão
 expected: Registro explícito (mensagem do cliente, ata de reunião, ou item equivalente) de que o cliente revisou e aprovou o tom/estrutura de conteúdo produzidos nesta fase. ROADMAP.md Success Criterion #4 da Fase 1 exige literalmente isso — fato externo que nenhuma leitura de código pode provar.
-result: [pending]
+result: |
+  [parcial — atualizado 2026-09-13] O usuário (operador/responsável pelo projeto nesta sessão)
+  aprovou a estrutura (`src/content/skeleton.ts`) e o guia de tom de voz
+  (`src/content/tone-of-voice.md`) como **base de trabalho** para a Fase 2/3 escreverem o copy
+  final em cima deles. O usuário foi explícito: isto NÃO é a aprovação final do responsável pela
+  marca It's Garlic (o cliente/dono do negócio) — essa aprovação **continua pendente**, e o copy
+  não deve ser tratado como definitivo em nenhuma fase seguinte até ela chegar.
+  Distinção registrada: "aprovado como base de trabalho" ≠ "aprovado pelo cliente" (Success
+  Criterion #4 do ROADMAP exige especificamente a segunda). Item permanece PENDING.
 
 ### 2. Criação do repositório GitHub e ações manuais de segurança
 expected: |
