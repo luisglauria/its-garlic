@@ -21,7 +21,7 @@ MVP **estático**: sem backend, sem CMS, sem login, sem checkout, sem analytics 
 
 - [x] **HERO-01**: Hero comunica a marca e o conceito "Mais que um pão de alho!" usando a identidade visual oficial (ver seção Identidade Visual)
 - [x] **HERO-02**: Hero inclui os CTAs "Ver cardápio", "Pedir no iFood" e "Como chegar"
-- [x] **HERO-03**: Foco visual do hero é fotografia real de pão de alho/produtos (fornecida pelo cliente) — não uma hamburgueria genérica
+- [ ] **HERO-03**: Foco visual do hero é fotografia real de pão de alho/produtos (fornecida pelo cliente) — não uma hamburgueria genérica (Pendente: 02-01-PLAN.md entregou uma ilustração provisória rotulada como tal — D-03/D-04 — como placeholder disclosed; a fotografia real do cliente ainda não existe. Fica Pending até a foto real chegar, por decisão explícita do próprio plano, ver 02-VERIFICATION.md.)
 
 ### Cardápio
 
@@ -174,6 +174,7 @@ diz se **bloqueia** alguma fase (o código não pode ficar correto sem o dado re
 - [ ] *(decisão de escopo, não bloqueia código)* Se produtos esgotados serão marcados no site, ou só controlados no iFood (CARD-V2-01)
 - [ ] *(conteúdo a confirmar, não bloqueia código)* Domínio definitivo (hospedagem já decidida: Vercel)
 - [ ] *(conteúdo a confirmar, não bloqueia código)* Existência de um perfil no Google Meu Negócio — bloqueia apenas a consistência de NAP (SEO-04), não o restante do site
+- [ ] *(conteúdo a confirmar, não bloqueia código)* Fotografia real de produto para o hero (HERO-03) — o site já ficou no ar com uma ilustração provisória rotulada como tal (D-03/D-04); troca é um swap de um arquivo só assim que o cliente enviar as fotos
 
 ---
 
@@ -198,7 +199,7 @@ Quais fases cobrem quais requisitos. Atualizado durante a criação do roadmap.
 |-------------|-------|--------|
 | HERO-01 | Phase 2 | Complete |
 | HERO-02 | Phase 2 | Complete |
-| HERO-03 | Phase 2 | Complete |
+| HERO-03 | Phase 2 | Pending (provisional illustration shipped, disclosed; real client photo outstanding) |
 | CARD-01 | Phase 3 | Pending |
 | CARD-02 | Phase 3 | Pending |
 | CARD-03 | Phase 3 | Pending |
