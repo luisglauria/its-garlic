@@ -1,0 +1,56 @@
+name: CI
+
+# SEC-09 / SEC-14 gate: a push or pull request installs strictly from the committed lockfile,
+# runs lint + the test suite, audits dependencies at the high-severity threshold, and scans for
+# leaked secrets. No step tolerates failure — a gate that cannot fail measures nothing.
+on:
+  push:
+  pull_request:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      # Full history, not a shallow clone: the gitleaks step below inspects commit history, not
+      # just the working tree — a shallow checkout would let a secret in an older commit through.
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Matches package.json's `engines.node: ">=20.9"` major version family.
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # `npm ci` only, never the plain-install subcommand — installs strictly from
+      # package-lock.json and fails on drift instead of silently resolving a different
+      # dependency tree.
+      - name: Install dependencies from lockfile
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm test
+
+      # High-severity-gated audit: a high or critical advisory fails the job, a low one does not
+      # block the run (SEC-09).
+      - name: Audit dependencies (high severity and above)
+        run: npm audit --audit-level=high
+
+      # Secret scan via the gitleaks static binary, invoked directly rather than the marketplace
+      # action, to sidestep the private-repository licensing ambiguity entirely (RESEARCH.md).
+      - name: Download gitleaks
+        run: |
+          set -euo pipefail
+          GITLEAKS_VERSION="8.21.2"
+          curl -sSL -o gitleaks.tar.gz \
+            "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          tar -xzf gitleaks.tar.gz gitleaks
+          chmod +x gitleaks
+
+      - name: Scan for secrets (gitleaks)
+        run: ./gitleaks detect --source . --redact -v
