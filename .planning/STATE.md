@@ -3,16 +3,16 @@ gsd_state_version: "1.0"
 current_phase: 01
 current_phase_name: Foundation, Architecture, Brand Identity & Security Baseline
 status: executing
-stopped_at: Completed 01-02-PLAN.md
-last_updated: "2026-09-13T16:40:29.329Z"
+stopped_at: Completed 01-03-PLAN.md
+last_updated: "2026-09-13T16:47:52.696Z"
 last_activity: 2026-09-13
 last_activity_desc: Phase 01 execution started
-state_head: deb84b757ba845a2309f8ab5003088dc68b794b2
+state_head: 34a33dc50542a01387883098bf1180b67a6110c0
 progress:
   total_phases: 5
   completed_phases: 0
   total_plans: 6
-  completed_plans: 2
+  completed_plans: 3
   percent: 0
 ---
 
@@ -30,7 +30,7 @@ fricção, mobile-first.
 ## Current Position
 
 Phase: 01 (Foundation, Architecture, Brand Identity & Security Baseline) — EXECUTING
-Plan: 3 of 6
+Plan: 4 of 6
 Status: Ready to execute
 Last activity: 2026-09-13 — Phase 01 execution started
 
@@ -62,6 +62,7 @@ Progress: [░░░░░░░░░░] 0%
 |------|----------|-------|-------|
 | Phase 01 P01 | 31min | 3 tasks | 22 files |
 | Phase 01 P02 | ~7min | 3 tasks | 15 files |
+| Phase 01 P03 | 25min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -86,6 +87,8 @@ Recent decisions affecting current work:
 - [Phase 01]: [Phase 01] 01-02: storeInfoSchema follows PATTERNS.md literally with z.literal for neighborhood/city/state (single confirmed location); a second location would be a schema change, not a data edit
 - [Phase 01]: [Phase 01] 01-02: link.schema.ts uses Zod v4 top-level z.url() with a .refine() enforcing confirmed:false requires a non-empty pendingConfirmation
 - [Phase 01]: [Phase 01] 01-02: ARQ-02 ESLint no-restricted-imports exemption extended to *.test.ts files so schema regression tests can import the real src/data/store.ts module to prove ARQ-03 has teeth
+- [Phase 01]: [Phase 01] 01-03: Only contact-location skeleton entry marked confirmed:false — hero/ctas carry CTA labels and the WhatsApp channel name, not the pending iFood URL/WhatsApp number, so honest D-05 scoping leaves only operating hours unconfirmed
+- [Phase 01]: [Phase 01] 01-03: TDD task (skeleton.ts) committed as test -> feat per tdd.md commit-scope contract; no REFACTOR commit needed
 
 ### Pending Todos
 
@@ -118,8 +121,8 @@ Items acknowledged and deferred at milestone close, most recent first:
 
 ## Session Continuity
 
-Last session: 2026-09-13T16:40:22.203Z
-Stopped at: Completed 01-02-PLAN.md
+Last session: 2026-09-13T16:47:52.676Z
+Stopped at: Completed 01-03-PLAN.md
 Resume file: None
 before the planner finished and committed) were cleared during resume on 2026-09-13.
 Next: /gsd-execute-phase 1

@@ -69,8 +69,8 @@ MVP **estático**: sem backend, sem CMS, sem login, sem checkout, sem analytics 
 
 ### Conteúdo
 
-- [ ] **CONT-01**: Primeira versão de todos os textos do site escrita em português, tom jovem/descontraído/urbano, sem inventar produtos/avaliações/promessas comerciais
-- [ ] **CONT-02**: Textos cobrem hero, apresentação da marca, categorias de produto, CTAs, FAQs, SEO title/meta description e contato/localização
+- [x] **CONT-01**: Primeira versão de todos os textos do site escrita em português, tom jovem/descontraído/urbano, sem inventar produtos/avaliações/promessas comerciais
+- [x] **CONT-02**: Textos cobrem hero, apresentação da marca, categorias de produto, CTAs, FAQs, SEO title/meta description e contato/localização
 - [x] **CONT-03**: Todo dado sensível (preço, horário, ingrediente, disponibilidade) tratado como editável e marcado para validação do cliente antes de publicar
 
 ### SEO Local
@@ -223,8 +223,8 @@ Quais fases cobrem quais requisitos. Atualizado durante a criação do roadmap.
 | MARCA-03 | Phase 1 | Pending |
 | MARCA-04 | Phase 1 | Pending |
 | MARCA-05 | Phase 1 | Pending |
-| CONT-01 | Phase 1 | Pending |
-| CONT-02 | Phase 1 | Pending |
+| CONT-01 | Phase 1 | Complete |
+| CONT-02 | Phase 1 | Complete |
 | CONT-03 | Phase 1 | Complete |
 | SEO-01 | Phase 5 | Pending |
 | SEO-02 | Phase 5 | Pending |
