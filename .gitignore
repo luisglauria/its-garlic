@@ -40,3 +40,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# GSD orchestration state (local session state, never project content)
+.gsd/
+.planning/state.json
+.planning/milestone.lock
+/ask_questions.txt
