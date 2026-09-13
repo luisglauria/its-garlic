@@ -77,7 +77,7 @@ coverage:
         status: pass
     human_judgment: false
 
-duration: ~25min
+duration: ~6min
 completed: 2026-09-13
 status: complete
 ---
@@ -88,7 +88,7 @@ status: complete
 
 ## Performance
 
-- **Duration:** ~25 min (commit-to-commit)
+- **Duration:** ~6 min (commit-to-commit, `534606b`→`216c42b`)
 - **Tasks:** 2 (1 auto, 1 auto+tdd)
 - **Commits:** 4 (docs, test, feat, fix)
 - **Files created:** 3
