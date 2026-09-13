@@ -44,10 +44,10 @@ MVP **estático**: sem backend, sem CMS, sem login, sem checkout, sem analytics 
 
 ### Localização
 
-- [ ] **LOCAL-01**: Seção exibe endereço completo (Rua José Bonifácio, 747, Mercado da Torre, Recife-PE) com link/botão para o Google Maps — **sem mapa incorporado (iframe) no MVP**, para manter as metas de Lighthouse/Core Web Vitals independentes da estabilidade de um script de terceiro
-- [ ] **LOCAL-02**: Seção informa as modalidades de atendimento (balcão, delivery, take away)
-- [ ] **LOCAL-03**: Horário de funcionamento exibido em formato editável, marcado como provisório até confirmação do cliente — vale para toda exibição de horário do site, incluindo a lógica de promoções (PROMO-02/03)
-- [ ] **LOCAL-04**: Botão "Como chegar" direciona para o Google Maps
+- [x] **LOCAL-01**: Seção exibe endereço completo (Rua José Bonifácio, 747, Mercado da Torre, Recife-PE) com link/botão para o Google Maps — **sem mapa incorporado (iframe) no MVP**, para manter as metas de Lighthouse/Core Web Vitals independentes da estabilidade de um script de terceiro
+- [x] **LOCAL-02**: Seção informa as modalidades de atendimento (balcão, delivery, take away)
+- [x] **LOCAL-03**: Horário de funcionamento exibido em formato editável, marcado como provisório até confirmação do cliente — vale para toda exibição de horário do site, incluindo a lógica de promoções (PROMO-02/03)
+- [x] **LOCAL-04**: Botão "Como chegar" direciona para o Google Maps
 
 ### Integrações Externas
 
@@ -209,10 +209,10 @@ Quais fases cobrem quais requisitos. Atualizado durante a criação do roadmap.
 | PROMO-01 | Phase 4 | Pending |
 | PROMO-02 | Phase 4 | Pending |
 | PROMO-03 | Phase 4 | Pending |
-| LOCAL-01 | Phase 2 | Pending |
-| LOCAL-02 | Phase 2 | Pending |
-| LOCAL-03 | Phase 2 | Pending |
-| LOCAL-04 | Phase 2 | Pending |
+| LOCAL-01 | Phase 2 | Complete |
+| LOCAL-02 | Phase 2 | Complete |
+| LOCAL-03 | Phase 2 | Complete |
+| LOCAL-04 | Phase 2 | Complete |
 | INTEGRA-01 | Phase 2 | Complete |
 | INTEGRA-02 | Phase 2 | Complete |
 | INTEGRA-03 | Phase 2 | Complete |

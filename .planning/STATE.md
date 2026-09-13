@@ -3,16 +3,16 @@ gsd_state_version: "1.0"
 current_phase: 02
 current_phase_name: Hero, CTAs & Location
 status: executing
-stopped_at: Completed 02-01-PLAN.md
-last_updated: "2026-09-13T21:19:05.321Z"
+stopped_at: Completed 02-02-PLAN.md
+last_updated: "2026-09-13T21:28:24.043Z"
 last_activity: 2026-09-13
 last_activity_desc: Phase 02 execution started
-state_head: 9699888e8c95cbf41757ac77038faee30e582fd1
+state_head: b30d4e1961e2193bbf91c824c56c19264564b99c
 progress:
   total_phases: 5
   completed_phases: 0
   total_plans: 9
-  completed_plans: 7
+  completed_plans: 8
   percent: 0
 ---
 
@@ -30,7 +30,7 @@ fricção, mobile-first.
 ## Current Position
 
 Phase: 02 (Hero, CTAs & Location) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 Status: Ready to execute
 phase-1 checkbox intentionally left unchecked — the phase-completion predicate
 (`gsd_run phase uat-passed --require-verification`) does not pass while G-01-2 is open. User
@@ -73,6 +73,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 01 P05 | ~35min | 3 tasks | 14 files |
 | Phase 01 P06 | ~40min | 3 tasks | 8 files |
 | Phase 02 P01 | 20min | 3 tasks | 10 files |
+| Phase 02 P02 | ~5min | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -112,6 +113,9 @@ Recent decisions affecting current work:
 - [Phase 02]: 02-01: OrderCta/PendingCta signature extended with an optional describedBy prop (beyond the plan's locked artifact table) to associate the coral unavailability notice with the pending iFood button via aria-describedby
 - [Phase 02]: 02-01: page.tsx Task 2 rewrite removed the walking-skeleton store-name/address block entirely (not just the CTA ternary) — Location (LOCAL-01..04) is plan 02-02's scope
 - [Phase 02]: 02-01: pendingSuffix = "(em breve)", provisionalBadgeLabel = "Provisório" — vocabulary plan 02-02's hours notice reuses
+- [Phase 02]: [Phase 02]: 02-02: hoursPendingBody = "Em atualização — confirme no iFood ou no WhatsApp antes de vir." — UI-SPEC empty-state wording verbatim, names the concrete channels to check
+- [Phase 02]: [Phase 02]: 02-02: Location's directions anchor reuses ctaCopy.mapsLabel ("Como chegar") rather than a duplicate LocationCopy field — reuses plan 02-01's locked vocabulary
+- [Phase 02]: [Phase 02]: 02-02: populated-schedule rows render as {row.days}: {row.open} – {row.close} — the shape Phase 4's time-aware journey and the client's eventual hours confirmation apply against
 
 ### Pending Todos
 
@@ -149,8 +153,8 @@ Items acknowledged and deferred at milestone close, most recent first:
 
 ## Session Continuity
 
-Last session: 2026-09-13T21:19:05.275Z
-Stopped at: Completed 02-01-PLAN.md
+Last session: 2026-09-13T21:28:23.996Z
+Stopped at: Completed 02-02-PLAN.md
 Resume file: None
 before the planner finished and committed) were cleared during resume on 2026-09-13.
 Next: /gsd-execute-phase 1
