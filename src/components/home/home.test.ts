@@ -41,6 +41,13 @@ const sweep = sweepPaths.map((segments) => {
   return { label: segments.join("/"), raw, stripped: stripComments(raw) };
 });
 
+// LOCAL-03/D-07: the Portuguese hour-marker form ("12h", "9h30") and the colon-separated form
+// ("12:00"). Declared as a named module constant, not inlined, so a deliberate edit on the day
+// real hours ship — and only together with a client confirmation — is a one-line, reviewable
+// change, the same design as store.schema.ts's `hours.provisional` literal type: cheap to change
+// on purpose, expensive to defeat by accident.
+const CLOCK_TIME = /\b\d{1,2}h(?:\d{2})?\b|\b\d{1,2}:\d{2}\b/;
+
 describe("Hero (HERO-01, HERO-03)", () => {
   const copy = read("src", "content", "home-copy.ts");
   const hero = read("src", "components", "home", "Hero.tsx");
@@ -183,4 +190,93 @@ describe("responsive baseline (PERF-03 carried)", () => {
       ).not.toMatch(/\b(w|h|min-w|max-w)-\[[0-9]+px]|width:\s*[0-9]+px|height:\s*[0-9]+px/);
     });
   }
+});
+
+describe("Location seams (LOCAL-01, LOCAL-04)", () => {
+  const location = read("src", "components", "home", "Location.tsx");
+  const page = read("src", "app", "page.tsx");
+
+  test("Location types its store prop as StoreInfo", () => {
+    expect(location, "the modality enum and hours shape must be compiler-checked").toMatch(
+      /StoreInfo/,
+    );
+  });
+
+  test("Location maps over the modalities array rather than hardcoding chips", () => {
+    expect(location).toMatch(/modalities\.map/);
+  });
+
+  test("Location reads its directions href from the maps link prop", () => {
+    expect(location, "the href must come from the prop, never a literal").toContain("maps.url");
+  });
+
+  test("Location contains no address literal, no URL literal and no iframe", () => {
+    expect(
+      location,
+      "the address must arrive through the repository seam, never a literal — Jos[eé] Bonif[aá]cio/747",
+    ).not.toMatch(/Jos[eé] Bonif[aá]cio|747/);
+    expect(location).not.toMatch(/https:\/\//);
+    expect(location, "LOCAL-01 rules out an embedded frame").not.toMatch(/<iframe/i);
+  });
+
+  test("the page reads the store record through the repository seam and composes Location", () => {
+    expect(page, "page.tsx must call getStoreInfo()").toMatch(/getStoreInfo/);
+    expect(page, "page.tsx must render <Location").toMatch(/<Location\b/);
+  });
+});
+
+describe("no embedded map, repository-wide (LOCAL-01)", () => {
+  // Written repository-wide rather than scoped to home/: LOCAL-01's ban is about the site, and a
+  // map embedded from a layout component or a later phase's section would break the Core Web
+  // Vitals independence the requirement exists to protect, while passing a guard scoped to this
+  // folder.
+  const SRC_DIR = path.join(ROOT, "src");
+
+  function collectFiles(dir: string): string[] {
+    return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) return collectFiles(full);
+      // Test files excluded for the same reason the sweep above excludes them: this very guard
+      // (and CLOCK_TIME's guard below) legitimately contains the literal string "<iframe" inside
+      // its own regex/description text, which is a false positive against real markup, not an
+      // embedded frame.
+      if (/\.(ts|tsx|css)$/.test(entry.name) && !entry.name.includes(".test.")) return [full];
+      return [];
+    });
+  }
+
+  test("no iframe element exists in any .ts, .tsx or .css file under src/", () => {
+    for (const file of collectFiles(SRC_DIR)) {
+      const content = readFileSync(file, "utf8");
+      expect(
+        content,
+        `${path.relative(ROOT, file)} must not embed an iframe (LOCAL-01)`,
+      ).not.toMatch(/<iframe/i);
+    }
+  });
+});
+
+describe("no invented clock time (LOCAL-03, D-07)", () => {
+  // This is the mechanical backstop behind the content-integrity rule: no operating hour is
+  // confirmed, so any time literal in a component or in the copy is either one of the two
+  // contradictory Instagram-story schedules or something somebody made up. Test files stay
+  // excluded — Location.test.ts's populated-schedule fixture legitimately holds times, the same
+  // reason eslint.config.mjs already exempts test files from the data-import boundary.
+  const copy = read("src", "content", "home-copy.ts");
+
+  test("no clock-time literal exists in any swept non-test home/ component or in page.tsx", () => {
+    for (const file of sweep) {
+      expect(
+        CLOCK_TIME.test(file.stripped),
+        `${file.label} must contain no clock-time literal — no operating hour is confirmed, so none may be shipped`,
+      ).toBe(false);
+    }
+  });
+
+  test("no clock-time literal exists in the copy module", () => {
+    expect(
+      CLOCK_TIME.test(stripComments(copy)),
+      "home-copy.ts must contain no invented hour",
+    ).toBe(false);
+  });
 });
