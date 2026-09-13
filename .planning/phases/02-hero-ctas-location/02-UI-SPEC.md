@@ -1,7 +1,7 @@
 ---
 phase: "02"
 slug: "hero-ctas-location"
-status: draft
+status: approved
 shadcn_initialized: false
 preset: none
 created: "2026-09-13"
@@ -153,17 +153,33 @@ long as it keeps the same problem+next-step / provisional-labeling shape and pas
 
 ## UI Considerations
 
-Applicable state considerations resolved: 5 covered, 1 backstop, 1 unresolved.
+Applicable state considerations resolved (post-verification probe, run against 9 named surfaces /
+27 applicable state categories): 25 resolved (23 explicit, 2 backstop), 1 already-covered restated,
+1 unresolved. Two elements the probe could not auto-classify (order CTA toggle, hours empty-state)
+were confirmed by the user as correctly scoped by the existing rows — no missed element kind.
 
 | Category | Element(s) | Status | Resolution / Reason |
 |----------|------------|--------|---------------------|
-| Empty | Operating-hours list (LOCAL-03, `hours.schedule: []`) | ✅ covered | Empty schedule renders the fixed provisional notice from the Copywriting Contract above (heading + body), sourced from `getStoreInfo().hours`, never a blank space or an invented hour string. |
-| Error / disabled | Order CTAs — iFood + WhatsApp (INTEGRA-03) | ✅ covered | While `confirmed: false`, both CTAs render the identical "(em breve)" disabled state (D-05/D-06); the INTEGRA-03 notice text points to the working "Como chegar" action instead of swapping in another live-looking order link. |
-| Long-text | Hero headline + all three CTA labels | ✅ covered | tone-of-voice.md §3's mobile-width fit rule applies verbatim; no dynamically-generated copy exists in this phase, so no truncation/ellipsis mechanism is needed. |
-| Zero-one-many | Service modalities list (LOCAL-02, `storeInfoSchema.modalities`) | ✅ covered | The schema models modalities as an array (currently 3: balcão/delivery/take-away) — render as a flexible wrapping list/chip row, not three hardcoded fixed-position slots, so the layout survives a future 1–3 item change without a code edit. |
-| Populated | Hero image slot (D-03/D-04, illustrated composition) | ✅ covered | `next/image` slot is always populated (illustration today, real photo later) inside a fixed-`aspect-ratio` container — see below — so the "populated" state is the only state this slot ever has; no empty-image placeholder path exists or is needed. |
-| Overflow | FAQ answer text length (CONT-02 copy, variable length per question) | 🧪 backstop | Recommend native `<details>`/`<summary>` (zero JS, expands to fit any answer length, keyboard/screen-reader accessible by default) — no automated visual test covers long-answer overflow yet; flagged as a backstop, not a verified truth. |
-| Unresolved | "Ver cardápio" CTA target route | ⚠ unresolved | Phase 3 (the actual cardápio page) has not shipped yet, so this research cannot state what "Ver cardápio" links to (a stub `/cardapio` route, an in-page anchor, or another interim target). Planner must record an explicit assumption; this UI-SPEC only fixes the CTA's *label and visual tier* (secondary, accent-outline), not its destination. |
+| Empty | Operating-hours list (LOCAL-03, `hours.schedule: []`) | ✅ resolved (explicit) | Empty schedule renders the fixed provisional notice from the Copywriting Contract above (heading + body), sourced from `getStoreInfo().hours`, never a blank space or an invented hour string. User-confirmed: no other hours state (loading/partial) applies — data is local and static. |
+| Empty / Loading | Hero image slot (D-03/D-04) | ✅ resolved (explicit) | Never empty — always renders the current illustration or a future real photo, so no empty-state path exists. `priority`-loaded with no visible loading skeleton; the fixed 1:1 aspect-ratio container reserves layout space, so there is no loading-state UI to design (CLS-safe by construction). |
+| Error | Hero image slot — broken/missing asset | 🧪 resolved (backstop) | { statement: "No custom broken-image fallback is designed; a missing/broken asset is treated as a build defect (self-hosted static asset, not user content), not a runtime UX state — falls back to the browser/Next.js default broken-image rendering.", verification: backstop } |
+| Populated | Hero image slot (D-03/D-04, illustrated composition) | ✅ resolved (explicit) | `next/image` slot is always populated (illustration today, real photo later) inside a fixed-`aspect-ratio` container — see below — so the "populated" state is the only state this slot ever has; no empty-image placeholder path exists or is needed. |
+| Error / disabled | Order CTAs — iFood + WhatsApp (INTEGRA-03) | ✅ resolved (explicit) | While `confirmed: false`, both CTAs render the identical "(em breve)" disabled state (D-05/D-06); the INTEGRA-03 notice text points to the working "Como chegar" action instead of swapping in another live-looking order link. User-confirmed: this toggle framing is the correct and complete element kind — not also a list. |
+| Long-text / Overflow | Hero headline + "Ver cardápio" + "Como chegar" CTA labels | ✅ resolved (explicit) | tone-of-voice.md §3's mobile-width fit rule applies verbatim (fit 360px without wrapping past two lines); no dynamically-generated copy exists in this phase, so no truncation/ellipsis mechanism is needed. |
+| Long-text / Overflow | INTEGRA-03 unavailability notice | ✅ resolved (explicit) | This is body-sized static copy, not a CTA label bound by the 360px two-line CTA rule — it wraps naturally across multiple lines within the notice's own container width. Fixed one-sentence copy (never dynamic/user-supplied), so no truncation mechanism is needed. |
+| Empty / Loading / Error / Long-text | Provisional asset label ("Imagem ilustrativa — foto real em breve") | ✅ resolved (explicit) | Fixed static string rendered 1:1 with its parent image container (D-03/D-04) — has no independent empty/loading/error state of its own; being fixed copy (not dynamic/user data) it also has no overflow/long-text case. Visibility and lifecycle are entirely tied to the image slot's own "populated" state above. |
+| Zero-one-many | Service modalities list (LOCAL-02, `storeInfoSchema.modalities`) | ✅ resolved (explicit) | The schema models modalities as an array (currently 3: balcão/delivery/take-away) — render as a flexible wrapping list/chip row, not three hardcoded fixed-position slots, so the layout survives a future 1–3 item change without a code edit. |
+| Empty | Service modalities list — zero-item array | 🧪 resolved (backstop) | { statement: "An empty modalities array isn't expected in practice (the store always offers at least one modality) but is schema-legal; if it occurs, render nothing (no chip row, no empty-state message) rather than an empty-state notice.", verification: backstop } |
+| Loading / Error | Service modalities list | ✅ resolved (explicit) | Read from local static store data with no async fetch — no loading or error state applies. |
+| Partial | Service modalities list | ✅ resolved (explicit) | Modalities are a flat array of plain labels, not multi-field records — partial/incomplete-row states don't apply. |
+| Overflow | Service modalities list | ✅ resolved (explicit) | The flexible wrapping chip row (already declared above) *is* the overflow behavior — extra modalities simply wrap to a new line; no truncation or horizontal scroll. |
+| Overflow / Long-text | FAQ answer text length (CONT-02 copy, variable length per question) | 🧪 resolved (backstop) | Recommend native `<details>`/`<summary>` (zero JS, expands to fit any answer length, keyboard/screen-reader accessible by default) — no automated visual test covers long-answer overflow yet; flagged as a backstop, not a verified truth. |
+| Unresolved | "Ver cardápio" CTA target route | ⚠ unresolved — planner must treat as assumption | Phase 3 (the actual cardápio page) has not shipped yet, so this research cannot state what "Ver cardápio" links to (a stub `/cardapio` route, an in-page anchor, or another interim target). Planner must record an explicit assumption; this UI-SPEC only fixes the CTA's *label and visual tier* (secondary, accent-outline), not its destination. |
+
+**Hero focal point (Dimension 2 — Visuals, checker recommendation applied):** the garlic
+illustration is the primary visual anchor of the hero section, positioned centrally within the 1:1
+container declared below, with the headline above it and the three CTAs below it — this explicit
+ordering, not just relative type size/color, is what establishes hero hierarchy.
 
 Hero image container contract (supports the "Populated" row and D-04's CLS-safety requirement):
 fixed 1:1 aspect-ratio box (matches the existing square viewBox convention of
@@ -186,12 +202,12 @@ Not applicable — `Tool: none` (no shadcn, no component registry of any kind us
 
 ## Checker Sign-Off
 
-- [ ] Dimension 1 Copywriting: PASS
-- [ ] Dimension 2 Visuals: PASS
-- [ ] Dimension 3 Color: PASS
-- [ ] Dimension 4 Typography: PASS
-- [ ] Dimension 5 Spacing: PASS
-- [ ] Dimension 6 Registry Safety: PASS
-- [ ] Dimension 7 Inventory Provenance: PASS
+- [x] Dimension 1 Copywriting: PASS
+- [x] Dimension 2 Visuals: PASS (FLAG resolved — explicit hero focal-point statement added above)
+- [x] Dimension 3 Color: PASS
+- [x] Dimension 4 Typography: PASS
+- [x] Dimension 5 Spacing: PASS
+- [x] Dimension 6 Registry Safety: PASS
+- [x] Dimension 7 Inventory Provenance: PASS
 
-**Approval:** pending
+**Approval:** approved
