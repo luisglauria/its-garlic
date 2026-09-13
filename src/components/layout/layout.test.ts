@@ -98,5 +98,43 @@ describe("no fixed pixel dimensions in the shell (PERF-03)", () => {
   }
 });
 
-// Task 2 (src/components/layout/Header.tsx, Footer.tsx real brand implementation) adds its own
-// "brand shell components" describe block below this line once those files exist for real.
+describe("brand shell components (MARCA-05)", () => {
+  const header = read("src", "components", "layout", "Header.tsx");
+  const footer = read("src", "components", "layout", "Footer.tsx");
+
+  test("Header renders a public/brand/logo- path through next/image, marked priority, with alt text", () => {
+    expect(header).toMatch(/brand\/logo-/);
+    expect(header).toMatch(/from\s+["']next\/image["']/);
+    expect(header).not.toMatch(/<img[\s>]/);
+    expect(header).toMatch(/alt=/);
+    expect(header).toMatch(/priority/);
+  });
+
+  test("Footer reads store facts and the Instagram link only through the repository/integration seams", () => {
+    expect(footer).toMatch(/getStoreInfo/);
+    expect(footer).toMatch(/buildInstagramUrl/);
+    expect(footer).not.toMatch(/Jos[eé] Bonif[aá]cio/);
+    expect(footer).not.toMatch(/https:\/\//);
+  });
+
+  test("Footer renders no operating-hours block", () => {
+    expect(footer).not.toMatch(/hours\.schedule|horário de funcionamento/i);
+  });
+
+  test("neither Header nor Footer contains a hex colour literal", () => {
+    for (const [name, content] of [
+      ["Header", header],
+      ["Footer", footer],
+    ] as const) {
+      expect(content, `${name} should reference design tokens, not a hex literal`).not.toMatch(
+        /#[0-9a-fA-F]{6}/,
+      );
+    }
+  });
+
+  test("the Instagram anchor opens safely in a new tab with descriptive link text", () => {
+    expect(footer).toMatch(/target="_blank"/);
+    expect(footer).toMatch(/rel="noopener noreferrer"/);
+    expect(footer).toMatch(/Instagram/);
+  });
+});
