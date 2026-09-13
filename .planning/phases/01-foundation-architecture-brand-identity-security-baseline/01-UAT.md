@@ -59,13 +59,15 @@ blocked: 0
 
 - gap_id: G-01-2
   truth: "As 5 linhas da Parte 3 de SECURITY.md (SEC-10, SEC-12, SEC-13, SEC-14, SEC-15) estão marcadas como concluídas somente após a ação real ter sido executada no painel de cada serviço"
-  status: failed
-  reason: "User reported: SEC-10 (perna do registrador de domínio) continua pendente; SEC-13 é risco residual aceito (AR-07), não requisito satisfeito; SEC-15 é escopo da Fase 5. SEC-12 e SEC-14 já estão Complete."
+  status: accepted_deferred  # Decisão explícita do usuário em 2026-09-13 — não é "failed" (defeito), é adiamento operacional deliberado.
+  reason: "User reported: SEC-10 (perna do registrador de domínio) continua pendente; SEC-13 é risco residual aceito (AR-07), não requisito satisfeito; SEC-15 é escopo da Fase 5. SEC-12 e SEC-14 já estão Complete. Usuário decidiu (2026-09-13): não vai escolher/configurar registrador de domínio nesta fase — SEC-10 fica adiado até a compra do domínio. Nenhum diagnóstico de código executado (não solicitado, não seria aplicável)."
   severity: minor
   test: 2
   artifacts: []
   missing: []
-  external: true  # Não é um defeito de código — SEC-10 depende de o dono da conta escolher e configurar o registrador de domínio (pendência de PROJECT.md); SEC-13 é uma decisão operacional já documentada como risco aceito, não corrigível por um plano de execução; SEC-15 é escopo da Fase 5 por definição do ROADMAP. Não gerar plano de gap-closure para este item — não há código a mudar.
+  external: true  # Não é um defeito de código — SEC-10 depende de o dono da conta escolher e comprar um registrador de domínio (pendência de PROJECT.md, adiada explicitamente pelo usuário); SEC-13 é uma decisão operacional já documentada como risco aceito; SEC-15 é escopo da Fase 5 por definição do ROADMAP. Nenhum plano de gap-closure gerado — não há código a mudar.
+  deferred_until: "Compra/escolha do registrador de domínio (sem previsão — PROJECT.md Pendências)"
+  user_override: "Usuário autorizou explicitamente avançar para a Fase 2 com a Fase 1 parcialmente verificada (2026-09-13)."
 
 Achado adicional (não é gap desta fase, apenas nota de progresso): `git remote -v` agora resolve
 para um repositório GitHub real (https://github.com/luisglauria/its-garlic), e a branch

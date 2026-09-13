@@ -127,6 +127,11 @@ ela muda sem changelog).
     perna do registrador de domínio permanece pendente até o registrador ser escolhido. A caixa
     permanece desmarcada até as três pernas estarem confirmadas, para não registrar uma
     satisfação parcial como total.
+  - **Decisão de adiamento (2026-09-13):** o dono do projeto decidiu explicitamente não
+    escolher/comprar um registrador de domínio nesta fase — a perna do registrador de SEC-10
+    fica **adiada** até a compra do domínio acontecer (sem previsão; ver `PROJECT.md`
+    `## Pendências`). Registrado como pendência operacional adiada, não como defeito — ver
+    `01-SECURITY.md` AR-08. A Fase 2 foi autorizada a começar mesmo com este item em aberto.
 
 - [x] **SEC-12 — Branch `main` protegida, sem push direto.**
   - Onde: `Settings → Branches → Branch protection rules` no repositório GitHub, regra sobre
