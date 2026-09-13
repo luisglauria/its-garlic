@@ -2,17 +2,17 @@
 gsd_state_version: "1.0"
 current_phase: 02
 current_phase_name: Hero, CTAs & Location
-status: phase-1-partial-advancing-to-phase-2
-stopped_at: Phase 02 UI-SPEC approved
-last_updated: "2026-09-13T20:58:33.064Z"
+status: executing
+stopped_at: Completed 02-01-PLAN.md
+last_updated: "2026-09-13T21:19:05.321Z"
 last_activity: 2026-09-13
-last_activity_desc: Phase 01 execution started
-state_head: 3290448f4f8409d6c13bb27c5fed56a4e2840b08
+last_activity_desc: Phase 02 execution started
+state_head: 9699888e8c95cbf41757ac77038faee30e582fd1
 progress:
   total_phases: 5
   completed_phases: 0
   total_plans: 9
-  completed_plans: 6
+  completed_plans: 7
   percent: 0
 ---
 
@@ -25,20 +25,20 @@ See: .planning/PROJECT.md (updated 2026-09-12)
 **Core value:** Fazer o visitante entender em segundos que a It's Garlic é "mais que um pão de
 alho" e sair do site com um pedido feito no iFood ou uma conversa iniciada no WhatsApp — sem
 fricção, mobile-first.
-**Current focus:** Phase 01 — Foundation, Architecture, Brand Identity & Security Baseline
+**Current focus:** Phase 02 — Hero, CTAs & Location
 
 ## Current Position
 
-Phase: 02 (Hero, CTAs & Location) — READY TO EXECUTE
-Plan: 6 of 6 executed, all with SUMMARY.md
-Status: UAT complete (1 passed, 1 accepted/deferred gap — G-01-2, SEC-10 registrar leg). ROADMAP.md
+Phase: 02 (Hero, CTAs & Location) — EXECUTING
+Plan: 2 of 3
+Status: Ready to execute
 phase-1 checkbox intentionally left unchecked — the phase-completion predicate
 (`gsd_run phase uat-passed --require-verification`) does not pass while G-01-2 is open. User
 explicitly authorized starting Phase 2 anyway (2026-09-13) rather than waiting on the domain
 registrar purchase, which has no ETA. Re-run `/gsd-verify-work 01` to close G-01-2 once a
 registrar is chosen and MFA/registrar-lock are configured.
 Phase 02: Hero, CTAs & Location — about to start (discuss/plan)
-Last activity: 2026-09-13 — Phase 01 UAT complete, advancing to Phase 02 per user decision
+Last activity: 2026-09-13 — Phase 02 execution started
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -72,6 +72,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 01 P04 | 9min | 3 tasks | 5 files |
 | Phase 01 P05 | ~35min | 3 tasks | 14 files |
 | Phase 01 P06 | ~40min | 3 tasks | 8 files |
+| Phase 02 P01 | 20min | 3 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -108,6 +109,9 @@ Recent decisions affecting current work:
 - [Phase 01 UAT]: Test 1 (client copy approval) passed on verbal approval attested by the user, on behalf of the actual brand-owner (user's sister) — covers tone/structure as working base only, not final per-section copy.
 - [Phase 01 UAT]: Test 2 issue accepted as deferred (not a code defect): SEC-12/14 complete; SEC-13 accepted risk (sole maintainer, AR-07); SEC-10 registrar leg deferred with no ETA by explicit user decision (AR-08) — domain registrar purchase not happening this phase. User authorized starting Phase 2 despite Phase 1 remaining formally incomplete in ROADMAP.md.
 - [Phase 01]: Remote `origin` connected to https://github.com/luisglauria/its-garlic (audited file list before push, per user's explicit process); branch `phase-01-foundation` pushed (not `main`, no --force). `main` (local) still has no upstream tracking.
+- [Phase 02]: 02-01: OrderCta/PendingCta signature extended with an optional describedBy prop (beyond the plan's locked artifact table) to associate the coral unavailability notice with the pending iFood button via aria-describedby
+- [Phase 02]: 02-01: page.tsx Task 2 rewrite removed the walking-skeleton store-name/address block entirely (not just the CTA ternary) — Location (LOCAL-01..04) is plan 02-02's scope
+- [Phase 02]: 02-01: pendingSuffix = "(em breve)", provisionalBadgeLabel = "Provisório" — vocabulary plan 02-02's hours notice reuses
 
 ### Pending Todos
 
@@ -145,8 +149,8 @@ Items acknowledged and deferred at milestone close, most recent first:
 
 ## Session Continuity
 
-Last session: 2026-09-13T20:06:58.194Z
-Stopped at: Phase 02 UI-SPEC approved
-Resume file: .planning/phases/02-hero-ctas-location/02-UI-SPEC.md
+Last session: 2026-09-13T21:19:05.275Z
+Stopped at: Completed 02-01-PLAN.md
+Resume file: None
 before the planner finished and committed) were cleared during resume on 2026-09-13.
 Next: /gsd-execute-phase 1

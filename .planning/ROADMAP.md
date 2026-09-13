@@ -81,12 +81,12 @@ Plans:
   3. The location section shows the full address with a working "Como chegar" link to Google Maps (no embedded iframe), the service modalities (balcão/delivery/take away), and operating hours — hours are visibly labeled "provisório" pending client confirmation.
   4. No page offers its own checkout — every order path ends at iFood or WhatsApp.
 
-**Plans**: 3 plans in 3 waves
+**Plans**: 1/3 plans executed in 3 waves
 
 Plans:
 **Wave 1**
 
-- [ ] 02-01-PLAN.md — Tracer: hero identity (labelled provisional illustration) and the three-CTA row — gated iFood/WhatsApp "em breve" buttons, live Maps link
+- [x] 02-01-PLAN.md — Tracer: hero identity (labelled provisional illustration) and the three-CTA row — gated iFood/WhatsApp "em breve" buttons, live Maps link
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
@@ -156,7 +156,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation, Architecture, Brand Identity & Security Baseline | 6/6 | In Progress|  |
-| 2. Hero, CTAs & Location | 0/3 | Not started | - |
+| 2. Hero, CTAs & Location | 1/3 | In Progress|  |
 | 3. Menu & Product Catalog | 0/TBD | Not started | - |
 | 4. Promotions, Almoço & Time-Aware Journey | 0/TBD | Not started | - |
 | 5. SEO, Performance & Security Verification | 0/TBD | Not started | - |

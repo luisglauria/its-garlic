@@ -19,9 +19,9 @@ MVP **estático**: sem backend, sem CMS, sem login, sem checkout, sem analytics 
 
 ### Hero
 
-- [ ] **HERO-01**: Hero comunica a marca e o conceito "Mais que um pão de alho!" usando a identidade visual oficial (ver seção Identidade Visual)
-- [ ] **HERO-02**: Hero inclui os CTAs "Ver cardápio", "Pedir no iFood" e "Como chegar"
-- [ ] **HERO-03**: Foco visual do hero é fotografia real de pão de alho/produtos (fornecida pelo cliente) — não uma hamburgueria genérica
+- [x] **HERO-01**: Hero comunica a marca e o conceito "Mais que um pão de alho!" usando a identidade visual oficial (ver seção Identidade Visual)
+- [x] **HERO-02**: Hero inclui os CTAs "Ver cardápio", "Pedir no iFood" e "Como chegar"
+- [x] **HERO-03**: Foco visual do hero é fotografia real de pão de alho/produtos (fornecida pelo cliente) — não uma hamburgueria genérica
 
 ### Cardápio
 
@@ -51,11 +51,11 @@ MVP **estático**: sem backend, sem CMS, sem login, sem checkout, sem analytics 
 
 ### Integrações Externas
 
-- [ ] **INTEGRA-01**: Botão "Pedir no iFood" visível de forma proeminente (fixo ou facilmente acessível), mobile-first
-- [ ] **INTEGRA-02**: Botão/link do WhatsApp disponível como canal de atendimento e pedido alternativo (humano — sem bot no MVP)
-- [ ] **INTEGRA-03**: Se o iFood estiver indisponível, o site exibe um aviso, sem trocar o CTA principal
+- [x] **INTEGRA-01**: Botão "Pedir no iFood" visível de forma proeminente (fixo ou facilmente acessível), mobile-first
+- [x] **INTEGRA-02**: Botão/link do WhatsApp disponível como canal de atendimento e pedido alternativo (humano — sem bot no MVP)
+- [x] **INTEGRA-03**: Se o iFood estiver indisponível, o site exibe um aviso, sem trocar o CTA principal
 - [x] **INTEGRA-04**: Todos os links externos (iFood, WhatsApp, Instagram, avaliações, Maps) centralizados em um único módulo de configuração, nunca duplicados entre componentes
-- [ ] **INTEGRA-05**: Nenhum checkout próprio — todo pedido é redirecionado para iFood ou WhatsApp
+- [x] **INTEGRA-05**: Nenhum checkout próprio — todo pedido é redirecionado para iFood ou WhatsApp
 
 ### Identidade Visual
 
@@ -196,9 +196,9 @@ Quais fases cobrem quais requisitos. Atualizado durante a criação do roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| HERO-01 | Phase 2 | Pending |
-| HERO-02 | Phase 2 | Pending |
-| HERO-03 | Phase 2 | Pending |
+| HERO-01 | Phase 2 | Complete |
+| HERO-02 | Phase 2 | Complete |
+| HERO-03 | Phase 2 | Complete |
 | CARD-01 | Phase 3 | Pending |
 | CARD-02 | Phase 3 | Pending |
 | CARD-03 | Phase 3 | Pending |
@@ -213,11 +213,11 @@ Quais fases cobrem quais requisitos. Atualizado durante a criação do roadmap.
 | LOCAL-02 | Phase 2 | Pending |
 | LOCAL-03 | Phase 2 | Pending |
 | LOCAL-04 | Phase 2 | Pending |
-| INTEGRA-01 | Phase 2 | Pending |
-| INTEGRA-02 | Phase 2 | Pending |
-| INTEGRA-03 | Phase 2 | Pending |
+| INTEGRA-01 | Phase 2 | Complete |
+| INTEGRA-02 | Phase 2 | Complete |
+| INTEGRA-03 | Phase 2 | Complete |
 | INTEGRA-04 | Phase 1 | Complete |
-| INTEGRA-05 | Phase 2 | Pending |
+| INTEGRA-05 | Phase 2 | Complete |
 | MARCA-01 | Phase 1 | Complete |
 | MARCA-02 | Phase 1 | Complete |
 | MARCA-03 | Phase 1 | Complete |
