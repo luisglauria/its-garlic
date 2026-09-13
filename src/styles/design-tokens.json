@@ -1,0 +1,36 @@
+{
+  "$schema": "It's Garlic — design tokens (MARCA-02, MARCA-03). Mirror of design-tokens.css; the two must always agree (asserted by src/lib/brand/brand-assets.test.ts).",
+  "colors": {
+    "accent": "#B8FF00",
+    "surfacePrimary": "#202526",
+    "surfaceDeep": "#000000",
+    "textOnDark": "#FFFFFF",
+    "accentPurple": "#31266B",
+    "accentCoral": "#FF3B30",
+    "accentOlive": "#7D804D"
+  },
+  "colorNames": {
+    "accent": "Verde-limão",
+    "surfacePrimary": "Carvão",
+    "surfaceDeep": "Preto",
+    "textOnDark": "Branco",
+    "accentPurple": "Roxo",
+    "accentCoral": "Coral",
+    "accentOlive": "Oliva"
+  },
+  "typography": {
+    "display": {
+      "family": "\"Anton\", \"Archivo Black\", sans-serif",
+      "usage": "Títulos e destaques — carregado via next/font em plan 01-06, vinculado à custom property --font-display definida em design-tokens.css."
+    },
+    "body": {
+      "family": "\"Manrope\", \"Inter\", sans-serif",
+      "usage": "Corpo de texto — carregado via next/font em plan 01-06, vinculado à custom property --font-body definida em design-tokens.css."
+    },
+    "script": {
+      "family": "\"Caveat\", cursive",
+      "usage": "Reservada para frases promocionais pontuais (ex: 'Happy Hour'), nunca para corpo de texto ou navegação.",
+      "promotionalOnly": true
+    }
+  }
+}

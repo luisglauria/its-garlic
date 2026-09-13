@@ -1,0 +1,24 @@
+@import "../styles/design-tokens.css";
+@import "tailwindcss";
+
+/*
+ * The create-next-app scaffold's light/dark `--background`/`--foreground` pair and its
+ * `prefers-color-scheme` toggle are removed here (Rule 1 cleanup, plan 01-06 Task 1): the
+ * brand has one fixed dark surface (MARCA-05), not an OS-preference-driven theme, and those
+ * variables referenced `--font-geist-sans`/`--font-geist-mono`, which no longer exist now that
+ * `src/app/layout.tsx` self-hosts Anton/Manrope bound to `--font-display`/`--font-body`
+ * instead. The root layout now sets background/text colour and font family directly via the
+ * `bg-surface-deep`, `text-text-on-dark`, and `font-body` token-backed utilities on `<body>`.
+ */
+
+/*
+ * Global focus-visible treatment (PERF-01, WCAG 2.4.7 focus visible).
+ * Every focusable element gets a ring in the brand's accent colour, which contrasts at roughly
+ * 12.8:1 against both dark surface tokens (see docs/brand-guidelines.md's contrast table) — well
+ * past the 3:1 non-text contrast minimum for UI components. This REPLACES the browser default
+ * outline with an on-brand one; it must never be removed without a replacement.
+ */
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}

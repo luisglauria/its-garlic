@@ -1,0 +1,55 @@
+/*
+ * It's Garlic — design tokens (MARCA-02, MARCA-03).
+ *
+ * CSS custom properties consumed by Tailwind v4's CSS-first `@theme` block
+ * (see src/app/globals.css). This is the mirror of design-tokens.json — the
+ * two files must always agree on the same seven official hex values, asserted
+ * by src/lib/brand/brand-assets.test.ts.
+ *
+ * Colours are copied character for character from PROJECT.md. Do not adjust
+ * one for contrast, add a tint/shade the brand does not have, or substitute a
+ * nearest-named colour — where the palette cannot meet a contrast pairing,
+ * that is a pairing rule for docs/brand-guidelines.md (plan 01-06), not a
+ * licence to edit the brand's colours.
+ *
+ * Font *loading* is out of scope here — plan 01-06 owns src/app/layout.tsx and
+ * binds next/font instances to the --font-display / --font-body variable
+ * names declared below. The values here are the fallback stack used until
+ * that binding lands.
+ */
+
+:root {
+  /* Colours — seven official brand values (PROJECT.md) */
+  --color-accent: #b8ff00; /* Verde-limão */
+  --color-surface-primary: #202526; /* Carvão */
+  --color-surface-deep: #000000; /* Preto */
+  --color-text-on-dark: #ffffff; /* Branco */
+  --color-accent-purple: #31266b; /* Roxo */
+  --color-accent-coral: #ff3b30; /* Coral */
+  --color-accent-olive: #7d804d; /* Oliva */
+
+  /* Typography families — bound to next/font instances in plan 01-06 */
+  --font-display: "Anton", "Archivo Black", sans-serif;
+  --font-body: "Manrope", "Inter", sans-serif;
+  --font-script: "Caveat", cursive; /* promotional phrases only — never body/nav */
+
+  /* Type scale — mobile-first (PERF-03: small viewport is the default, not an afterthought) */
+  --text-heading-1: 2rem; /* 32px */
+  --text-heading-2: 1.5rem; /* 24px */
+  --text-heading-3: 1.25rem; /* 20px */
+  --text-body: 1rem; /* 16px */
+  --text-body-sm: 0.875rem; /* 14px */
+}
+
+@theme inline {
+  --color-accent: var(--color-accent);
+  --color-surface-primary: var(--color-surface-primary);
+  --color-surface-deep: var(--color-surface-deep);
+  --color-text-on-dark: var(--color-text-on-dark);
+  --color-accent-purple: var(--color-accent-purple);
+  --color-accent-coral: var(--color-accent-coral);
+  --color-accent-olive: var(--color-accent-olive);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-script: var(--font-script);
+}
