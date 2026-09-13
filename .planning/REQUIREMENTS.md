@@ -62,8 +62,8 @@ MVP **estático**: sem backend, sem CMS, sem login, sem checkout, sem analytics 
 - [x] **MARCA-01**: Logo reconstruído como SVG vetorial a partir de `img/logo.png`, com 6 versões (principal, invertido, mono preto, mono branco, ícone isolado, favicon)
 - [x] **MARCA-02**: Paleta de cores oficial documentada como design tokens reutilizáveis (`src/styles/design-tokens.css` e `.json`)
 - [x] **MARCA-03**: Tipografia definida (títulos estilo Anton/Archivo Black, corpo Manrope/Inter, script só em frases promocionais)
-- [ ] **MARCA-04**: Guia de estilo completo em `docs/brand-guidelines.md`
-- [ ] **MARCA-05**: Linguagem visual do site reflete os materiais reais da marca (fundos escuros, blocos vibrantes, ilustrações de alho, formas diagonais)
+- [x] **MARCA-04**: Guia de estilo completo em `docs/brand-guidelines.md`
+- [x] **MARCA-05**: Linguagem visual do site reflete os materiais reais da marca (fundos escuros, blocos vibrantes, ilustrações de alho, formas diagonais)
 
 > Instagram é referenciado só por link de perfil (ver INTEGRA-04) — sem embed de feed ao vivo no MVP, pelo mesmo motivo do LOCAL-01: manter Lighthouse/CWV fora do controle de um script de terceiro.
 
@@ -83,9 +83,9 @@ MVP **estático**: sem backend, sem CMS, sem login, sem checkout, sem analytics 
 
 ### Performance e Acessibilidade
 
-- [ ] **PERF-01**: HTML semântico e acessibilidade WCAG (contraste, navegação por teclado, foco visível)
+- [x] **PERF-01**: HTML semântico e acessibilidade WCAG (contraste, navegação por teclado, foco visível)
 - [ ] **PERF-02**: Imagens otimizadas (formatos modernos, tamanhos responsivos, lazy-load abaixo da dobra)
-- [ ] **PERF-03**: Layout mobile-first, totalmente responsivo
+- [x] **PERF-03**: Layout mobile-first, totalmente responsivo
 
 > Metas numéricas de performance (Lighthouse, Core Web Vitals) estão no bloco 4 (Critérios de Aceite), por serem testáveis por número, não por presença/ausência.
 
@@ -221,17 +221,17 @@ Quais fases cobrem quais requisitos. Atualizado durante a criação do roadmap.
 | MARCA-01 | Phase 1 | Complete |
 | MARCA-02 | Phase 1 | Complete |
 | MARCA-03 | Phase 1 | Complete |
-| MARCA-04 | Phase 1 | Pending |
-| MARCA-05 | Phase 1 | Pending |
+| MARCA-04 | Phase 1 | Complete |
+| MARCA-05 | Phase 1 | Complete |
 | CONT-01 | Phase 1 | Complete |
 | CONT-02 | Phase 1 | Complete |
 | CONT-03 | Phase 1 | Complete |
 | SEO-01 | Phase 5 | Pending |
 | SEO-02 | Phase 5 | Pending |
 | SEO-03 | Phase 5 | Pending |
-| PERF-01 | Phase 1 | Pending |
+| PERF-01 | Phase 1 | Complete |
 | PERF-02 | Phase 3 | Pending |
-| PERF-03 | Phase 1 | Pending |
+| PERF-03 | Phase 1 | Complete |
 | ARQ-01 | Phase 1 | Complete |
 | ARQ-02 | Phase 1 | Complete |
 | ARQ-03 | Phase 1 | Complete |
