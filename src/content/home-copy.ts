@@ -46,6 +46,7 @@ export interface CtaCopy {
   readonly mapsLabel: string;
   readonly pendingSuffix: string;
   readonly ifoodUnavailableNotice: string;
+  readonly whatsappUnavailableNotice: string;
 }
 
 // `menuLabel`/`ifoodLabel`/`mapsLabel` are the three HERO-02 labels, locked verbatim
@@ -62,6 +63,14 @@ export const ctaCopy: CtaCopy = {
   pendingSuffix: "(em breve)",
   ifoodUnavailableNotice:
     "Pedido pelo iFood chegando em breve — enquanto isso, dá uma olhada em como chegar até a loja.",
+  // 02-REVIEW.md WR-01: mirrors ifoodUnavailableNotice's "problem + working next step" shape
+  // (D-05, tone-of-voice.md §5) — WhatsApp is unconfirmed exactly like iFood (src/data/links.ts)
+  // and needs the same explained-disabled treatment, not a silently inert button next to one
+  // that explains itself. Deliberately its own brand-voice string, not `IntegrationLink.
+  // pendingConfirmation` rendered verbatim — that field is internal build-status text ("URL
+  // real da loja... ainda não foi confirmada pelo cliente"), not copy meant for visitors.
+  whatsappUnavailableNotice:
+    "Atendimento pelo WhatsApp chegando em breve — enquanto isso, dá uma olhada em como chegar até a loja.",
 };
 
 export interface LocationCopy {

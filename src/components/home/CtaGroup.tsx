@@ -7,6 +7,7 @@ import { ctaCopy } from "@/content/home-copy";
 import { OrderCta, PendingCta } from "./OrderCta";
 
 const IFOOD_NOTICE_ID = "ifood-unavailable-notice";
+const WHATSAPP_NOTICE_ID = "whatsapp-unavailable-notice";
 
 export function CtaGroup({
   ifood,
@@ -30,7 +31,12 @@ export function CtaGroup({
             tier="primary"
             describedBy={!ifood.confirmed ? IFOOD_NOTICE_ID : undefined}
           />
-          <OrderCta link={whatsapp} label={ctaCopy.whatsappLabel} tier="primary" />
+          <OrderCta
+            link={whatsapp}
+            label={ctaCopy.whatsappLabel}
+            tier="primary"
+            describedBy={!whatsapp.confirmed ? WHATSAPP_NOTICE_ID : undefined}
+          />
         </div>
 
         {/* A-01: "Ver cardápio" has no destination this phase (Phase 3 ships /cardapio) — it
@@ -52,13 +58,24 @@ export function CtaGroup({
         </a>
 
         {/* INTEGRA-03: explains the real situation and points at the one action that genuinely
-            works right now (directions) — never swaps in another live order channel. */}
+            works right now (directions) — never swaps in another live order channel. WhatsApp
+            gets the identical treatment (02-REVIEW.md WR-01): it is unconfirmed exactly like
+            iFood (src/data/links.ts), so it needs the same explained-disabled notice rather than
+            silently rendering disabled next to a button that explains itself. */}
         {!ifood.confirmed && (
           <p
             id={IFOOD_NOTICE_ID}
             className="max-w-md text-center text-[length:var(--text-body-sm)] text-accent-coral"
           >
             {ctaCopy.ifoodUnavailableNotice}
+          </p>
+        )}
+        {!whatsapp.confirmed && (
+          <p
+            id={WHATSAPP_NOTICE_ID}
+            className="max-w-md text-center text-[length:var(--text-body-sm)] text-accent-coral"
+          >
+            {ctaCopy.whatsappUnavailableNotice}
           </p>
         )}
       </div>

@@ -72,8 +72,11 @@ export function Location({ store, maps }: { store: StoreInfo; maps: IntegrationL
             // Both branches exist from the start, so the client's eventual real-hours delivery
             // is a data edit against this shape, not a component rewrite (LOCAL-03).
             <ul className="flex flex-col gap-1">
-              {store.hours.schedule.map((row) => (
-                <li key={row.days} className="text-[length:var(--text-body)]">
+              {store.hours.schedule.map((row, index) => (
+                // 02-REVIEW.md WR-02: `days` isn't schema-guaranteed unique (e.g. a future split
+                // into separate lunch/dinner windows for the same day) — index-suffixed to avoid
+                // a silent React-key collision.
+                <li key={`${row.days}-${index}`} className="text-[length:var(--text-body)]">
                   <span className="font-semibold">{row.days}:</span> {row.open} – {row.close}
                 </li>
               ))}
