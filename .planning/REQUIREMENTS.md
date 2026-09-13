@@ -117,8 +117,8 @@ Resultado da rodada de threat model dedicada (ver `ask_questions/QA-LOG.md` para
 - [x] **SEC-03**: Links de pedido/contato (iFood, WhatsApp, Instagram, Maps) só apontam para destinos oficiais pré-aprovados; validação automatizada dos destinos
 - [x] **SEC-04**: Nenhuma credencial/chave/token commitado no repositório, em `public/` ou exposto no bundle do navegador
 - [x] **SEC-05**: `NEXT_PUBLIC_*` contém só dados genuinamente públicos
-- [ ] **SEC-06**: Nenhum dado pessoal, credencial ou token em localStorage/sessionStorage
-- [ ] **SEC-07**: HTTPS obrigatório com redirect de HTTP; headers de segurança (CSP, anti-clickjacking, X-Content-Type-Options, Referrer-Policy) configurados em produção
+- [x] **SEC-06**: Nenhum dado pessoal, credencial ou token em localStorage/sessionStorage
+- [x] **SEC-07**: HTTPS obrigatório com redirect de HTTP; headers de segurança (CSP, anti-clickjacking, X-Content-Type-Options, Referrer-Policy) configurados em produção
 - [ ] **SEC-08**: CSP compatível com os recursos efetivamente usados, sem `unsafe-inline`/`unsafe-eval` desnecessários
 - [x] **SEC-09**: Dependências em versões suportadas, lockfile versionado, auditoria de vulnerabilidades antes de cada release, com revisão manual dos resultados
 - [ ] **SEC-10**: MFA obrigatório nas três contas críticas: GitHub, hospedagem (Vercel) e registrador de domínio
@@ -128,7 +128,7 @@ Resultado da rodada de threat model dedicada (ver `ask_questions/QA-LOG.md` para
 - [ ] **SEC-14**: Secret scanning automatizado ativo no repositório
 - [ ] **SEC-15**: DNS protegido: registrar lock + MFA na conta do registrador; avaliar DNSSEC se suportado
 - [ ] **SEC-16**: Procedimento de rollback documentado
-- [ ] **SEC-17**: Antes de adicionar login, CMS, banco de dados, checkout ou chatbot com IA, uma nova revisão de threat model deve ser feita e os requisitos de segurança atualizados antes da implementação
+- [x] **SEC-17**: Antes de adicionar login, CMS, banco de dados, checkout ou chatbot com IA, uma nova revisão de threat model deve ser feita e os requisitos de segurança atualizados antes da implementação
 
 ---
 
@@ -240,8 +240,8 @@ Quais fases cobrem quais requisitos. Atualizado durante a criação do roadmap.
 | SEC-03 | Phase 1 | Complete |
 | SEC-04 | Phase 1 | Complete |
 | SEC-05 | Phase 1 | Complete |
-| SEC-06 | Phase 1 | Pending |
-| SEC-07 | Phase 1 | Pending |
+| SEC-06 | Phase 1 | Complete |
+| SEC-07 | Phase 1 | Complete |
 | SEC-08 | Phase 5 | Pending |
 | SEC-09 | Phase 1 | Complete |
 | SEC-10 | Phase 1 | Pending |
@@ -251,7 +251,7 @@ Quais fases cobrem quais requisitos. Atualizado durante a criação do roadmap.
 | SEC-14 | Phase 1 | Pending |
 | SEC-15 | Phase 5 | Pending |
 | SEC-16 | Phase 5 | Pending |
-| SEC-17 | Phase 1 | Pending |
+| SEC-17 | Phase 1 | Complete |
 
 **Coverage:**
 
