@@ -63,3 +63,28 @@ export const ctaCopy: CtaCopy = {
   ifoodUnavailableNotice:
     "Pedido pelo iFood chegando em breve — enquanto isso, dá uma olhada em como chegar até a loja.",
 };
+
+export interface LocationCopy {
+  readonly heading: string;
+  readonly addressHeading: string;
+  readonly modalitiesHeading: string;
+  readonly hoursHeading: string;
+  readonly hoursPendingBody: string;
+}
+
+// LOCAL-01..04 final copy (skeleton.ts's `contact-location` entry, `writtenInPhase: 2`).
+// `hoursPendingBody` is the sentence the phase's content-integrity rule turns on: it states
+// plainly that the hours are unconfirmed and names the one concrete way to resolve it — checking
+// on iFood or on WhatsApp before travelling. No time of day, no day range, no "geralmente", and
+// nothing implying the store is probably open (tone-of-voice.md §5, approved rewrite §7 example
+// 2). Wording matches 02-UI-SPEC.md's Copywriting Contract empty-state rows verbatim, which are
+// themselves the on-tone default per that contract's own note. `mapsLabel` is deliberately not
+// duplicated here — the Location directions anchor reuses `ctaCopy.mapsLabel`, the same locked
+// "Como chegar" label already rendered by the hero CTA row, rather than a second vocabulary.
+export const locationCopy: LocationCopy = {
+  heading: "Onde fica a It's Garlic",
+  addressHeading: "Endereço",
+  modalitiesHeading: "Formas de atendimento",
+  hoursHeading: "Horário de funcionamento",
+  hoursPendingBody: "Em atualização — confirme no iFood ou no WhatsApp antes de vir.",
+};
