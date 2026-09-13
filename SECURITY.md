@@ -115,14 +115,20 @@ ela muda sem changelog).
 
 - [ ] **SEC-10 — MFA nas três contas críticas.**
   - GitHub: `Settings → Password and authentication → Two-factor authentication` na conta do
-    dono do repositório.
-  - Vercel: `Account Settings → Security → Two-Factor Authentication`.
+    dono do repositório. **Confirmado ativo pelo dono da conta em 2026-09-13** — não verificado
+    de forma independente por este agente (sem acesso ao painel; ver nota de auditoria abaixo).
+  - Vercel: `Account Settings → Security → Two-Factor Authentication`. **Confirmado ativo pelo
+    dono da conta em 2026-09-13** — mesma ressalva de verificação independente.
   - Registrador de domínio: a decidir — `PROJECT.md` lista o domínio definitivo como pendência
     (`Pendências`); esta linha só pode ser confirmada depois que o registrador for escolhido.
   - Quem executa: o dono das contas (cliente/responsável pela infraestrutura), não o agente.
   - Como confirmar: revisão visual de cada painel mostrando 2FA "Enabled"/"Ativo".
+  - **Status:** parcialmente satisfeito — GitHub e Vercel confirmados pelo dono da conta; a
+    perna do registrador de domínio permanece pendente até o registrador ser escolhido. A caixa
+    permanece desmarcada até as três pernas estarem confirmadas, para não registrar uma
+    satisfação parcial como total.
 
-- [ ] **SEC-12 — Branch `main` protegida, sem push direto.**
+- [x] **SEC-12 — Branch `main` protegida, sem push direto.**
   - Onde: `Settings → Branches → Branch protection rules` no repositório GitHub, regra sobre
     `main`, com "Require a pull request before merging" ativado.
   - Disponível gratuitamente porque o repositório é público (ver decisão acima).
@@ -130,6 +136,9 @@ ela muda sem changelog).
     GitHub — ação também fora deste plano.
   - Como confirmar: tentar um push direto para `main` e observar a rejeição pelo GitHub, ou
     inspecionar a regra na tela de configurações.
+  - **Confirmado pelo dono da conta em 2026-09-13:** regra de proteção criada em `main` com PR
+    obrigatório, push direto bloqueado, force push bloqueado, e exclusão da branch `main`
+    bloqueada. Não verificado de forma independente por este agente (sem acesso ao painel).
 
 - [ ] **SEC-13 — PR obrigatório com revisão/aprovação antes de merge.**
   - Onde: mesma tela de `Branch protection rules`, opção "Require approvals" com no mínimo 1
@@ -138,26 +147,31 @@ ela muda sem changelog).
   - Quem executa: o dono do repositório.
   - Como confirmar: abrir um PR de teste e verificar que o botão de merge fica bloqueado até uma
     aprovação.
-  - **Questão operacional em aberto — mantenedor único:** quando o único mantenedor do projeto é
-    também o único aprovador possível, "revisão obrigatória" tem duas leituras diferentes, e este
-    documento não escolhe uma por conta própria:
+  - **Questão operacional resolvida em 2026-09-13 — mantenedor único:** o dono das contas
+    confirmou ser o único mantenedor do repositório. Das duas leituras nomeadas abaixo, optou
+    pela primeira:
     1. **Permitir auto-aprovação em uma branch protegida.** Preserva a garantia de "nenhum push
        direto sem passar por PR", mas **não** preserva a garantia de "um segundo par de olhos
        revisou a mudança" — o autor e o aprovador são a mesma pessoa.
     2. **Adicionar um segundo revisor** (outra pessoa com acesso ao repositório, mesmo que não
        escreva código regularmente). Preserva as duas garantias, mas introduz uma dependência de
        disponibilidade de terceiro em todo merge.
-    Esta é uma escolha operacional do dono das contas, não uma decisão técnica que o agente possa
-    tomar sozinho — nomear ambas as consequências aqui é o ponto: qualquer que seja a escolha, o
-    dono das contas precisa saber exatamente o que está e o que não está sendo garantido por ela.
+  - **Status:** a exigência de segundo revisor está **temporariamente não aplicável** enquanto
+    houver um único mantenedor. Isto é registrado como **risco residual aceito** (ver Accepted
+    Risks Log de `01-SECURITY.md`, AR-07), **não como requisito satisfeito** — a caixa permanece
+    desmarcada porque a garantia de "segundo par de olhos" continua ausente por construção,
+    mesmo com auto-aprovação em branch protegida ativa. Reavaliar se um segundo mantenedor
+    entrar no projeto.
 
-- [ ] **SEC-14 — Secret scanning com push protection (metade nativa do GitHub).**
+- [x] **SEC-14 — Secret scanning com push protection (metade nativa do GitHub).**
   - Onde: `Settings → Code security and analysis → Secret scanning → Push protection`.
   - Disponível gratuitamente porque o repositório é público.
   - Quem executa: o dono do repositório.
   - Como confirmar: a tela de configurações mostra "Push protection: Enabled"; o passo `gitleaks`
     do CI (Parte 2) já roda hoje, independentemente desta ativação — esta linha adiciona a camada
     que bloqueia o **push** em si, antes mesmo de chegar a um PR.
+  - **Confirmado pelo dono da conta em 2026-09-13:** secret scanning e push protection ativos.
+    Não verificado de forma independente por este agente (sem acesso ao painel).
 
 - [ ] **SEC-15 — DNS registrar lock + MFA no registrador de domínio.**
   - Escopo: Fase 5, conforme `ROADMAP.md`. Listado aqui apenas para rastreabilidade — o

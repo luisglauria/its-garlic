@@ -121,11 +121,11 @@ Resultado da rodada de threat model dedicada (ver `ask_questions/QA-LOG.md` para
 - [x] **SEC-07**: HTTPS obrigatório com redirect de HTTP; headers de segurança (CSP, anti-clickjacking, X-Content-Type-Options, Referrer-Policy) configurados em produção
 - [ ] **SEC-08**: CSP compatível com os recursos efetivamente usados, sem `unsafe-inline`/`unsafe-eval` desnecessários
 - [x] **SEC-09**: Dependências em versões suportadas, lockfile versionado, auditoria de vulnerabilidades antes de cada release, com revisão manual dos resultados
-- [ ] **SEC-10**: MFA obrigatório nas três contas críticas: GitHub, hospedagem (Vercel) e registrador de domínio
+- [ ] **SEC-10**: MFA obrigatório nas três contas críticas: GitHub, hospedagem (Vercel) e registrador de domínio — GitHub e Vercel confirmados ativos pelo dono da conta (2026-09-13, não verificado de forma independente); registrador ainda não escolhido, perna pendente
 - [ ] **SEC-11**: Headers de segurança e CSP verificados no domínio real de produção, não apenas local
-- [ ] **SEC-12**: Branch principal (`main`) protegida — sem push direto, só via Pull Request
-- [ ] **SEC-13**: PR obrigatório com revisão/aprovação antes de qualquer merge que dispare deploy em produção
-- [ ] **SEC-14**: Secret scanning automatizado ativo no repositório
+- [x] **SEC-12**: Branch principal (`main`) protegida — sem push direto, só via Pull Request — confirmado pelo dono da conta (2026-09-13, não verificado de forma independente); force-push e exclusão da branch também bloqueados
+- [ ] **SEC-13**: PR obrigatório com revisão/aprovação antes de qualquer merge que dispare deploy em produção — mantenedor único; garantia de segundo revisor temporariamente não aplicável, registrada como risco residual aceito (AR-07 em `01-SECURITY.md`), não como requisito satisfeito
+- [x] **SEC-14**: Secret scanning automatizado ativo no repositório — CI (`gitleaks`) desde o plano 01-04; push protection nativo do GitHub confirmado pelo dono da conta (2026-09-13, não verificado de forma independente)
 - [ ] **SEC-15**: DNS protegido: registrar lock + MFA na conta do registrador; avaliar DNSSEC se suportado
 - [ ] **SEC-16**: Procedimento de rollback documentado
 - [x] **SEC-17**: Antes de adicionar login, CMS, banco de dados, checkout ou chatbot com IA, uma nova revisão de threat model deve ser feita e os requisitos de segurança atualizados antes da implementação
@@ -244,11 +244,11 @@ Quais fases cobrem quais requisitos. Atualizado durante a criação do roadmap.
 | SEC-07 | Phase 1 | Complete |
 | SEC-08 | Phase 5 | Pending |
 | SEC-09 | Phase 1 | Complete |
-| SEC-10 | Phase 1 | Pending |
+| SEC-10 | Phase 1 | Pending (GitHub+Vercel legs attested by user; registrar leg pending) |
 | SEC-11 | Phase 5 | Pending |
-| SEC-12 | Phase 1 | Pending |
-| SEC-13 | Phase 1 | Pending |
-| SEC-14 | Phase 1 | Pending |
+| SEC-12 | Phase 1 | Complete |
+| SEC-13 | Phase 1 | Pending (accepted risk AR-07 — sole maintainer) |
+| SEC-14 | Phase 1 | Complete |
 | SEC-15 | Phase 5 | Pending |
 | SEC-16 | Phase 5 | Pending |
 | SEC-17 | Phase 1 | Complete |

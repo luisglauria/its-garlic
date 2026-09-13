@@ -34,7 +34,24 @@ expected: |
   - Revisão de PR obrigatória (SEC-13)
   - Secret scanning + push protection (SEC-14)
   - Registrar lock (SEC-15 — escopo da Fase 5, listado aqui só para rastreabilidade)
-result: [pending]
+result: |
+  [parcial — atualizado 2026-09-13] Usuário atesta (não verificado de forma independente pelo
+  agente — sem acesso ao painel GitHub/Vercel, sem remote configurado neste repositório local):
+  - SEC-10: MFA ativo em GitHub e Vercel; perna do registrador de domínio segue pendente
+    (registrador ainda não escolhido)
+  - SEC-12: branch `main` protegida — PR obrigatório, push direto bloqueado, force-push
+    bloqueado, exclusão da branch bloqueada. Marcado Complete em REQUIREMENTS.md.
+  - SEC-13: usuário é mantenedor único; garantia de segundo revisor declarada temporariamente
+    não aplicável — registrada como risco residual aceito (AR-07 em `01-SECURITY.md`), NÃO como
+    requisito satisfeito. Continua Pending em REQUIREMENTS.md.
+  - SEC-14: secret scanning + push protection nativo ativo. Marcado Complete em REQUIREMENTS.md.
+  - SEC-15: inalterado — escopo da Fase 5, registrador ainda não escolhido.
+  - `git remote -v` neste repositório local segue vazio — nenhum remote foi criado e nenhum push
+    foi feito a partir desta sessão ou por este agente (confirmado via reflog e `git remote -v`);
+    a criação do remote e o primeiro push seguem pendentes da auditoria da lista de arquivos
+    acordada com o usuário antes do plano 01-04.
+  Item permanece PENDING no geral até: (a) MFA do registrador de domínio, e (b) o próprio
+  remote/push acontecerem sob a auditoria combinada.
 
 ## Summary
 
