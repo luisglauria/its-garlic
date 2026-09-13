@@ -38,3 +38,28 @@ export const heroCopy: HeroCopy = {
 // (e.g. the hero's `imageDisclosure` above) is rendered as its own adjacent line, not folded
 // into the badge text itself.
 export const provisionalBadgeLabel = "Provisório";
+
+export interface CtaCopy {
+  readonly menuLabel: string;
+  readonly ifoodLabel: string;
+  readonly whatsappLabel: string;
+  readonly mapsLabel: string;
+  readonly pendingSuffix: string;
+  readonly ifoodUnavailableNotice: string;
+}
+
+// `menuLabel`/`ifoodLabel`/`mapsLabel` are the three HERO-02 labels, locked verbatim
+// (skeleton.ts's `ctas` entry) — this module does not re-open them. `whatsappLabel` names the
+// WhatsApp channel as its own destination (tone-of-voice.md §6). `pendingSuffix` and
+// `ifoodUnavailableNotice` keep D-05's "problem + working next step" shape: they name the real
+// situation and point at the one action that genuinely works right now ("Como chegar"), and they
+// invent no hour, no delivery date, and no pressure (tone-of-voice.md §5).
+export const ctaCopy: CtaCopy = {
+  menuLabel: "Ver cardápio",
+  ifoodLabel: "Pedir no iFood",
+  whatsappLabel: "Chamar no WhatsApp",
+  mapsLabel: "Como chegar",
+  pendingSuffix: "(em breve)",
+  ifoodUnavailableNotice:
+    "Pedido pelo iFood chegando em breve — enquanto isso, dá uma olhada em como chegar até a loja.",
+};

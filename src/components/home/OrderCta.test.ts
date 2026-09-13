@@ -127,7 +127,9 @@ describe("CtaGroup — real builder results", () => {
   });
 
   test("renders the confirmed directions url", () => {
-    expect(markup).toContain(buildMapsUrl().url);
+    // renderToStaticMarkup HTML-entity-escapes "&" inside attribute values (React DOM server's
+    // correct, expected behaviour) — compare against the escaped form, not the raw fixture url.
+    expect(markup).toContain(buildMapsUrl().url.replace(/&/g, "&amp;"));
   });
 
   test("renders the unavailability notice text", () => {
