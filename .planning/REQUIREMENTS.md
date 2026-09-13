@@ -59,9 +59,9 @@ MVP **estático**: sem backend, sem CMS, sem login, sem checkout, sem analytics 
 
 ### Identidade Visual
 
-- [ ] **MARCA-01**: Logo reconstruído como SVG vetorial a partir de `img/logo.png`, com 6 versões (principal, invertido, mono preto, mono branco, ícone isolado, favicon)
-- [ ] **MARCA-02**: Paleta de cores oficial documentada como design tokens reutilizáveis (`src/styles/design-tokens.css` e `.json`)
-- [ ] **MARCA-03**: Tipografia definida (títulos estilo Anton/Archivo Black, corpo Manrope/Inter, script só em frases promocionais)
+- [x] **MARCA-01**: Logo reconstruído como SVG vetorial a partir de `img/logo.png`, com 6 versões (principal, invertido, mono preto, mono branco, ícone isolado, favicon)
+- [x] **MARCA-02**: Paleta de cores oficial documentada como design tokens reutilizáveis (`src/styles/design-tokens.css` e `.json`)
+- [x] **MARCA-03**: Tipografia definida (títulos estilo Anton/Archivo Black, corpo Manrope/Inter, script só em frases promocionais)
 - [ ] **MARCA-04**: Guia de estilo completo em `docs/brand-guidelines.md`
 - [ ] **MARCA-05**: Linguagem visual do site reflete os materiais reais da marca (fundos escuros, blocos vibrantes, ilustrações de alho, formas diagonais)
 
@@ -218,9 +218,9 @@ Quais fases cobrem quais requisitos. Atualizado durante a criação do roadmap.
 | INTEGRA-03 | Phase 2 | Pending |
 | INTEGRA-04 | Phase 1 | Complete |
 | INTEGRA-05 | Phase 2 | Pending |
-| MARCA-01 | Phase 1 | Pending |
-| MARCA-02 | Phase 1 | Pending |
-| MARCA-03 | Phase 1 | Pending |
+| MARCA-01 | Phase 1 | Complete |
+| MARCA-02 | Phase 1 | Complete |
+| MARCA-03 | Phase 1 | Complete |
 | MARCA-04 | Phase 1 | Pending |
 | MARCA-05 | Phase 1 | Pending |
 | CONT-01 | Phase 1 | Complete |
