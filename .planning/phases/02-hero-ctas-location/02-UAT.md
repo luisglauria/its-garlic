@@ -1,9 +1,9 @@
 ---
-status: diagnosed
+status: complete
 phase: 02-hero-ctas-location
 source: [02-VERIFICATION.md]
 started: 2026-09-13T22:25:00Z
-updated: 2026-09-14T00:10:00Z
+updated: 2026-09-14T02:20:00Z
 ---
 
 ## Current Test
@@ -87,7 +87,9 @@ blocked: 0
 - gap_id: G-02-2
   truth: "Both order CTAs (iFood, WhatsApp) visible side by side without scrolling past the
     hero (INTEGRA-01's fold criterion)."
-  status: failed
+  status: resolved
+  resolved_by: 02-05-PLAN.md
+  resolved_at: 2026-09-14
   reason: "User reported: em viewports mobile de 375px e 390px, os CTAs de iFood e WhatsApp
     aparecem empilhados, não lado a lado. Além disso, a seção de CTAs está fora do Hero e
     depois da ilustração, portanto não fica acima da dobra. Os botões desabilitados e os
@@ -139,7 +141,9 @@ blocked: 0
 - gap_id: G-02-4
   truth: "The three adjacent charcoal sections (brand story, Location, FAQ) read as distinct
     blocks via the diagonal-wedge separator, rather than one undifferentiated field."
-  status: failed
+  status: resolved
+  resolved_by: 02-06-PLAN.md
+  resolved_at: 2026-09-14
   reason: "User reported: a voz e o conteúdo da história estão corretos, mas a separação
     visual não está totalmente clara. A cunha diagonal aparece apenas após a seção de
     história; Localização e FAQ continuam com o mesmo fundo charcoal, sem separador próprio.
@@ -192,7 +196,9 @@ blocked: 0
 - gap_id: G-02-5
   truth: "Focus ring is clearly visible against the section background on each FAQ summary
     and on the directions link when tabbing through the page."
-  status: failed
+  status: resolved
+  resolved_by: 02-04-PLAN.md
+  resolved_at: 2026-09-14
   reason: "User reported: a navegação por Tab funciona, mas nenhum anel de foco visível
     aparece nas perguntas do FAQ nem no link 'Como chegar'. Corrigir o estado
     :focus-visible para que o elemento atualmente focado tenha contraste claro contra o
