@@ -1,13 +1,24 @@
-// HERO-01/HERO-03 — the above-the-fold hero: the brand concept as real document text on the
-// brand's deep surface (UI-SPEC Color table), plus the CLS-safe 1:1 illustrated image slot
-// (D-03/D-04) that becomes a one-file swap once the client supplies real product photography.
-// Stays a Server Component: no client directive, no hooks, and no read of the current time
-// anywhere — the time-aware journey is Phase 4's, isolated in its own client island, not here.
+// HERO-01/HERO-03, D-01a — the above-the-fold hero: the brand concept as real document text on
+// the brand's deep surface (UI-SPEC Color table), then the two order CTAs (G-02-2 — moved inside
+// the hero, between the subhead and the illustration, so both sit above the fold at the
+// 375x667/390x844 mobile targets — see .planning/debug/DEBUG-cta-row-stacked-below-fold.md),
+// then the CLS-safe 1:1 illustrated image slot (D-03/D-04) that becomes a one-file swap once the
+// client supplies real product photography. Stays a Server Component: no client directive, no
+// hooks, and no read of the current time anywhere — the time-aware journey is Phase 4's,
+// isolated in its own client island, not here.
 import Image from "next/image";
+import type { IntegrationLink } from "@/lib/integrations/types";
 import { heroCopy } from "@/content/home-copy";
+import { OrderCtaRow } from "./OrderCtaRow";
 import { ProvisionalBadge } from "./ProvisionalBadge";
 
-export function Hero() {
+export function Hero({
+  ifood,
+  whatsapp,
+}: {
+  ifood: IntegrationLink;
+  whatsapp: IntegrationLink;
+}) {
   return (
     <section className="bg-surface-deep text-text-on-dark">
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 py-12 text-center sm:px-6 sm:py-16">
@@ -23,6 +34,10 @@ export function Hero() {
           {heroCopy.headline}
         </h1>
         <p className="max-w-md text-[length:var(--text-body)] font-body">{heroCopy.subhead}</p>
+
+        {/* D-01a/G-02-2: the two order CTAs render here, between the subhead and the
+            illustration, so INTEGRA-01's fold criterion is reachable at 375x667/390x844. */}
+        <OrderCtaRow ifood={ifood} whatsapp={whatsapp} />
 
         {/* Hero image container contract (UI-SPEC, D-04): a positioned parent carrying a fixed
             1:1 aspect ratio and a fluid width, `next/image` inside it using `fill` so the layout

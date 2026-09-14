@@ -12,12 +12,20 @@ type Tier = "primary" | "secondary";
 
 // 44px minimum touch target (UI-SPEC Spacing Scale exception, WCAG 2.5.5) via `min-h-11`
 // (2.75rem = 44px). Primary tier: accent fill with deep-surface text — never white, per the
-// brand guide's CTA fill rule. Secondary tier: accent-outline with accent text.
-const TIER_CLASS: Record<Tier, string> = {
+// brand guide's CTA fill rule. Secondary tier: accent-outline with accent text. Label size
+// (14px/600, UI-SPEC Typography role) and one spacing-scale step down on horizontal padding
+// (`px-6` → `px-4`, G-02-2) bring the button's horizontal cost down enough to fit two-up at
+// 343px of mobile content width — hero-fold.test.ts measures the real numbers below rather than
+// asserting a hardcoded conclusion. `w-full` + `text-center` let a button fill its grid track
+// (OrderCtaRow) and centre a wrapped label; no utility here may suppress wrapping, since a
+// narrow track plus a non-wrapping label is exactly the overflow failure mode the debug session
+// (.planning/debug/DEBUG-cta-row-stacked-below-fold.md) warned about. Exported so both
+// OrderCtaRow.tsx's tests and hero-fold.test.ts assert against the real class string.
+export const TIER_CLASS: Record<Tier, string> = {
   primary:
-    "inline-flex min-h-11 items-center justify-center rounded-full bg-accent px-6 py-3 text-[length:var(--text-body)] font-semibold text-surface-deep",
+    "inline-flex w-full min-h-11 items-center justify-center rounded-full bg-accent px-4 py-3 text-center text-[length:var(--text-body-sm)] font-semibold text-surface-deep",
   secondary:
-    "inline-flex min-h-11 items-center justify-center rounded-full border-2 border-accent px-6 py-3 text-[length:var(--text-body)] font-semibold text-accent",
+    "inline-flex w-full min-h-11 items-center justify-center rounded-full border-2 border-accent px-4 py-3 text-center text-[length:var(--text-body-sm)] font-semibold text-accent",
 };
 
 export function PendingCta({
@@ -36,7 +44,15 @@ export function PendingCta({
       aria-describedby={describedBy}
       className={`${TIER_CLASS[tier]} cursor-not-allowed opacity-60`}
     >
-      {label} {ctaCopy.pendingSuffix}
+      {/* G-02-2/UI-SPEC amendment: the label and the "(em breve)" suffix render as two lines
+          inside the same button, instead of one inline string — this is what lets the label fit
+          the narrow two-column track (see OrderCtaRow). Both lines stay inside the one control,
+          so the accessible name still reads as the label followed by the suffix (D-05
+          unchanged). */}
+      <span className="flex flex-col leading-tight">
+        <span>{label}</span>
+        <span className="font-normal">{ctaCopy.pendingSuffix}</span>
+      </span>
     </button>
   );
 }

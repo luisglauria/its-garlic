@@ -91,6 +91,7 @@ describe("Hero (HERO-01, HERO-03)", () => {
 describe("CTA labels (HERO-02)", () => {
   const copy = read("src", "content", "home-copy.ts");
   const ctaGroup = read("src", "components", "home", "CtaGroup.tsx");
+  const orderCtaRow = read("src", "components", "home", "OrderCtaRow.tsx");
 
   test("all three locked CTA labels appear verbatim in the copy module", () => {
     expect(copy).toMatch(/Ver card[aá]pio/);
@@ -98,16 +99,20 @@ describe("CTA labels (HERO-02)", () => {
     expect(copy).toMatch(/Como chegar/);
   });
 
-  test("CtaGroup renders the labels through the copy module, not as inline strings", () => {
+  test("OrderCtaRow renders the iFood and WhatsApp labels through the copy module, not as inline strings", () => {
+    expect(orderCtaRow).toMatch(/ctaCopy\.ifoodLabel/);
+    expect(orderCtaRow).toMatch(/ctaCopy\.whatsappLabel/);
+  });
+
+  test("CtaGroup renders the menu and maps labels through the copy module, not as inline strings", () => {
     expect(ctaGroup).toMatch(/ctaCopy\.menuLabel/);
-    expect(ctaGroup).toMatch(/ctaCopy\.ifoodLabel/);
     expect(ctaGroup).toMatch(/ctaCopy\.mapsLabel/);
   });
 });
 
 describe("the confirmed gate (INTEGRA-01, INTEGRA-02, INTEGRA-03)", () => {
   const orderCta = read("src", "components", "home", "OrderCta.tsx");
-  const ctaGroup = read("src", "components", "home", "CtaGroup.tsx");
+  const orderCtaRow = read("src", "components", "home", "OrderCtaRow.tsx");
 
   test("OrderCta types its link prop as IntegrationLink and branches on confirmed", () => {
     expect(orderCta, "the confirmed gate must be a type-level contract").toMatch(
@@ -129,11 +134,11 @@ describe("the confirmed gate (INTEGRA-01, INTEGRA-02, INTEGRA-03)", () => {
     }
   });
 
-  test("CtaGroup renders both order CTAs through the shared OrderCta primitive (D-06 parity)", () => {
-    const orderCtaUses = ctaGroup.match(/<OrderCta\b/g) ?? [];
+  test("OrderCtaRow renders both order CTAs through the shared OrderCta primitive (D-06 parity)", () => {
+    const orderCtaUses = orderCtaRow.match(/<OrderCta\b/g) ?? [];
     expect(
       orderCtaUses.length,
-      "CtaGroup should render exactly two OrderCta elements (iFood, WhatsApp) so parity cannot drift by copy-paste",
+      "OrderCtaRow should render exactly two OrderCta elements (iFood, WhatsApp) so parity cannot drift by copy-paste",
     ).toBe(2);
   });
 });

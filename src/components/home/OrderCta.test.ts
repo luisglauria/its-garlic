@@ -12,6 +12,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, test } from "vitest";
 import { OrderCta, PendingCta } from "./OrderCta";
 import { CtaGroup } from "./CtaGroup";
+import { OrderCtaRow } from "./OrderCtaRow";
 import { ctaCopy } from "@/content/home-copy";
 import { buildIFoodUrl } from "@/lib/integrations/ifood";
 import { buildWhatsAppUrl } from "@/lib/integrations/whatsapp";
@@ -114,15 +115,12 @@ describe("PendingCta", () => {
 describe("CtaGroup — real builder results", () => {
   const markup = renderToStaticMarkup(
     createElement(CtaGroup, {
-      ifood: buildIFoodUrl(),
-      whatsapp: buildWhatsAppUrl(),
       maps: buildMapsUrl(),
     }),
   );
 
-  test("renders all three locked CTA labels verbatim", () => {
+  test("renders the menu and directions labels verbatim", () => {
     expect(markup).toContain(ctaCopy.menuLabel);
-    expect(markup).toContain(ctaCopy.ifoodLabel);
     expect(markup).toContain(ctaCopy.mapsLabel);
   });
 
@@ -131,9 +129,24 @@ describe("CtaGroup — real builder results", () => {
     // correct, expected behaviour) — compare against the escaped form, not the raw fixture url.
     expect(markup).toContain(buildMapsUrl().url.replace(/&/g, "&amp;"));
   });
+});
 
-  test("renders the unavailability notice text", () => {
+describe("OrderCtaRow — real builder results (G-02-2)", () => {
+  const markup = renderToStaticMarkup(
+    createElement(OrderCtaRow, {
+      ifood: buildIFoodUrl(),
+      whatsapp: buildWhatsAppUrl(),
+    }),
+  );
+
+  test("renders both order CTA labels verbatim", () => {
+    expect(markup).toContain(ctaCopy.ifoodLabel);
+    expect(markup).toContain(ctaCopy.whatsappLabel);
+  });
+
+  test("renders both unavailability notice texts", () => {
     expect(markup).toContain(ctaCopy.ifoodUnavailableNotice);
+    expect(markup).toContain(ctaCopy.whatsappUnavailableNotice);
   });
 
   test("renders neither the iFood host nor the WhatsApp host as an href", () => {

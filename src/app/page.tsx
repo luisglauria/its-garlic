@@ -22,9 +22,13 @@ export default function Home() {
     <>
       {/* Neither Hero, CtaGroup, BrandStory, Location nor Faq is a second <main> — src/app/
           layout.tsx (plan 01-06) already renders the page's one <main id="main-content">
-          landmark. D-01's fixed order: Hero, CtaGroup, BrandStory, Location, Faq. */}
-      <Hero />
-      <CtaGroup ifood={ifood} whatsapp={whatsapp} maps={maps} />
+          landmark. D-01's fixed section order: Hero, CtaGroup, BrandStory, Location, Faq.
+          D-01a (G-02-2): Hero now owns the order-CTA row (iFood, WhatsApp) directly, so both
+          order actions land above the fold — the page passes those links to Hero, not to a
+          sibling section, and renders no order row of its own. CtaGroup keeps only the
+          secondary/tertiary CTAs. */}
+      <Hero ifood={ifood} whatsapp={whatsapp} />
+      <CtaGroup maps={maps} />
       <BrandStory />
       <Location store={store} maps={maps} />
       <Faq />
