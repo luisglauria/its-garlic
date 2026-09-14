@@ -2,17 +2,17 @@
 gsd_state_version: "1.0"
 current_phase: 02
 current_phase_name: Hero, CTAs & Location
-status: verifying
-stopped_at: Completed 02-03-PLAN.md — Phase 02 ready for verification
-last_updated: "2026-09-13T21:41:22.944Z"
+status: executing
+stopped_at: Completed 02-04-PLAN.md (gap closure G-02-5) — human-check for focus ring/palette still required before G-02-5 is fully closed in UAT
+last_updated: "2026-09-14T02:11:02.612Z"
 last_activity: 2026-09-13
 last_activity_desc: Phase 02 execution started
-state_head: a86e90b59b62bf75dfd2bb05fa06946af26e9576
+state_head: 329c93542bad7b7b6c39282b11fb1b1550c57648
 progress:
   total_phases: 5
   completed_phases: 0
-  total_plans: 9
-  completed_plans: 9
+  total_plans: 12
+  completed_plans: 10
   percent: 0
 ---
 
@@ -30,8 +30,8 @@ fricção, mobile-first.
 ## Current Position
 
 Phase: 02 (Hero, CTAs & Location) — EXECUTING
-Plan: 3 of 3
-Status: Phase complete — ready for verification
+Plan: 2 of 6
+Status: Ready to execute
 phase-1 checkbox intentionally left unchecked — the phase-completion predicate
 (`gsd_run phase uat-passed --require-verification`) does not pass while G-01-2 is open. User
 explicitly authorized starting Phase 2 anyway (2026-09-13) rather than waiting on the domain
@@ -75,6 +75,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 02 P01 | 20min | 3 tasks | 10 files |
 | Phase 02 P02 | ~5min | 2 tasks | 5 files |
 | Phase 02 P03 | ~15min | 3 tasks | 7 files |
+| Phase 02 P04 | 9min | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -121,6 +122,9 @@ Recent decisions affecting current work:
 - [Phase 02]: [Phase 02]: 02-03: faqs — four entries (location/ordering/modalities/delivery), address/modality cross-checked against getStoreInfo() by sections.test.ts, ordering answer names iFood/WhatsApp without promising a working link
 - [Phase 02]: [Phase 02]: 02-03: diagonal-wedge separator (CSS clip-path revealing the black body background) at BrandStory's bottom edge separates the three adjacent charcoal sections without editing Location.tsx (out of this plan's scope)
 - [Phase 02]: [Phase 02]: 02-03: content-integrity gate over home-copy.ts — 5 named tests (currency, award/rating, superlative/urgency, cart/checkout, clock time), the mechanical half of tone-of-voice.md §5
+- [Phase 02]: [Phase 02]: 02-04: colours+script-font moved to a Tailwind static @theme block (literals), Anton/Manrope moved to an inline @theme block keyed by distinct --font-display-anton/--font-body-manrope variable names — same-name binding was the self-reference bug (G-02-5)
+- [Phase 02]: [Phase 02]: 02-04: globals.css import order swapped (tailwindcss first, design-tokens.css second) so the theme block lands inside @layer theme ahead of any unlayered literal
+- [Phase 02]: [Phase 02]: 02-04: check-brand-css.mjs checks the LAST (cascade-winning) declaration of each colour token against design-tokens.json, not mere presence, since a presence-only check would have passed on the original outage
 
 ### Pending Todos
 
@@ -158,8 +162,8 @@ Items acknowledged and deferred at milestone close, most recent first:
 
 ## Session Continuity
 
-Last session: 2026-09-13T21:41:22.898Z
-Stopped at: Completed 02-03-PLAN.md — Phase 02 ready for verification
+Last session: 2026-09-14T02:11:02.555Z
+Stopped at: Completed 02-04-PLAN.md (gap closure G-02-5) — human-check for focus ring/palette still required before G-02-5 is fully closed in UAT
 Resume file: None
-before the planner finished and committed) were cleared during resume on 2026-09-13.
-Next: /gsd-execute-phase 1
+Session resumed 2026-09-13, proceeding to execute gap-closure plans.
+Next: /gsd-execute-phase 02
