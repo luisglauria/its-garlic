@@ -2,8 +2,11 @@
 // and it never reads the wall clock anywhere, so it carries no hydration-mismatch risk).
 // Wraps every page in one semantic shell: skip link, header landmark, single main landmark,
 // footer landmark. Both type families are self-hosted through next/font/google and bound to
-// the exact --font-display / --font-body custom property names src/styles/design-tokens.css
-// declares (plan 01-05) — no runtime request ever reaches a font CDN.
+// --font-display-anton / --font-body-manrope — names deliberately DISTINCT from the
+// --font-display / --font-body Tailwind theme keys that consume them in
+// src/styles/design-tokens.css (a same-name binding is the self-reference bug this plan fixes;
+// see .planning/debug/DEBUG-focus-ring-invisible-faq-directions.md) — no runtime request ever
+// reaches a font CDN.
 import type { Metadata } from "next";
 import { Anton, Manrope } from "next/font/google";
 import "./globals.css";
@@ -14,12 +17,12 @@ import { Footer } from "@/components/layout/Footer";
 const anton = Anton({
   weight: "400",
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-display-anton",
 });
 
 const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-body",
+  variable: "--font-body-manrope",
 });
 
 // Placeholder title/description drawn from the `seo-metadata` slot description in
