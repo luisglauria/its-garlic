@@ -1,5 +1,13 @@
-@import "../styles/design-tokens.css";
+/*
+ * Import order matters: the framework import MUST come first. Tailwind only emits the project
+ * token sheet's `@theme` block inside `@layer theme` (ahead of any unlayered declaration) when
+ * it processes `@import "tailwindcss"` before the file that declares the theme block. Importing
+ * the token sheet first makes Tailwind emit it unlayered and LAST, which lets a self-referential
+ * declaration win the cascade over the literal — the exact defect diagnosed in
+ * .planning/debug/DEBUG-focus-ring-invisible-faq-directions.md. Do not "tidy" this back.
+ */
 @import "tailwindcss";
+@import "../styles/design-tokens.css";
 
 /*
  * The create-next-app scaffold's light/dark `--background`/`--foreground` pair and its

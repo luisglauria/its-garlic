@@ -38,9 +38,14 @@ describe("root layout shell (PERF-01, PERF-03)", () => {
     expect(layout).toMatch(/id="main-content"/);
   });
 
-  test("binds both font instances to the design-token --font- variable names", () => {
-    expect(layout).toMatch(/variable:\s*["']--font-display["']/);
-    expect(layout).toMatch(/variable:\s*["']--font-body["']/);
+  // G-02-5 (.planning/debug/DEBUG-focus-ring-invisible-faq-directions.md): the next/font
+  // `variable` names must be DISTINCT from the --font-display / --font-body theme keys that
+  // consume them in src/styles/design-tokens.css — a same-name binding is the self-referential
+  // custom-property bug that killed the whole brand palette. See
+  // src/styles/design-tokens.test.ts for the full source-level guard over this invariant.
+  test("binds both font instances to the next/font --font-*-anton / --font-*-manrope variable names (distinct from the theme keys)", () => {
+    expect(layout).toMatch(/variable:\s*["']--font-display-anton["']/);
+    expect(layout).toMatch(/variable:\s*["']--font-body-manrope["']/);
   });
 
   test("exports a metadata object with a non-empty title and description", () => {

@@ -19,20 +19,6 @@
  */
 
 :root {
-  /* Colours — seven official brand values (PROJECT.md) */
-  --color-accent: #b8ff00; /* Verde-limão */
-  --color-surface-primary: #202526; /* Carvão */
-  --color-surface-deep: #000000; /* Preto */
-  --color-text-on-dark: #ffffff; /* Branco */
-  --color-accent-purple: #31266b; /* Roxo */
-  --color-accent-coral: #ff3b30; /* Coral */
-  --color-accent-olive: #7d804d; /* Oliva */
-
-  /* Typography families — bound to next/font instances in plan 01-06 */
-  --font-display: "Anton", "Archivo Black", sans-serif;
-  --font-body: "Manrope", "Inter", sans-serif;
-  --font-script: "Caveat", cursive; /* promotional phrases only — never body/nav */
-
   /* Type scale — mobile-first (PERF-03: small viewport is the default, not an afterthought) */
   --text-heading-1: 2rem; /* 32px */
   --text-heading-2: 1.5rem; /* 24px */
@@ -41,15 +27,34 @@
   --text-body-sm: 0.875rem; /* 14px */
 }
 
+/*
+ * Static theme block — the seven official brand colours plus the script family, as literal
+ * values. `static` forces every listed variable to be emitted even when Tailwind's usage
+ * detection finds no utility referencing it (accent-purple has no utility yet, and
+ * src/app/globals.css reads --color-accent from a hand-written rule the scanner never sees).
+ * None of these may ever be defined in terms of a variable of the same name — that
+ * self-reference is exactly the defect this block exists to remove (see
+ * .planning/debug/DEBUG-focus-ring-invisible-faq-directions.md).
+ */
+@theme static {
+  --color-accent: #b8ff00; /* Verde-limão */
+  --color-surface-primary: #202526; /* Carvão */
+  --color-surface-deep: #000000; /* Preto */
+  --color-text-on-dark: #ffffff; /* Branco */
+  --color-accent-purple: #31266b; /* Roxo */
+  --color-accent-coral: #ff3b30; /* Coral */
+  --color-accent-olive: #7d804d; /* Oliva */
+  --font-script: "Caveat", cursive; /* promotional phrases only — never body/nav */
+}
+
+/*
+ * Inline theme block — the two next/font-backed families. Each theme key reads a DIFFERENT
+ * variable name than itself (--font-display-anton / --font-body-manrope, bound in
+ * src/app/layout.tsx), with the literal stack as the var() fallback for whenever next/font has
+ * not run. A theme key that reads a variable of its own name is the self-reference bug; `inline`
+ * is what makes the utility resolve the next/font value at the element instead of at the root.
+ */
 @theme inline {
-  --color-accent: var(--color-accent);
-  --color-surface-primary: var(--color-surface-primary);
-  --color-surface-deep: var(--color-surface-deep);
-  --color-text-on-dark: var(--color-text-on-dark);
-  --color-accent-purple: var(--color-accent-purple);
-  --color-accent-coral: var(--color-accent-coral);
-  --color-accent-olive: var(--color-accent-olive);
-  --font-display: var(--font-display);
-  --font-body: var(--font-body);
-  --font-script: var(--font-script);
+  --font-display: var(--font-display-anton, "Anton", "Archivo Black", sans-serif);
+  --font-body: var(--font-body-manrope, "Manrope", "Inter", sans-serif);
 }

@@ -1,52 +1,62 @@
 ---
 gsd_state_version: "1.0"
-current_phase: 01
+current_phase: 1
 current_phase_name: Foundation, Architecture, Brand Identity & Security Baseline
-status: phase-1-partial-advancing-to-phase-2
-stopped_at: Phase 01 UAT complete (1 passed, 1 accepted/deferred gap) — user authorized advance to Phase 2 with SEC-10 registrar leg still open
-last_updated: "2026-09-13T19:30:17.202Z"
-last_activity: 2026-09-13
-last_activity_desc: Phase 01 execution started
-state_head: 1faf984ce7562d69140f3c8bb600deab604457dd
+status: planning
+stopped_at: Phase 02 complete, ready to plan Phase 1
+last_updated: "2026-09-14T03:04:13.195Z"
+last_activity: 2026-09-14
+last_activity_desc: Phase 02 complete, transitioned to Phase 1
+state_head: 76ab4e90277ca2557c2a81950ae540a5809c8bc0
 progress:
   total_phases: 5
-  completed_phases: 0
-  total_plans: 6
-  completed_plans: 6
-  percent: 0
+  completed_phases: 1
+  total_plans: 12
+  completed_plans: 12
+  percent: 20
 ---
 
 # Project State
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-09-12)
+See: .planning/PROJECT.md (updated 2026-09-14)
 
 **Core value:** Fazer o visitante entender em segundos que a It's Garlic é "mais que um pão de
 alho" e sair do site com um pedido feito no iFood ou uma conversa iniciada no WhatsApp — sem
 fricção, mobile-first.
-**Current focus:** Phase 01 — Foundation, Architecture, Brand Identity & Security Baseline
+**Current focus:** Phase 03 — Menu & Product Catalog (real next actionable phase)
 
 ## Current Position
 
-Phase: 01 (Foundation, Architecture, Brand Identity & Security Baseline) — NOT formally marked complete
-Plan: 6 of 6 executed, all with SUMMARY.md
-Status: UAT complete (1 passed, 1 accepted/deferred gap — G-01-2, SEC-10 registrar leg). ROADMAP.md
+Phase: 1 — Foundation, Architecture, Brand Identity & Security Baseline (roadmap pointer only —
+see note below)
+Plan: Not started
+Status: Ready to plan
 phase-1 checkbox intentionally left unchecked — the phase-completion predicate
 (`gsd_run phase uat-passed --require-verification`) does not pass while G-01-2 is open. User
 explicitly authorized starting Phase 2 anyway (2026-09-13) rather than waiting on the domain
 registrar purchase, which has no ETA. Re-run `/gsd-verify-work 01` to close G-01-2 once a
 registrar is chosen and MFA/registrar-lock are configured.
-Phase 02: Hero, CTAs & Location — about to start (discuss/plan)
-Last activity: 2026-09-13 — Phase 01 UAT complete, advancing to Phase 02 per user decision
 
-Progress: [░░░░░░░░░░] 0%
+**Real next actionable work is Phase 3 (Menu & Product Catalog)** — Phase 1's six plans and
+Phase 2's six plans are both fully executed; `gsd_run query phase.complete` points `current_phase`
+back at Phase 1 purely because its roadmap checkbox is unchecked (the known SEC-10 registrar gap
+above), not because there is Phase-1 work left to do. Use `/gsd-discuss-phase 3` or
+`/gsd-plan-phase 3` to continue, not `/gsd-plan-phase 1`.
+
+Phase 02: Hero, CTAs & Location — ✓ COMPLETE (2026-09-14). 6/6 plans, UAT 5/5 pass (all
+gap-closure fixes confirmed live in-browser), VERIFICATION.md status: passed (17/17),
+SECURITY.md threats_open: 0, VALIDATION.md status: validated, UI-REVIEW.md 22/24 (advisory).
+Last activity: 2026-09-14 — Phase 02 complete
+
+Progress: [██░░░░░░░░] 20%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 0
+- Total plans completed: 6
 - Average duration: - min
 - Total execution time: 0 hours
 
@@ -54,7 +64,7 @@ Progress: [░░░░░░░░░░] 0%
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 02 | 6 | - | - |
 
 **Recent Trend:**
 
@@ -72,6 +82,12 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 01 P04 | 9min | 3 tasks | 5 files |
 | Phase 01 P05 | ~35min | 3 tasks | 14 files |
 | Phase 01 P06 | ~40min | 3 tasks | 8 files |
+| Phase 02 P01 | 20min | 3 tasks | 10 files |
+| Phase 02 P02 | ~5min | 2 tasks | 5 files |
+| Phase 02 P03 | ~15min | 3 tasks | 7 files |
+| Phase 02 P04 | 9min | 2 tasks | 7 files |
+| Phase 02 P05 | ~20min | 3 tasks | 10 files |
+| Phase 02 P06 | ~15min | 3 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -108,6 +124,24 @@ Recent decisions affecting current work:
 - [Phase 01 UAT]: Test 1 (client copy approval) passed on verbal approval attested by the user, on behalf of the actual brand-owner (user's sister) — covers tone/structure as working base only, not final per-section copy.
 - [Phase 01 UAT]: Test 2 issue accepted as deferred (not a code defect): SEC-12/14 complete; SEC-13 accepted risk (sole maintainer, AR-07); SEC-10 registrar leg deferred with no ETA by explicit user decision (AR-08) — domain registrar purchase not happening this phase. User authorized starting Phase 2 despite Phase 1 remaining formally incomplete in ROADMAP.md.
 - [Phase 01]: Remote `origin` connected to https://github.com/luisglauria/its-garlic (audited file list before push, per user's explicit process); branch `phase-01-foundation` pushed (not `main`, no --force). `main` (local) still has no upstream tracking.
+- [Phase 02]: 02-01: OrderCta/PendingCta signature extended with an optional describedBy prop (beyond the plan's locked artifact table) to associate the coral unavailability notice with the pending iFood button via aria-describedby
+- [Phase 02]: 02-01: page.tsx Task 2 rewrite removed the walking-skeleton store-name/address block entirely (not just the CTA ternary) — Location (LOCAL-01..04) is plan 02-02's scope
+- [Phase 02]: 02-01: pendingSuffix = "(em breve)", provisionalBadgeLabel = "Provisório" — vocabulary plan 02-02's hours notice reuses
+- [Phase 02]: [Phase 02]: 02-02: hoursPendingBody = "Em atualização — confirme no iFood ou no WhatsApp antes de vir." — UI-SPEC empty-state wording verbatim, names the concrete channels to check
+- [Phase 02]: [Phase 02]: 02-02: Location's directions anchor reuses ctaCopy.mapsLabel ("Como chegar") rather than a duplicate LocationCopy field — reuses plan 02-01's locked vocabulary
+- [Phase 02]: [Phase 02]: 02-02: populated-schedule rows render as {row.days}: {row.open} – {row.close} — the shape Phase 4's time-aware journey and the client's eventual hours confirmation apply against
+- [Phase 02]: [Phase 02]: 02-03: brandStoryCopy — heading 'Mais que um pão de alho' + two paragraphs covering all three skeleton carry-points (what/where/why the garlic bread is the signature)
+- [Phase 02]: [Phase 02]: 02-03: faqs — four entries (location/ordering/modalities/delivery), address/modality cross-checked against getStoreInfo() by sections.test.ts, ordering answer names iFood/WhatsApp without promising a working link
+- [Phase 02]: [Phase 02]: 02-03: diagonal-wedge separator (CSS clip-path revealing the black body background) at BrandStory's bottom edge separates the three adjacent charcoal sections without editing Location.tsx (out of this plan's scope)
+- [Phase 02]: [Phase 02]: 02-03: content-integrity gate over home-copy.ts — 5 named tests (currency, award/rating, superlative/urgency, cart/checkout, clock time), the mechanical half of tone-of-voice.md §5
+- [Phase 02]: [Phase 02]: 02-04: colours+script-font moved to a Tailwind static @theme block (literals), Anton/Manrope moved to an inline @theme block keyed by distinct --font-display-anton/--font-body-manrope variable names — same-name binding was the self-reference bug (G-02-5)
+- [Phase 02]: [Phase 02]: 02-04: globals.css import order swapped (tailwindcss first, design-tokens.css second) so the theme block lands inside @layer theme ahead of any unlayered literal
+- [Phase 02]: [Phase 02]: 02-04: check-brand-css.mjs checks the LAST (cascade-winning) declaration of each colour token against design-tokens.json, not mere presence, since a presence-only check would have passed on the original outage
+- [Phase 02]: [Phase 02]: 02-05: D-01a amends D-01 -- order-CTA row moves inside Hero (between subhead and illustration) instead of a separate section after it, closing G-02-2's fold criterion
+- [Phase 02]: [Phase 02]: 02-05: TIER_CLASS moved from Body(16px) to Label(14px) type-size token, px-6->px-4, w-full+text-center, PendingCta renders label+suffix as two lines -- brings the two-button order row under 343px mobile content width
+- [Phase 02]: [Phase 02]: 02-05: hero-fold.test.ts guards co-visibility mechanics (real computed widths, row-vs-illustration index) rather than source adjacency, the exact gap that let G-02-2 ship uncaught
+- [Phase 02]: [Phase 02]: 02-06: SectionSeparator (one shared, olive-ruled, diagonally-clipped, token-only band) closes all three charcoal-to-charcoal seams (BrandStory->Location, Location->Faq, Faq->Footer); one-off BrandStory wedge retired (G-02-4)
+- [Phase 02]: [Phase 02]: 02-06: section-boundaries.test.ts guard scoped to charcoal-to-charcoal seams specifically, not any-same-surface generically -- Hero/CtaGroup (both bg-surface-deep, directly adjacent, unseparated) is a distinct pre-existing out-of-scope design decision, not a regression this guard should flag
 
 ### Pending Todos
 
@@ -120,12 +154,14 @@ None yet.
   domain registrar during Phase 1 — deferred with no ETA (AR-08 in `01-SECURITY.md`, gap G-01-2
   in `01-UAT.md`). Phase 1 is NOT marked complete in ROADMAP.md as a result. Does not block
   Phase 2 (UI work does not depend on it) — re-run `/gsd-verify-work 01` once a registrar exists.
-- [Phase 2, Phase 4] Operating hours unconfirmed — only divergent 2.5–4.8-year-old Instagram
-  stories found ("Seg-Qua 12h–22h..." vs. "Dom-Qua 11h15–21h30..."). Blocks only the *real*
-  version of LOCAL-03 and PROMO-02/03; ships provisional/labeled in the meantime.
-- [Phase 2] Exact iFood store URL and official WhatsApp number unconfirmed — INTEGRA-01/02/04
-  ship with a clearly-marked placeholder destination via the Phase 1 integrations module, never a
-  guessed link.
+- [Carried from Phase 2, still affects Phase 4] Operating hours unconfirmed — only divergent
+  2.5–4.8-year-old Instagram stories found ("Seg-Qua 12h–22h..." vs. "Dom-Qua 11h15–21h30...").
+  Phase 2 shipped the honest provisional/pending version (LOCAL-03); blocks only PROMO-02/03's
+  real version until the client confirms.
+- [Carried from Phase 2, still affects Phase 3/4] Exact iFood store URL and official WhatsApp
+  number unconfirmed — Phase 2's CTAs ship with a clearly-marked placeholder destination via the
+  Phase 1 integrations module (never a guessed link); Phase 3's menu CTAs will need the same
+  treatment until confirmed.
 - [Phase 5] Domain/hosting registrar not finalized — affects when SEC-15 (DNS registrar lock +
   MFA) can actually be completed; hosting itself is decided (Vercel).
 - [Phase 5] Existence of a Google Meu Negócio profile unknown — affects NAP consistency scope for
@@ -145,8 +181,8 @@ Items acknowledged and deferred at milestone close, most recent first:
 
 ## Session Continuity
 
-Last session: 2026-09-13T17:32:36.538Z
-Stopped at: Completed 01-06-PLAN.md (Phase 01 complete, ready for verification)
+Last session: 2026-09-14T03:10:00Z
+Stopped at: Phase 02 complete (gap-closure executed, UAT 5/5 pass confirmed live in-browser,
+verification passed, security/validation/UI-review gates all run). Ready to plan Phase 3.
 Resume file: None
-before the planner finished and committed) were cleared during resume on 2026-09-13.
-Next: /gsd-execute-phase 1
+Next: /gsd-discuss-phase 3 (or /gsd-plan-phase 3 to skip straight to planning)

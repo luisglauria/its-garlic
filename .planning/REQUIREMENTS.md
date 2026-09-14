@@ -19,9 +19,9 @@ MVP **estático**: sem backend, sem CMS, sem login, sem checkout, sem analytics 
 
 ### Hero
 
-- [ ] **HERO-01**: Hero comunica a marca e o conceito "Mais que um pão de alho!" usando a identidade visual oficial (ver seção Identidade Visual)
-- [ ] **HERO-02**: Hero inclui os CTAs "Ver cardápio", "Pedir no iFood" e "Como chegar"
-- [ ] **HERO-03**: Foco visual do hero é fotografia real de pão de alho/produtos (fornecida pelo cliente) — não uma hamburgueria genérica
+- [x] **HERO-01**: Hero comunica a marca e o conceito "Mais que um pão de alho!" usando a identidade visual oficial (ver seção Identidade Visual)
+- [x] **HERO-02**: Hero inclui os CTAs "Ver cardápio", "Pedir no iFood" e "Como chegar"
+- [ ] **HERO-03**: Foco visual do hero é fotografia real de pão de alho/produtos (fornecida pelo cliente) — não uma hamburgueria genérica (Pendente: 02-01-PLAN.md entregou uma ilustração provisória rotulada como tal — D-03/D-04 — como placeholder disclosed; a fotografia real do cliente ainda não existe. Fica Pending até a foto real chegar, por decisão explícita do próprio plano, ver 02-VERIFICATION.md.)
 
 ### Cardápio
 
@@ -44,18 +44,18 @@ MVP **estático**: sem backend, sem CMS, sem login, sem checkout, sem analytics 
 
 ### Localização
 
-- [ ] **LOCAL-01**: Seção exibe endereço completo (Rua José Bonifácio, 747, Mercado da Torre, Recife-PE) com link/botão para o Google Maps — **sem mapa incorporado (iframe) no MVP**, para manter as metas de Lighthouse/Core Web Vitals independentes da estabilidade de um script de terceiro
-- [ ] **LOCAL-02**: Seção informa as modalidades de atendimento (balcão, delivery, take away)
-- [ ] **LOCAL-03**: Horário de funcionamento exibido em formato editável, marcado como provisório até confirmação do cliente — vale para toda exibição de horário do site, incluindo a lógica de promoções (PROMO-02/03)
-- [ ] **LOCAL-04**: Botão "Como chegar" direciona para o Google Maps
+- [x] **LOCAL-01**: Seção exibe endereço completo (Rua José Bonifácio, 747, Mercado da Torre, Recife-PE) com link/botão para o Google Maps — **sem mapa incorporado (iframe) no MVP**, para manter as metas de Lighthouse/Core Web Vitals independentes da estabilidade de um script de terceiro
+- [x] **LOCAL-02**: Seção informa as modalidades de atendimento (balcão, delivery, take away)
+- [x] **LOCAL-03**: Horário de funcionamento exibido em formato editável, marcado como provisório até confirmação do cliente — vale para toda exibição de horário do site, incluindo a lógica de promoções (PROMO-02/03)
+- [x] **LOCAL-04**: Botão "Como chegar" direciona para o Google Maps
 
 ### Integrações Externas
 
-- [ ] **INTEGRA-01**: Botão "Pedir no iFood" visível de forma proeminente (fixo ou facilmente acessível), mobile-first
-- [ ] **INTEGRA-02**: Botão/link do WhatsApp disponível como canal de atendimento e pedido alternativo (humano — sem bot no MVP)
-- [ ] **INTEGRA-03**: Se o iFood estiver indisponível, o site exibe um aviso, sem trocar o CTA principal
+- [x] **INTEGRA-01**: Botão "Pedir no iFood" visível de forma proeminente (fixo ou facilmente acessível), mobile-first
+- [x] **INTEGRA-02**: Botão/link do WhatsApp disponível como canal de atendimento e pedido alternativo (humano — sem bot no MVP)
+- [x] **INTEGRA-03**: Se o iFood estiver indisponível, o site exibe um aviso, sem trocar o CTA principal
 - [x] **INTEGRA-04**: Todos os links externos (iFood, WhatsApp, Instagram, avaliações, Maps) centralizados em um único módulo de configuração, nunca duplicados entre componentes
-- [ ] **INTEGRA-05**: Nenhum checkout próprio — todo pedido é redirecionado para iFood ou WhatsApp
+- [x] **INTEGRA-05**: Nenhum checkout próprio — todo pedido é redirecionado para iFood ou WhatsApp
 
 ### Identidade Visual
 
@@ -174,6 +174,7 @@ diz se **bloqueia** alguma fase (o código não pode ficar correto sem o dado re
 - [ ] *(decisão de escopo, não bloqueia código)* Se produtos esgotados serão marcados no site, ou só controlados no iFood (CARD-V2-01)
 - [ ] *(conteúdo a confirmar, não bloqueia código)* Domínio definitivo (hospedagem já decidida: Vercel)
 - [ ] *(conteúdo a confirmar, não bloqueia código)* Existência de um perfil no Google Meu Negócio — bloqueia apenas a consistência de NAP (SEO-04), não o restante do site
+- [ ] *(conteúdo a confirmar, não bloqueia código)* Fotografia real de produto para o hero (HERO-03) — o site já ficou no ar com uma ilustração provisória rotulada como tal (D-03/D-04); troca é um swap de um arquivo só assim que o cliente enviar as fotos
 
 ---
 
@@ -196,9 +197,9 @@ Quais fases cobrem quais requisitos. Atualizado durante a criação do roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| HERO-01 | Phase 2 | Pending |
-| HERO-02 | Phase 2 | Pending |
-| HERO-03 | Phase 2 | Pending |
+| HERO-01 | Phase 2 | Complete |
+| HERO-02 | Phase 2 | Complete |
+| HERO-03 | Phase 2 | Pending (provisional illustration shipped, disclosed; real client photo outstanding) |
 | CARD-01 | Phase 3 | Pending |
 | CARD-02 | Phase 3 | Pending |
 | CARD-03 | Phase 3 | Pending |
@@ -209,15 +210,15 @@ Quais fases cobrem quais requisitos. Atualizado durante a criação do roadmap.
 | PROMO-01 | Phase 4 | Pending |
 | PROMO-02 | Phase 4 | Pending |
 | PROMO-03 | Phase 4 | Pending |
-| LOCAL-01 | Phase 2 | Pending |
-| LOCAL-02 | Phase 2 | Pending |
-| LOCAL-03 | Phase 2 | Pending |
-| LOCAL-04 | Phase 2 | Pending |
-| INTEGRA-01 | Phase 2 | Pending |
-| INTEGRA-02 | Phase 2 | Pending |
-| INTEGRA-03 | Phase 2 | Pending |
+| LOCAL-01 | Phase 2 | Complete |
+| LOCAL-02 | Phase 2 | Complete |
+| LOCAL-03 | Phase 2 | Complete |
+| LOCAL-04 | Phase 2 | Complete |
+| INTEGRA-01 | Phase 2 | Complete |
+| INTEGRA-02 | Phase 2 | Complete |
+| INTEGRA-03 | Phase 2 | Complete |
 | INTEGRA-04 | Phase 1 | Complete |
-| INTEGRA-05 | Phase 2 | Pending |
+| INTEGRA-05 | Phase 2 | Complete |
 | MARCA-01 | Phase 1 | Complete |
 | MARCA-02 | Phase 1 | Complete |
 | MARCA-03 | Phase 1 | Complete |
