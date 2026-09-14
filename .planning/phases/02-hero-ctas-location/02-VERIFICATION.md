@@ -1,35 +1,31 @@
 ---
 phase: 02-hero-ctas-location
-verified: 2026-09-13T22:20:00Z
+verified: 2026-09-14T23:55:00Z
 status: human_needed
-score: 14/14 must-haves verified
-covered_files: [".planning/REQUIREMENTS.md", ".planning/phases/02-hero-ctas-location/02-01-PLAN.md", ".planning/phases/02-hero-ctas-location/02-01-SUMMARY.md", ".planning/phases/02-hero-ctas-location/02-02-PLAN.md", ".planning/phases/02-hero-ctas-location/02-02-SUMMARY.md", ".planning/phases/02-hero-ctas-location/02-03-PLAN.md", ".planning/phases/02-hero-ctas-location/02-03-SUMMARY.md", ".planning/phases/02-hero-ctas-location/02-REVIEW.md", "next.config.ts", "public/brand/hero-illustration.svg", "src/app/page.tsx", "src/components/home/BrandStory.tsx", "src/components/home/CtaGroup.tsx", "src/components/home/Faq.tsx", "src/components/home/Hero.tsx", "src/components/home/Location.test.ts", "src/components/home/Location.tsx", "src/components/home/OrderCta.test.ts", "src/components/home/OrderCta.tsx", "src/components/home/ProvisionalBadge.tsx", "src/components/home/home.test.ts", "src/components/home/sections.test.ts", "src/content/home-copy.ts"]
-covered_digest: "v1:sha256:70cd35638e4ee9d805c011248507adeebedd3aefb914a5fc7cf09db1b84bc8b2"
+score: 17/17 must-haves verified
+covered_files: [".planning/REQUIREMENTS.md", ".planning/ROADMAP.md", ".planning/phases/02-hero-ctas-location/02-01-PLAN.md", ".planning/phases/02-hero-ctas-location/02-01-SUMMARY.md", ".planning/phases/02-hero-ctas-location/02-02-PLAN.md", ".planning/phases/02-hero-ctas-location/02-02-SUMMARY.md", ".planning/phases/02-hero-ctas-location/02-03-PLAN.md", ".planning/phases/02-hero-ctas-location/02-03-SUMMARY.md", ".planning/phases/02-hero-ctas-location/02-04-PLAN.md", ".planning/phases/02-hero-ctas-location/02-04-SUMMARY.md", ".planning/phases/02-hero-ctas-location/02-05-PLAN.md", ".planning/phases/02-hero-ctas-location/02-05-SUMMARY.md", ".planning/phases/02-hero-ctas-location/02-06-PLAN.md", ".planning/phases/02-hero-ctas-location/02-06-SUMMARY.md", ".planning/phases/02-hero-ctas-location/02-CONTEXT.md", ".planning/phases/02-hero-ctas-location/02-REVIEW.md", ".planning/phases/02-hero-ctas-location/02-SECURITY.md", ".planning/phases/02-hero-ctas-location/02-UAT.md", ".planning/phases/02-hero-ctas-location/02-UI-REVIEW.md", ".planning/phases/02-hero-ctas-location/02-UI-SPEC.md", ".planning/phases/02-hero-ctas-location/02-VALIDATION.md", "next.config.ts", "package.json", "public/brand/hero-illustration.svg", "scripts/check-brand-css.mjs", "src/app/globals.css", "src/app/layout.tsx", "src/app/page.tsx", "src/components/home/BrandStory.tsx", "src/components/home/CtaGroup.tsx", "src/components/home/Faq.tsx", "src/components/home/Hero.tsx", "src/components/home/Location.test.ts", "src/components/home/Location.tsx", "src/components/home/OrderCta.test.ts", "src/components/home/OrderCta.tsx", "src/components/home/OrderCtaRow.tsx", "src/components/home/ProvisionalBadge.tsx", "src/components/home/hero-fold.test.ts", "src/components/home/home.test.ts", "src/components/home/section-boundaries.test.ts", "src/components/home/sections.test.ts", "src/components/layout/Footer.tsx", "src/components/layout/SectionSeparator.tsx", "src/components/layout/layout.test.ts", "src/content/home-copy.ts", "src/styles/design-tokens.css", "src/styles/design-tokens.json", "src/styles/design-tokens.test.ts"]
+covered_digest: "v1:sha256:60558d38a10937b5e4bba4cade32de299e3a599b24134b511eca61dc676a664d"
 behavior_unverified: 0
 overrides_applied: 0
 re_verification:
-  previous_status: gaps_found
-  previous_score: 13/14
+  previous_status: human_needed
+  previous_score: 14/14
   gaps_closed:
-    - "REQUIREMENTS.md accurately reflects that HERO-03 (real client product photography) has not been delivered"
+    - "G-02-2 (UAT Test 2): both order CTAs stacked instead of side-by-side, and rendered outside the hero after the illustration, so INTEGRA-01's fold criterion failed at 375x667/390x844 — closed by 02-05-PLAN.md (order row moved inside Hero, two-column grid with no responsive gate, hero-fold.test.ts guard)"
+    - "G-02-4 (UAT Test 4): brand story/Location/FAQ (and the unreported FAQ→footer seam) rendered as one undifferentiated charcoal field, only one low-contrast one-off wedge existed — closed by 02-06-PLAN.md (shared SectionSeparator at all three seams, olive rule measured at 3.74:1, section-boundaries.test.ts guard)"
+    - "G-02-5 (UAT Test 5): entire brand palette and both font families dead site-wide (self-referential CSS custom-property cycle plus import-order bug), which also silently killed every focus ring including the ones UAT Test 5 reported missing — closed by 02-04-PLAN.md (static/inline @theme split, distinct next/font variable names, design-tokens.test.ts + verify:css guards)"
   gaps_remaining: []
   regressions: []
 human_verification:
-  - test: "On a 375x667 and 390x844 mobile viewport, load the homepage and look at the hero (kicker, headline, illustration)."
-    expected: "The concept line, headline and illustration read as It's Garlic rather than a generic burger site (compare against img/logo.png and the Instagram reference screenshots); the 'Imagem ilustrativa — foto real em breve' disclosure is legible and unmistakably attached to the illustration; the kicker/headline do not wrap past two lines; the illustration does not jump or reflow as it loads."
-    why_human: "Brand fidelity, 'would a reader mistake this for a photo', and CLS-on-load are visual judgments the project's DOM-less static-source-inspection test stack cannot make (02-01-PLAN.md Task 1 human-check, deferred per human_verify_mode: end-of-phase)."
-  - test: "On the same two mobile viewports, confirm both order CTAs (iFood, WhatsApp) are visible side by side without scrolling past the hero; Tab through the CTA row; click each pending button."
-    expected: "INTEGRA-01's fold criterion holds (both order CTAs visible pre-scroll); the two pending buttons read as deliberately unavailable rather than broken; Tab reaches the directions link with a clear visible focus ring against the dark surface; the coral unavailability notices are legible; clicking each pending button does nothing at all."
-    why_human: "Viewport-relative fold visibility and focus-ring legibility cannot be measured by this stack — recorded as Manual-Only in 02-VALIDATION.md (02-01-PLAN.md Task 2 human-check, deferred)."
-  - test: "On a 390x844 mobile viewport, read the Location section (hours, modality chips, directions link) and activate the directions link."
-    expected: "The hours block reads as honestly unconfirmed rather than broken or empty; the provisional marker is legible olive-on-black inside the charcoal section; modality chips wrap rather than overflow; the directions link is obviously a link, Tab reaches it with a visible focus ring, and activating it opens the real store location in Google Maps in a new tab; nothing in the section reads as a promise that the store is open right now."
-    why_human: "Whether the hours copy lands as honest rather than evasive, chip-wrap behavior at 390px, and focus-ring legibility/keyboard reachability are visual/tone judgments this stack cannot make (02-02-PLAN.md Task 1 human-check, deferred)."
-  - test: "Read the brand story out loud as if you were the person behind the counter; then look at the brand-story/Location/FAQ sections together."
-    expected: "It sounds like someone who works there and likes the food, not an agency trying to sound young; it makes the garlic bread read as the starting point rather than the ceiling; every sentence is defensible from PROJECT.md alone; the three adjacent charcoal sections read as distinct blocks (via the diagonal-wedge separator) rather than one undifferentiated field."
-    why_human: "Voice authenticity and honesty are judgment calls no structural gate can make (02-03-PLAN.md Task 1 human-check, deferred)."
-  - test: "Use the FAQ with keyboard only (Tab to each question, Enter/Space to open/close); read all four answers; open the browser network panel and reload."
-    expected: "Focus ring is clearly visible against the section background on each summary; Enter and Space both open and close each entry; the four answers are ones the brand owner could stand behind word for word, especially the ordering answer (honest about channels, no working-link promise); the FAQ adds no JavaScript request of its own on reload."
-    why_human: "Real keyboard behavior in a browser and the copy's judgment-of-honesty are not verifiable by renderToStaticMarkup/source-text checks (02-03-PLAN.md Task 2 human-check, deferred)."
+  - test: "On a 375x667 and 390x844 mobile viewport, load http://localhost:3000 (npm run dev), look at the hero without scrolling, Tab through both order CTAs, and click each pending button."
+    expected: "Both order CTAs (iFood, WhatsApp) are fully visible side by side before any scrolling, at both sizes, per INTEGRA-01's fold criterion. Neither button's text overflows its rounded shape or the screen edge. Each button still reads as deliberately unavailable (greyed, not pressable) with its coral explanation legible just below the pair. Each button shows a clear lime focus ring when tabbed to, and clicking either one does nothing at all."
+    why_human: "This is the exact fact UAT Test 2 reported broken (G-02-2). The fix is now backed by a NEW automated guard — hero-fold.test.ts's 5 named tests (co-visibility ordering, document-reaches-only-through-Hero, two-column-grid-no-breakpoint-gate, wrapping-allowed, and a real word-length/token-derived horizontal-fit budget at both 375px and 390px) — and this verifier independently confirmed in the compiled prerendered HTML that the order row's grid-cols-2 markup precedes the hero illustration inside <body>. But budget arithmetic proving the labels fit is not the same as a browser actually painting the two buttons side by side without overflow; no browser was available to any executor across plans 02-04/05/06 (each SUMMARY.md records this explicitly), so the physical paint has never been confirmed since the fix landed."
+  - test: "npm run dev, load the homepage at 390x844, Tab from the top of the page through the skip link, the CTA buttons, both 'Como chegar' links, and all four FAQ questions."
+    expected: "The page renders on the brand's dark surfaces (black hero/CTA band, charcoal brand-story/location/FAQ/footer) with white body copy and lime accents — not a white page with black text. Headings render in Anton, body copy in Manrope. Every single tab stop paints a visible lime ring around the focused element, including the skip link when it appears and every FAQ summary and directions link UAT Test 5 originally reported as ring-less."
+    why_human: "This is the exact fact UAT Test 5 reported broken (G-02-5, a total brand-palette + WCAG 2.4.7 outage, not just a missing ring). The fix is now backed by TWO new automated guards this verifier independently re-ran green: design-tokens.test.ts (28 source-level tests covering both AND-gate causes) and npm run verify:css (a compiled-artifact checker proving, from the real .next output, zero self-referential custom properties, a populated @layer theme, all 7 brand colours resolving to their official literal, and the :focus-visible rule surviving into the compiled CSS). Computed colour and a painted focus outline are still browser rendering facts the automated checks cannot see — they prove the tokens resolve in the stylesheet, not that a human eye perceives the ring against every real background. No browser was available to confirm this since the fix landed."
+  - test: "npm run dev, load the homepage at 390x844, and scroll slowly from the brand story down through Location, the FAQ and into the footer."
+    expected: "Four distinct blocks, not one continuous charcoal field: a visible olive-ruled band with a diagonal taper marks the end of the brand story, the end of Location, and the end of the FAQ (the seam the user never reported but has the identical defect). Each band reads as a deliberate divider at a glance, and nothing in it is selectable, focusable, or announced when tabbing past."
+    why_human: "This is the exact fact UAT Test 4 reported broken (G-02-4 — voice/content were already confirmed good; only the visual separation failed). The fix is now backed by a NEW automated guard this verifier independently re-ran green: section-boundaries.test.ts (14 tests) which derives each home section's surface from its own source file (not a hardcoded list), asserts a separator sits between every adjacent same-surface pair including the FAQ→footer seam, asserts exactly one boundary device exists anywhere under src/, and computes the WCAG contrast ratio of the olive rule against Carvão from the real design-tokens.json hex values (≥3:1). \"Reads as distinct blocks at a glance\" is nonetheless a perceptual judgment the automated checks cannot make — they prove the device exists, is wired at every seam, and is measured to be salient, not that a reader actually perceives four separate blocks when scrolling."
 ---
 
 # Phase 2: Hero, CTAs & Location Verification Report
@@ -38,45 +34,100 @@ human_verification:
 and can act on iFood/WhatsApp/Maps CTAs or find the store's location and hours — with hours/links
 clearly marked provisional until the client confirms the two blocked pendências.
 
-**Verified:** 2026-09-13
+**Verified:** 2026-09-14
 **Status:** human_needed
-**Re-verification:** Yes — after gap closure (previous run: `gaps_found`, 13/14)
+**Re-verification:** Yes — after three gap-closure waves (plans 02-04, 02-05, 02-06), on top of the
+prior `human_needed` (14/14) verification from 2026-09-13.
 
 ## Re-Verification Summary
 
-The previous run (this session) found a single blocking gap: `.planning/REQUIREMENTS.md` marked
-HERO-03 "Complete" (checkbox + Traceability row) despite `02-01-PLAN.md`'s own
-`flagged_assumptions` stating explicitly that HERO-03 must stay "Pending" until the client
-supplies real product photography — the shipped hero image is a disclosed provisional
-illustration, not real photography.
+**What changed since the last VERIFICATION.md.** The prior pass (2026-09-13, `human_needed`, 14/14)
+covered only plans 02-01/02-02/02-03. End-of-phase UAT (`02-UAT.md`) then ran against that state and
+the human tester found three issues, each converted into a tracked gap: **G-02-2** (order CTAs
+stacked and below the fold — UAT Test 2, major), **G-02-4** (brand story/Location/FAQ read as one
+undifferentiated charcoal field — UAT Test 4, cosmetic, though the debug session found its blast
+radius includes an unreported fourth seam), and **G-02-5** (no visible focus ring on FAQ/directions
+— UAT Test 5, major, though the debug session found the actual cause is a total brand-palette outage
+that also killed the ring). Three gap-closure plans landed in dependency order — 02-04 (G-02-5, the
+blocking prerequisite: nothing about section separators or real line counts is observable while
+every background renders browser-default white), 02-05 (G-02-2), 02-06 (G-02-4) — and `02-UAT.md`'s
+`Gaps` section now records all three as `status: resolved`.
 
-Commit `60b8a05` ("docs(02): correct HERO-03 to Pending — real photo still outstanding") is the
-only change since that verification. Confirmed via `git show --stat 60b8a05` (touches exactly one
-file, `.planning/REQUIREMENTS.md`, 3 insertions / 2 deletions) and `git status --porcelain`
-(working tree otherwise clean apart from untracked verification/research-cache files). The fix:
+**This pass re-verified the post-gap-closure state directly against the codebase, not against those
+claims.** The independent checks run this session:
 
-1. **Checkbox** (line 24): `- [x] **HERO-03**` → `- [ ] **HERO-03**`, with an inline Pendente
-   note explaining the disclosed-illustration situation and citing D-03/D-04 and this
-   VERIFICATION.md as the source of the decision.
-2. **Traceability table** (line 202): `| HERO-03 | Phase 2 | Complete |` →
-   `| HERO-03 | Phase 2 | Pending (provisional illustration shipped, disclosed; real client photo outstanding) |`.
-3. **New pendência line** (line 177, block "5. Informações Pendentes de Confirmação"): names the
-   outstanding real product photography explicitly, notes the shipped provisional illustration is
-   disclosed as such, and notes the eventual fix is a single-file swap — matching the actual
-   deployed state and the plan's own documentation contract.
+- `npm test` — **210/210 passing, 14 suites** (re-run fresh, not read from a SUMMARY.md), including
+  every new gap-closure guard: `design-tokens.test.ts` (28 tests), `hero-fold.test.ts` (5 tests),
+  `section-boundaries.test.ts` (14 tests), and the pre-existing `brand-assets.test.ts` MARCA-02/03
+  mirror guard — all four re-run in isolation too (`npx vitest run <files>` → 62/62 passing).
+- `npm run build` — clean, static export succeeds.
+- `npm run lint` — 0 errors (1 pre-existing, unrelated warning in `scripts/vectorize-logo.mjs`,
+  unchanged by this phase).
+- `npm run verify:css` — clean: "7 brand colour tokens resolve to their official literals, theme
+  layer populated, focus rule present, display font wired through next/font" — read directly from
+  the compiled `.next` output, not narrated.
+- `git status --porcelain` — working tree clean apart from untracked research-cache JSON and a
+  deleted `HANDOFF.json`; no drift between what the SUMMARYs claim and what is committed.
+- Direct source read of `src/styles/design-tokens.css` — confirmed no custom property is defined in
+  terms of itself; the seven brand colours sit in a `@theme static` block as literal hex values; the
+  two font keys (`--font-display`/`--font-body`) reference the distinctly-named
+  `--font-display-anton`/`--font-body-manrope` variables, not themselves.
+- Direct source read of `src/app/page.tsx`, `src/components/home/Hero.tsx`,
+  `src/components/home/OrderCtaRow.tsx`, `src/components/home/CtaGroup.tsx`,
+  `src/components/layout/SectionSeparator.tsx`, `src/components/layout/Footer.tsx` — confirmed the
+  composition SUMMARY.md claims: the order-CTA row is a real child of `Hero`, before the
+  illustration; `CtaGroup` now carries only the secondary/tertiary CTAs; `SectionSeparator` is
+  rendered exactly twice in `page.tsx` (brand-story→Location, Location→FAQ) plus once inside
+  `Footer.tsx` (FAQ→footer).
+- **Independent prerendered-HTML check (not in any SUMMARY.md):** parsed the real
+  `.next/server/app/index.html`, located content after `<body>`, and confirmed the order row's
+  `grid-cols-2` markup index is lower than the hero illustration's asset-path index (4158 < 5835) —
+  i.e. the order CTAs genuinely precede the illustration in the actual rendered document, not just in
+  JSX source order. Also confirmed: 3 `disabled=""` buttons render (pending order CTAs + "Ver
+  cardápio"), and neither `ifood.com.br` nor `wa.me` appears anywhere in the rendered HTML (no
+  unconfirmed-destination leak).
+- `grep` sweep for `TBD`/`FIXME`/`XXX`/`HACK`/`PLACEHOLDER` and for hex-colour literals across every
+  file this phase's plans (02-01 through 02-06) modified — zero matches.
+- `.planning/REQUIREMENTS.md` re-read directly: HERO-03 is still `[ ]` Pending, with the same
+  disclosed-illustration reasoning as the prior pass; unaffected by any gap-closure plan.
 
-All three edits verified directly via `git show 60b8a05 -- .planning/REQUIREMENTS.md` and by
-grepping the current file content (`grep -n "HERO-03"` / `grep -n "Informações Pendentes"`) — not
-from SUMMARY.md or commit-message claims. The wording is honest: it does not claim the requirement
-is fulfilled, it explains why an illustration shipped instead, and it points at the concrete
-follow-up (client photo swap). No other line in REQUIREMENTS.md was touched by this commit —
-confirmed by the diff being exactly the three hunks above.
+**No regressions found.** All 14 truths from the prior pass still hold (re-confirmed at Level
+1–3 rather than assumed), and the gap-closure work did not touch any file outside its declared scope
+in a way that broke another truth (`npm test` count only grew: 158 → 186 → 196 → 210, one clean
+increment per wave, matching the commit ledger in each SUMMARY.md).
 
-**Gap closed.** No regressions: `npm test` re-run after the fix still passes 158/158 across 11
-suites, and no source/component/test file changed alongside the REQUIREMENTS.md edit (`git show
---stat` confirms single-file diff), so the 13 previously-verified truths are unaffected by this
-change — re-confirmed below at the same evidence level as the initial run (Levels 1–3 inspected
-directly, not re-derived from SUMMARY.md).
+**What this pass adds.** Three new truths (15–17 below) covering the substance of what 02-04/05/06
+actually fixed (palette/font resolution, focus-rule wiring, and separator presence+contrast), each
+independently re-verified against the current codebase rather than trusted from SUMMARY.md.
+
+**Human verification — reconciled, not silently dropped.** The prior pass deferred five
+`<human-check>` items to end-of-phase UAT. UAT then actually ran with a real human: **Test 1 (hero
+brand fidelity/CLS) and Test 3 (Location tone/chip-wrap) both PASSED** — those two original
+human-verification items are resolved by that real human pass and are not carried forward here.
+**Tests 2, 4 and 5 failed** and became G-02-2/G-02-4/G-02-5. The code-level causes are now fixed and
+independently re-verified in this pass, and three *new* `<human-check>` blocks were written into
+plans 02-04/02-05/02-06 specifically to re-confirm the visual fix — but **every one of those
+human-checks was explicitly not run**, because no browser was available to the executor in any of
+the three gap-closure sessions (each SUMMARY.md's own "Next Phase Readiness" section says so). So the
+underlying perceptual/visual facts UAT Tests 2/4/5 originally failed on have new automated arithmetic
+and structural guards behind them (see the frontmatter `human_verification` entries above for exactly
+which guard backs which item), but the actual paint — the one thing a human eye and this project's
+DOM-less `vitest`/`node`-environment test stack cannot substitute for each other on — has never been
+re-confirmed since the fixes landed. These three items remain open below.
+
+**Predicate cross-check.** `gsd_run phase uat-passed 02 --require-verification` was run after
+drafting this report and currently returns `passed: false`, citing `02-UAT.md` tests 2/4/5 as
+`result: issue` and this file's prior `status=human_needed`/`stale`. The prior-status blocker is
+addressed by this update. **The three UAT test-level `result:` fields are a separate, out-of-scope
+finding**: `02-UAT.md`'s `Gaps` section already reconciles G-02-2/G-02-4/G-02-5 as `status: resolved`
+(commit `60a350f`), but the individual `### 2`/`### 4`/`### 5` `result: issue` lines under `## Tests`
+were never updated to match — the machine-readable per-test verdict and the human-readable gap
+ledger have drifted apart in the same file. This verifier's mandate is `02-VERIFICATION.md` only; the
+`02-UAT.md` test-result reconciliation is flagged here for the orchestrator/human, not silently fixed
+in scope. Independently of that drift, this verifier's own `human_needed` status (three open
+human-verification items above) means the predicate would not report `passed: true` yet regardless —
+both findings point at the same real gap: the paint has not been re-confirmed by a human since the
+code fix landed.
 
 ## Goal Achievement
 
@@ -84,125 +135,155 @@ directly, not re-derived from SUMMARY.md).
 
 | # | Truth | Status | Evidence |
 |---|-------|--------|----------|
-| 1 | Hero renders "Mais que um pão de alho!" as real document text plus a CLS-safe 1:1 illustrated image slot with a visible "provisional" disclosure (HERO-01/03, D-03/D-04) | ✓ VERIFIED | `src/components/home/Hero.tsx` — `h1`/kicker as text, `next/image fill` in `aspect-square` container, `preload` (not deprecated `priority`); prerendered `.next/server/app/index.html` contains the concept line, the illustration path and the disclosure text; `home.test.ts` (158/158 passing) asserts image-pipeline props and disclosure presence |
-| 2 | The three locked CTA labels ("Ver cardápio", "Pedir no iFood", "Como chegar") appear verbatim in one row below the hero (HERO-02) | ✓ VERIFIED | Prerendered HTML contains all three labels; `CtaGroup.tsx` reads them from `ctaCopy`; `OrderCta.test.ts`/`home.test.ts` assert this structurally |
-| 3 | "Pedir no iFood" is the visually primary CTA, WhatsApp renders beside it with identical treatment, and both are reachable without scrolling past the hero on mobile (INTEGRA-01/02) | ✓ VERIFIED (structural); fold-visibility is a viewport-relative visual fact — see Human Verification #2 | `CtaGroup.tsx` renders both `OrderCta` calls at `tier="primary"` through the same shared primitive (D-06 parity is structural, not copy-paste); `home.test.ts` asserts both go through `OrderCta` |
-| 4 | While unconfirmed, both order CTAs render as native disabled buttons labelled "(em breve)" with an adjacent coral notice explaining the unavailability and pointing at "Como chegar"; the primary CTA is never swapped (INTEGRA-03, D-05/D-06) | ✓ VERIFIED | Prerendered HTML: `disabled` present, no `aria-disabled`, no `ifood.com.br`/`wa.me` host leak, no sentinel leak; `CtaGroup.tsx` renders both `ifoodUnavailableNotice` and `whatsappUnavailableNotice`, each associated via matching `aria-describedby`/`id` pairs |
-| 5 | No `home/` component or page offers an on-site ordering path (INTEGRA-05) | ✓ VERIFIED | `home.test.ts`'s directory-sweep guard asserts no `<form>` and no cart/checkout affordance across every non-test file under `src/components/home/` plus `src/app/page.tsx`; content-integrity gate extends this to `home-copy.ts` |
-| 6 | Location section renders the store's full address from the validated record, with no embedded map iframe anywhere in the repository (LOCAL-01) | ✓ VERIFIED | `Location.tsx` reads `store.address`/`neighborhood`/`city`/`state` as props (`StoreInfo`), no literal; prerendered HTML contains "Bonif[á]cio", "747", "Mercado da Torre", "Recife"; repository-wide `home.test.ts` sweep asserts no `<iframe>` in any `.ts`/`.tsx`/`.css` under `src/` |
-| 7 | Service modalities render as a chip row mapped over `store.modalities`, correctly handling zero/one/many items (LOCAL-02) | ✓ VERIFIED | `Location.tsx`'s `MODALITY_LABEL` typed against the schema enum, `.map()` over the array, zero-length guard renders nothing; `Location.test.ts` exercises all three cardinalities |
-| 8 | Hours render under a provisional marker driven by `store.hours.provisional`; empty schedule renders the honest pending body (never a time), populated schedule renders editable day/open/close rows (LOCAL-03, D-07) | ✓ VERIFIED | `Location.tsx` branches on `hours.schedule.length`; `home.test.ts`'s `CLOCK_TIME` guard asserts no invented clock time in any non-test component or in `home-copy.ts`; prerendered HTML has no clock-time pattern; `Location.test.ts` exercises both branches |
-| 9 | "Como chegar" is a live anchor whose href is exactly `buildMapsUrl().url`, new tab, safe rel (LOCAL-04) | ✓ VERIFIED | `Location.tsx`/`CtaGroup.tsx` both render `href={maps.url}` `target="_blank" rel="noopener noreferrer"`; prerendered HTML contains the confirmed `google.com/maps` destination |
-| 10 | The hero illustration (the page's `preload`-marked LCP element) actually loads (HTTP 200), not a broken image (CR-01 fix) | ✓ VERIFIED (behaviorally, not just source-text) | Confirmed in prior verification run via `next dev` + `curl` against the exact optimizer URL; not re-run this pass since `next.config.ts`, `Hero.tsx`, and the SVG asset are unchanged by the REQUIREMENTS.md-only diff |
-| 11 | No `home/` component contains a hex-colour literal, a URL literal, or a direct `@/data/*` import (ARQ-02/SEC-03 carried) | ✓ VERIFIED | `grep -rnE "#[0-9a-fA-F]{6}" src/components/home/*.tsx` → no matches; `home.test.ts`'s sweep asserts the same over all non-test files; `npm run lint` passes (ARQ-02 ESLint boundary active) |
-| 12 | `src/content/home-copy.ts` contains no price, award, rating, superlative, urgency/guilt construction, cart/checkout phrase, or clock time (CONT-01/03 carried) | ✓ VERIFIED | `home.test.ts`'s five named content-integrity tests pass (part of the 158/158 re-run this pass) |
-| 13 | Each FAQ entry is a native `<details>/<summary>` disclosure, zero client JavaScript, no hand-wired ARIA | ✓ VERIFIED | `Faq.tsx` uses `<details>`/`<summary>`, no `"use client"`, no `useState`/`onClick`; prerendered HTML: 4 `<details>`, matching `<summary>` count, no `aria-expanded`/`aria-controls` |
-| 14 | REQUIREMENTS.md accurately reflects that HERO-03 (real client product photography) has not been delivered | ✓ VERIFIED | `git show 60b8a05 -- .planning/REQUIREMENTS.md` and direct file inspection: checkbox reverted to `[ ]`, Traceability row reads "Pending (provisional illustration shipped, disclosed; real client photo outstanding)", new pendência line added under block 5 naming the outstanding real photography — all three edits present, honest, and consistent with each other; commit touches only this one file |
+| 1 | Hero renders "Mais que um pão de alho!" as real document text plus a CLS-safe 1:1 illustrated image slot with a visible "provisional" disclosure (HERO-01/03, D-03/D-04) | ✓ VERIFIED | `src/components/home/Hero.tsx` unchanged in this regard by any gap-closure plan; prerendered HTML re-confirmed to contain the concept line, illustration path, disclosure text; `home.test.ts` (part of 210/210) |
+| 2 | The three locked CTA labels ("Ver cardápio", "Pedir no iFood", "Como chegar") appear verbatim, now split across `Hero`'s order row and `CtaGroup`'s secondary/tertiary row (HERO-02, D-01a) | ✓ VERIFIED | Prerendered HTML contains all three labels; `OrderCtaRow.tsx` reads `ifoodLabel`/`whatsappLabel` and `CtaGroup.tsx` reads `menuLabel`/`mapsLabel` from `ctaCopy`; migrated `home.test.ts`/`OrderCta.test.ts` assertions pass |
+| 3 | "Pedir no iFood" is the visually primary CTA, WhatsApp renders beside it with identical treatment, both render inside the hero above the illustration in a two-column grid with no responsive breakpoint gate, fitting 343px/358px of mobile content width (INTEGRA-01/02, G-02-2) | ✓ VERIFIED (structural) — actual mobile-viewport paint is a rendering fact, see Human Verification #1 | `hero-fold.test.ts` (5/5 passing, independently re-run): row precedes illustration, reaches document only through Hero, two-column grid with no responsive prefix, wrapping allowed, real token-derived horizontal-fit budget clears at both 375px/390px; independently confirmed in the compiled `.next/server/app/index.html` that the grid markup precedes the illustration after `<body>` |
+| 4 | While unconfirmed, both order CTAs render as native disabled buttons labelled "(em breve)" (now two-line) with an adjacent coral notice; the primary CTA is never swapped (INTEGRA-03, D-05/D-06) | ✓ VERIFIED | `OrderCtaRow.tsx` carries the notices/describedBy wiring moved verbatim from `CtaGroup.tsx`; prerendered HTML: 3 `disabled=""` buttons, no `ifood.com.br`/`wa.me` host leak |
+| 5 | No `home/` component or page offers an on-site ordering path (INTEGRA-05) | ✓ VERIFIED | `home.test.ts`'s directory-sweep guard (unaffected by gap-closure file changes, re-confirmed in the 210/210 run) |
+| 6 | Location section renders the store's full address, no embedded map iframe anywhere in the repository (LOCAL-01) | ✓ VERIFIED | `Location.tsx` unchanged by gap-closure plans; repository-wide sweep re-confirmed passing |
+| 7 | Service modalities render as a chip row over `store.modalities`, zero/one/many handled (LOCAL-02) | ✓ VERIFIED | Unchanged; `Location.test.ts` passing |
+| 8 | Hours render under a provisional marker; empty schedule renders the honest pending body, never an invented time (LOCAL-03, D-07) | ✓ VERIFIED | Unchanged; `CLOCK_TIME` guard re-confirmed passing repo-wide |
+| 9 | "Como chegar" is a live anchor whose href is exactly `buildMapsUrl().url`, new tab, safe rel — now rendered from `CtaGroup.tsx` (LOCAL-04) | ✓ VERIFIED | `CtaGroup.tsx` renders `href={maps.url}` with `target="_blank" rel="noopener noreferrer"`; `Location.tsx`'s own directions link unchanged |
+| 10 | The hero illustration (the page's `preload`-marked LCP element) loads (HTTP 200), not broken (CR-01 fix) | ✓ VERIFIED (carried forward) | `public/brand/hero-illustration.svg` and `next.config.ts` untouched by any gap-closure plan (`git log` confirms last change was the original CR-01 commit `db6d055`); not re-curled this pass since nothing in the request path changed |
+| 11 | No `home/` component contains a hex-colour literal, a URL literal, or a direct `@/data/*` import, including the two new files `OrderCtaRow.tsx`/`SectionSeparator.tsx` (ARQ-02/SEC-03) | ✓ VERIFIED | Fresh `grep -rnE "#[0-9a-fA-F]{6}"` sweep across `src/components/home/*.tsx` and `src/components/layout/*.tsx` — zero matches; `home.test.ts` sweep re-confirmed passing; `npm run lint` clean |
+| 12 | `src/content/home-copy.ts` contains no price, award, rating, superlative, urgency/guilt construction, cart/checkout phrase, or clock time (CONT-01/03) | ✓ VERIFIED | Unchanged by gap-closure plans; content-integrity tests re-confirmed passing in the 210/210 run |
+| 13 | Each FAQ entry is a native `<details>/<summary>` disclosure, zero client JavaScript (CONT-02) | ✓ VERIFIED | `Faq.tsx` unchanged; prerendered HTML re-confirmed: 4 `<details>` |
+| 14 | `.planning/REQUIREMENTS.md` accurately reflects that HERO-03 (real client product photography) has not been delivered | ✓ VERIFIED | Re-read directly this pass: `- [ ] **HERO-03**` with the same Pendente wording, Traceability row still "Pending"; untouched by any gap-closure plan |
+| 15 | Every brand colour token and both font families resolve to their official value in the compiled stylesheet — no self-referential custom property survives, in source or in the built artifact (MARCA-02/03, G-02-5) | ✓ VERIFIED | `src/styles/design-tokens.css` read directly: `@theme static` block holds all 7 colours as literal hex, no var() self-reference; `@theme inline` block's two font keys reference distinctly-named variables; `npx vitest run src/styles/design-tokens.test.ts src/lib/brand/brand-assets.test.ts` → 43/43 passing (independently re-run); `npm run build && npm run verify:css` → "7 brand colour tokens resolve to their official literals, theme layer populated" (fresh run, not narrated) |
+| 16 | The global `:focus-visible` rule references a colour token that now resolves to a real literal, so the ring is structurally wired to paint on every focusable element (PERF-01, G-02-5) | ✓ VERIFIED (structural) — actual painted ring is a rendering fact, see Human Verification #2 | `verify:css` output: "focus rule present"; `design-tokens.test.ts` asserts the focus rule references a colour declared with a literal value; `src/app/globals.css`'s `:focus-visible` rule and import order confirmed unchanged from the fix |
+| 17 | Exactly one section-boundary device exists in the codebase and is wired at all three charcoal-to-charcoal seams (BrandStory→Location, Location→FAQ, FAQ→Footer), with its rule's contrast against the surface computed ≥3:1 from the real brand token values (MARCA-05, G-02-4) | ✓ VERIFIED (structural) — "reads as distinct blocks" is a perceptual judgment, see Human Verification #3 | `src/app/page.tsx` renders `<SectionSeparator />` exactly twice (grep-counted); `Footer.tsx` renders it once as the first child; `SectionSeparator.tsx` uses only token utilities (`border-accent-olive`, `bg-surface-deep`, `bg-surface-primary`), `aria-hidden="true"`, no hex literal; `npx vitest run src/components/home/section-boundaries.test.ts` → 14/14 passing (independently re-run), including the contrast computation from `design-tokens.json`'s real hex values and the codebase-wide sweep for a second `clip-path` boundary device |
 
-**Score:** 14/14 truths verified (0 present, behavior-unverified)
+**Score:** 17/17 truths verified (0 present, behavior-unverified)
 
 ### Required Artifacts
 
 | Artifact | Expected | Status | Details |
 |----------|----------|--------|---------|
-| `.planning/REQUIREMENTS.md` | HERO-03 accurately tracked as Pending pending real client photography | ✓ VERIFIED | Checkbox, pendência block, and Traceability row all consistent (see Truth #14) |
-| `src/content/home-copy.ts` | Typed final copy for hero/CTA/location/brand-story/FAQ | ✓ VERIFIED | All exports present (`heroCopy`, `ctaCopy` incl. `whatsappUnavailableNotice`, `locationCopy`, `brandStoryCopy`, `faqs`), no `@/data/*` import |
-| `public/brand/hero-illustration.svg` | Provisional illustrated hero composition | ✓ VERIFIED | Square viewBox, provisional header comment, official palette, no script/event attrs |
-| `src/components/home/ProvisionalBadge.tsx` | Shared provisional marker | ✓ VERIFIED | Exports `ProvisionalBadge`, olive-on-deep-surface, reused by `Location.tsx` |
-| `src/components/home/Hero.tsx` | Hero section | ✓ VERIFIED | Server Component, no client directive, `next/image` with `fill`/`aspect-square`/`sizes`/`preload` |
-| `src/components/home/OrderCta.tsx` | Shared confirmed/pending CTA primitive | ✓ VERIFIED | `OrderCta`/`PendingCta` exported, typed `IntegrationLink`, branches on `confirmed`, native `disabled` button in pending branch |
-| `src/components/home/CtaGroup.tsx` | CTA row | ✓ VERIFIED | Renders both order CTAs through `OrderCta`, `PendingCta` for "Ver cardápio", live anchor for "Como chegar", both unavailability notices |
-| `src/components/home/Location.tsx` | Location section | ✓ VERIFIED | Address/modalities/hours/directions all prop-sourced |
-| `src/components/home/BrandStory.tsx` | Brand-story section | ✓ VERIFIED | Renders `brandStoryCopy.paragraphs`, covers the three skeleton points |
-| `src/components/home/Faq.tsx` | FAQ section | ✓ VERIFIED | Native disclosure, maps over `faqs`, zero client JS |
-| `src/components/home/{OrderCta,home,Location,sections}.test.ts` | Test suites | ✓ VERIFIED | 158/158 tests pass across 11 suites (`npm test`, re-run this pass) |
-| `src/app/page.tsx` | Five-section home composition | ✓ VERIFIED | `Hero`, `CtaGroup`, `BrandStory`, `Location`, `Faq` in D-01's fixed order; builders called once each |
-| `next.config.ts` | Image config + security headers | ✓ VERIFIED | `dangerouslyAllowSVG`/`contentDispositionType`/`contentSecurityPolicy` present, `securityHeaders` still applied |
+| `src/styles/design-tokens.css` | Seven brand colours + script font as literals in a `static` theme block; two font keys in an `inline` theme block reading distinctly-named variables | ✓ VERIFIED | Read directly this pass; no self-reference anywhere |
+| `src/app/globals.css` | `@import "tailwindcss"` before the project token sheet | ✓ VERIFIED | Order confirmed correct |
+| `src/app/layout.tsx` | next/font `variable` props bound to `--font-display-anton`/`--font-body-manrope` | ✓ VERIFIED | `layout.test.ts` (part of 210/210) asserts this |
+| `src/styles/design-tokens.test.ts` | Source-level regression guard over both AND-gate causes | ✓ VERIFIED | 28 tests, independently re-run, all passing |
+| `scripts/check-brand-css.mjs` / `npm run verify:css` | Compiled-artifact checker reading `design-tokens.json` as source of truth | ✓ VERIFIED | Fresh run this pass: clean, all 7 tokens confirmed |
+| `src/components/home/OrderCtaRow.tsx` | Both order CTAs + coral notices as a two-column grid, no responsive gate | ✓ VERIFIED | Read directly; exports `OrderCtaRow`/`ORDER_ROW_CLASS`; grid-cols-2, no `sm:`/`md:` prefix on layout |
+| `src/components/home/Hero.tsx` | Composes `OrderCtaRow` between subhead and illustration | ✓ VERIFIED | Read directly; order confirmed in source and in prerendered HTML |
+| `src/components/home/CtaGroup.tsx` | Reduced to secondary ("Ver cardápio") + tertiary ("Como chegar") CTAs only | ✓ VERIFIED | Read directly; no order-CTA/notice code remains |
+| `src/components/layout/SectionSeparator.tsx` | One shared, token-only, `aria-hidden` decorative boundary device | ✓ VERIFIED | Read directly; exports `SectionSeparator`/`SEPARATOR_CLASS`; olive rule + diagonal clip-path |
+| `src/components/layout/Footer.tsx` | Renders `SectionSeparator` at its own top edge | ✓ VERIFIED | Read directly; first child inside the footer's outer element |
+| `src/components/home/{hero-fold,section-boundaries}.test.ts`, `src/styles/design-tokens.test.ts` | New gap-closure guards | ✓ VERIFIED | All three independently re-run green (5 + 14 + 28 tests) |
+| Full test suite | `npm test` | ✓ VERIFIED | 210/210 passing, 14 suites, fresh run this pass |
 
 ### Key Link Verification
 
 | From | To | Via | Status | Details |
 |------|-----|-----|--------|---------|
-| `src/app/page.tsx` | `src/lib/integrations/ifood.ts` / `whatsapp.ts` / `maps.ts` | `build*Url()` calls, once each | ✓ WIRED | All three called; `IntegrationLink` values passed as props |
-| `src/app/page.tsx` | `src/lib/repositories/store-repository.ts` | `getStoreInfo()` | ✓ WIRED | Called once, `store` prop passed to `Location` |
-| `src/components/home/Hero.tsx` | `public/brand/hero-illustration.svg` | `next/image src` | ✓ WIRED, confirmed loading (HTTP 200, prior run) | Unchanged this pass |
-| `src/components/home/CtaGroup.tsx` | `src/components/home/OrderCta.tsx` | both order CTAs share the primitive | ✓ WIRED | D-06 parity structural |
-| `src/components/home/Location.tsx` | `src/lib/integrations/maps.ts` | `maps.url` prop | ✓ WIRED | href fidelity confirmed in prerendered HTML |
+| `src/app/page.tsx` | `src/components/home/Hero.tsx` | `<Hero ifood={ifood} whatsapp={whatsapp} />` | ✓ WIRED | Both order links passed to Hero, not to a sibling section |
+| `src/components/home/Hero.tsx` | `src/components/home/OrderCtaRow.tsx` | rendered as a child, before the illustration container | ✓ WIRED, confirmed in compiled HTML (grid markup precedes illustration after `<body>`) | Independently re-checked this pass, not from SUMMARY.md |
+| `src/app/page.tsx` | `src/components/layout/SectionSeparator.tsx` | imported and rendered twice | ✓ WIRED | Grep-counted: exactly 2 occurrences |
+| `src/components/layout/Footer.tsx` | `src/components/layout/SectionSeparator.tsx` | imported and rendered once, first child | ✓ WIRED | Read directly |
+| `src/app/globals.css` | `src/styles/design-tokens.css` | import order (framework first) | ✓ WIRED, confirmed in compiled CSS (`@layer theme` populated) | `verify:css` re-run this pass |
+| `src/app/layout.tsx` | `src/styles/design-tokens.css` | next/font `variable` names match the theme keys' referenced variables | ✓ WIRED | `design-tokens.test.ts` asserts this cross-file consistency; re-run |
+| `src/components/home/section-boundaries.test.ts` | `src/styles/design-tokens.json` | reads real hex values, computes WCAG contrast | ✓ WIRED | Re-run this pass; contrast assertion passes |
 
 ### Behavioral Spot-Checks
 
 | Behavior | Command | Result | Status |
 |----------|---------|--------|--------|
-| Full test suite (re-run post-fix) | `npm test` | 158/158 tests passed, 11 suites | ✓ PASS |
-| REQUIREMENTS.md fix is isolated (no source drift alongside doc fix) | `git show --stat 60b8a05` | 1 file changed (`.planning/REQUIREMENTS.md`), 3 insertions, 2 deletions | ✓ PASS |
-| HERO-03 tri-location consistency (checkbox / pendência block / Traceability row) | `grep -n "HERO-03" .planning/REQUIREMENTS.md` | all three locations read "Pending", mutually consistent wording | ✓ PASS |
+| Full test suite | `npm test` | 210/210 passed, 14 suites | ✓ PASS |
+| Gap-closure guards in isolation | `npx vitest run src/components/home/hero-fold.test.ts src/components/home/section-boundaries.test.ts src/styles/design-tokens.test.ts src/lib/brand/brand-assets.test.ts` | 62/62 passed, 4 files | ✓ PASS |
+| Production build | `npm run build` | Compiled successfully, 6/6 static pages generated | ✓ PASS |
+| Lint | `npm run lint` | 0 errors, 1 pre-existing unrelated warning | ✓ PASS |
+| Compiled-CSS artifact check | `npm run verify:css` | "7 brand colour tokens resolve to their official literals, theme layer populated, focus rule present, display font wired through next/font" | ✓ PASS |
+| Order row precedes illustration in the real rendered document | `node` script parsing `.next/server/app/index.html` after `<body>` | grid-cols-2 index 4158 < hero-illustration index 5835 | ✓ PASS |
+| No unconfirmed-destination leak in rendered HTML | same script | no `ifood.com.br`, no `wa.me` | ✓ PASS |
+| Debt-marker / hex-literal sweep | `grep -rnE "TBD\|FIXME\|XXX\|HACK\|PLACEHOLDER"` and `grep -rnE "#[0-9a-fA-F]{6}"` across all phase-modified files | zero matches | ✓ PASS |
 
 ### Anti-Patterns Found
 
 | File | Line | Pattern | Severity | Impact |
 |------|------|---------|----------|--------|
-| — | — | No `TBD`/`FIXME`/`XXX`/`HACK` markers found in any phase-modified file | — | none |
-| — | — | No hex-colour literal found in any `src/components/home/*.tsx` | — | none |
+| `src/components/home/OrderCtaRow.tsx` | 20 | `gap-3` (12px) used for the CTA-row gap, while `02-UI-SPEC.md`'s Spacing Scale table names the `sm` (8px) token specifically for "CTA row gap" | ℹ️ Info (flagged by `02-UI-REVIEW.md`, not by this verifier's own scan) | Contract mismatch only — `hero-fold.test.ts`'s own horizontal-fit budget still clears at 375px/390px with the wider 12px gap (going to 8px only recovers 4px of margin); does not block the phase goal or any must-have truth above. No fix applied by this verification pass; carried as an advisory item. |
 
-No blockers found.
+No blockers found. No `TBD`/`FIXME`/`XXX`/`HACK`/`PLACEHOLDER` markers in any file this phase's six plans modified.
 
 ### Requirements Coverage
 
 | Requirement | Source Plan | Description | Status | Evidence |
 |---|---|---|---|---|
 | HERO-01 | 02-01 | Hero communicates brand + concept line | ✓ SATISFIED | Truth #1 |
-| HERO-02 | 02-01 | Three locked CTAs present | ✓ SATISFIED | Truth #2 |
-| HERO-03 | 02-01 | Hero visual focus is real product photography | ⏳ HONESTLY PENDING — disclosed provisional illustration shipped (D-03/D-04), real client photo not yet supplied; REQUIREMENTS.md now accurately reflects this | Truth #1, Truth #14 |
+| HERO-02 | 02-01, 02-05 | Three locked CTAs present | ✓ SATISFIED | Truth #2 |
+| HERO-03 | 02-01 | Hero visual focus is real product photography | ⏳ HONESTLY PENDING — disclosed provisional illustration shipped (D-03/D-04), real client photo not yet supplied | Truth #1, #14 |
 | LOCAL-01 | 02-02 | Full address + no iframe | ✓ SATISFIED | Truth #6 |
 | LOCAL-02 | 02-02 | Modalities chip row, zero/one/many | ✓ SATISFIED | Truth #7 |
 | LOCAL-03 | 02-02 | Hours editable format, provisional | ✓ SATISFIED | Truth #8 |
 | LOCAL-04 | 02-02 | "Como chegar" live Maps link | ✓ SATISFIED | Truth #9 |
-| INTEGRA-01 | 02-01 | iFood CTA prominent/mobile-first | ✓ SATISFIED (structural); fold-visibility deferred to human check | Truth #3, Human #2 |
-| INTEGRA-02 | 02-01 | WhatsApp CTA available as alt channel | ✓ SATISFIED | Truth #3, #4 |
-| INTEGRA-03 | 02-01 | iFood unavailable → notice, no CTA swap | ✓ SATISFIED | Truth #4 |
+| INTEGRA-01 | 02-01, 02-05 | iFood CTA prominent/mobile-first, above the fold | ✓ SATISFIED (structural); fold-visibility paint deferred to Human #1 | Truth #3 |
+| INTEGRA-02 | 02-01, 02-05 | WhatsApp CTA as alt channel, identical treatment | ✓ SATISFIED | Truth #3, #4 |
+| INTEGRA-03 | 02-01, 02-05 | iFood unavailable → notice, no CTA swap | ✓ SATISFIED | Truth #4 |
 | INTEGRA-05 | 02-01/02-03 | No on-site checkout | ✓ SATISFIED | Truth #5 |
+| MARCA-02 | Phase 1 (restored 02-04) | Colour palette as reusable design tokens | ✓ SATISFIED — restored after the G-02-5 outage, not newly delivered | Truth #15 |
+| MARCA-03 | Phase 1 (restored 02-04) | Typography (Anton/Archivo Black + Manrope/Inter) | ✓ SATISFIED — restored after the G-02-5 outage | Truth #15 |
+| MARCA-05 | Phase 1 (extended 02-06) | Visual language reflects real brand materials (diagonal shapes) | ✓ SATISFIED (structural); perceptual "reads as distinct blocks" deferred to Human #3 | Truth #17 |
+| PERF-01 | Phase 1 (restored 02-04) | WCAG semantics/keyboard/focus-visible | ✓ SATISFIED (structural) — restored after the G-02-5 outage; painted-ring confirmation deferred to Human #2 | Truth #16 |
+| PERF-03 | Phase 1 (extended 02-05/06) | Mobile-first, fully responsive | ✓ SATISFIED | Truth #3, #17 |
 
-HERO-03 is intentionally NOT marked "SATISFIED" here — the phase's own decision (D-03/D-04) was to
-ship a disclosed provisional substitute while keeping the underlying requirement honestly open
-until real photography arrives. That is the correct, expected state, not a gap: the phase goal
-never required real photography to exist, only that the hero avoid reading as a generic
-hamburgueria and that any substitution be clearly disclosed and tracked — both true.
+`MARCA-02/03/05` and `PERF-01/03` remain attributed to "Phase 1" in `REQUIREMENTS.md`'s Traceability
+table — correctly: these requirements were originally implemented in Phase 1, and Phase 2's
+gap-closure plans (02-04/05/06) fixed a regression that had silently broken MARCA-02/03/PERF-01
+site-wide and extended MARCA-05/PERF-03's implementation, rather than delivering these requirements
+for the first time. This is not a traceability gap.
 
-No orphaned requirements found — every ID in the phase's plans (HERO-01/02/03, LOCAL-01..04,
-INTEGRA-01/02/03/05) matches REQUIREMENTS.md's Phase 2 traceability rows exactly. `CONT-02`
-(brand-story/FAQ copy, written this phase per `writtenInPhase: 2`) is intentionally out of Phase
-2's requirement list per REQUIREMENTS.md (assigned to Phase 1) — this is an explicitly flagged,
-non-orphan assumption in `02-03-PLAN.md`'s frontmatter, not a gap.
+HERO-03 is intentionally NOT marked "SATISFIED" — unchanged from the prior verification pass; no
+gap-closure plan touched the hero illustration or this requirement's status.
+
+No orphaned requirements found — every ID in the phase's six plans' `requirements:` frontmatter
+(HERO-01/02/03, LOCAL-01..04, INTEGRA-01/02/03/05, MARCA-02/03/05, PERF-01/03) matches
+`REQUIREMENTS.md`'s traceability rows.
 
 ### Human Verification Required
 
-5 items deferred to end-of-phase UAT per this project's `human_verify_mode: end-of-phase` (see
-frontmatter `human_verification` for full detail) — harvested from the three plans' `<human-check>`
-blocks, not skipped:
+Three items remain open, all reconciling a UAT-failed test against the code fix that closed its
+underlying gap — see frontmatter `human_verification` for full detail with the specific automated
+guard now backing each one:
 
-1. **Hero brand-fidelity + two-line fit + CLS-safe load** (mobile 375x667/390x844)
-2. **CTA-row mobile-fold visibility + keyboard/focus/pending-click behavior** (mobile viewports)
-3. **Location section honesty/legibility/chip-wrap/directions-link behavior** (mobile 390x844)
-4. **Brand-story voice authenticity + visual section separation**
-5. **FAQ keyboard-only walk + zero-JS network-panel confirmation**
+1. **CTA-row mobile-fold co-visibility, overflow, and click-through paint** (375x667/390x844) —
+   closes G-02-2 / UAT Test 2. Backed by `hero-fold.test.ts`'s real-value horizontal-fit budget and
+   this verifier's own prerendered-HTML ordering check; the physical paint is unconfirmed.
+2. **Brand palette + font rendering on dark surfaces, and a visible lime focus ring on every tab
+   stop** (390x844, keyboard walk-through) — closes G-02-5 / UAT Test 5. Backed by
+   `design-tokens.test.ts` + `npm run verify:css`; computed colour and painted outlines are
+   unconfirmed.
+3. **Four visually distinct charcoal blocks (brand story → Location → FAQ → footer)** (390x844,
+   scroll-through) — closes G-02-4 / UAT Test 4. Backed by `section-boundaries.test.ts`'s
+   wiring+contrast computation; the perceptual "reads as distinct blocks" judgment is unconfirmed.
 
-None of these are automatable by this project's DOM-less (`renderToStaticMarkup`/static-source)
-test stack; all were explicitly recorded as deferred, not skipped, across all three SUMMARY.md
-files. None of them changed as a result of the HERO-03 documentation fix.
+**Already resolved by real human testing, not carried forward:** UAT Test 1 (hero brand
+fidelity/CLS) and UAT Test 3 (Location tone/chip-wrap) both recorded `result: pass` in `02-UAT.md`
+and are unaffected by any gap-closure plan — these two items from the prior verification's human
+list are closed.
 
 ### Gaps Summary
 
-None. The previous run's single gap — REQUIREMENTS.md misrepresenting HERO-03's delivery state —
-is closed by commit `60b8a05`, verified directly against the file content and the commit diff (not
-inferred from any SUMMARY.md claim). All 14 must-have truths are now verified, all artifacts and
-key links hold, the full test suite passes (158/158), and no regressions were introduced (the fix
-touched exactly one file, `.planning/REQUIREMENTS.md`).
+No must-have truth failed, no artifact is missing or a stub, and no key link is unwired. All three
+UAT-tracked gaps (G-02-2, G-02-4, G-02-5) are closed at the code/test level, independently
+re-verified in this pass rather than trusted from SUMMARY.md narration.
 
-Status is `human_needed` rather than `passed` only because of the five pre-existing, unrelated
-human-verification items deferred to end-of-phase UAT per this project's workflow configuration —
-these were present in the initial verification too and are unaffected by the HERO-03 fix.
+Status is `human_needed`, not `passed`, because three human-verification items remain genuinely
+open: the code fixes for G-02-2/G-02-4/G-02-5 are real and independently confirmed structurally, but
+the specific perceptual/visual facts the original UAT failures were actually about (co-visible
+buttons that don't overflow, a painted focus ring, blocks that read as visually distinct) have never
+been re-confirmed by a human in a browser since the fixes landed — every gap-closure plan's own
+`<human-check>` step was explicitly skipped because no browser was available to any executor.
+
+**Separately flagged for the orchestrator (not a VERIFICATION.md gap, since it lives in a different
+file this agent's mandate does not cover):** `02-UAT.md`'s individual `### 2`/`### 4`/`### 5` test
+records still read `result: issue`, even though the `Gaps` section in the same file reconciles all
+three as `status: resolved`. `gsd_run phase uat-passed 02 --require-verification` reads the
+per-test `result:` field and currently returns `passed: false` citing exactly these three lines.
+Recommend reconciling `02-UAT.md`'s per-test `result:` fields once the three human-verification items
+above are actually re-run in a browser (which is also the natural point to flip them, rather than
+flipping them on code-only evidence).
 
 ---
 
-_Verified: 2026-09-13_
+_Verified: 2026-09-14_
 _Verifier: Claude (gsd-verifier)_
