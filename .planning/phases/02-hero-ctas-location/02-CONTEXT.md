@@ -34,6 +34,25 @@ Lighthouse/CWV/CSP (Fase 5).
   cardápio) logo após o hero, antes do texto institucional — alinhado ao Core Value de tirar o
   visitante do site com um pedido feito o mais rápido possível. — **Reversibility:** reversible —
   reordenar seções de uma landing page é uma mudança de layout local, sem custo de migração.
+
+- **D-01a (amendment, 2026-09-13, G-02-2):** A ordem das cinco seções da home permanece a mesma
+  (D-01), mas o bloco de CTAs de pedido (iFood e WhatsApp) e os dois avisos coral de
+  indisponibilidade passam a renderizar DENTRO da seção Hero — entre o subhead e a ilustração —
+  em vez de como uma seção separada logo depois dela. Três razões, uma por parágrafo:
+
+  1. O critério de "acima da dobra" do INTEGRA-01 é inatingível em 375×667 com a fileira de CTAs
+     abaixo de uma ilustração quadrada full-width, mesmo que ela já esteja aninhada dentro do
+     Hero — ver `.planning/debug/DEBUG-cta-row-stacked-below-fold.md`, evidências com timestamp
+     23:46–23:51 (a própria seção Hero já ultrapassa o viewport antes da fileira de CTAs começar).
+  2. D-01 já se documenta como reversível ("reordenar seções de uma landing page é uma mudança de
+     layout local, sem custo de migração") — esta é exatamente esse tipo de mudança local, não uma
+     revisão estrutural do site.
+  3. A justificativa de ação-primeiro que D-01 já dá ("prioriza a ação... logo após o hero") é
+     melhor servida com a fileira de CTAs sentada diretamente sob o headline do que por uma seção
+     separada mais abaixo, depois de uma ilustração full-width.
+
+  O CTA secundário (Ver cardápio) e o link terciário de direções permanecem no próprio bloco
+  logo após o Hero, inalterados.
 - **D-02:** Brand-story e FAQ usam o copy final desta fase (não mais tom de voz/esqueleto), com
   base em `src/content/tone-of-voice.md` e nas entradas `brand-story`/`faqs` de
   `src/content/skeleton.ts` — sem inventar fatos além do que já está confirmado em `PROJECT.md`.

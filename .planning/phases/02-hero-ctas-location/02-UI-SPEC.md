@@ -136,7 +136,7 @@ does not re-open them, only assigns visual hierarchy and states.
 | Primary CTA (filled accent, when `confirmed: true`) | "Pedir no iFood" — same filled-accent treatment applies verbatim to the WhatsApp CTA per D-06 (no separate label text specified here; WhatsApp's own label is set by whoever writes its final copy, same visual weight as iFood) |
 | Secondary CTA (accent-outline) | "Ver cardápio" |
 | Tertiary CTA (underlined text link, same style as `Footer.tsx`'s Instagram link) | "Como chegar" |
-| Pending/disabled CTA state (D-05, applies to both iFood and WhatsApp while `confirmed: false`) | "{Ação} (em breve)" — e.g. "Pedir no iFood (em breve)" — never a bare disabled label with no explanation, never a live-looking link to the placeholder URL |
+| Pending/disabled CTA state (D-05, applies to both iFood and WhatsApp while `confirmed: false`; amended 2026-09-13, G-02-2) | "{Ação}" on its own line, then "(em breve)" on a second line inside the same control — e.g. "Pedir no iFood" / "(em breve)" — never a bare disabled label with no explanation, never a live-looking link to the placeholder URL. The two-line rendering (rather than one inline string) is what lets the label fit the narrow two-column track at 375px; the control's accessible name is unchanged (still reads as the label followed by the suffix). |
 | INTEGRA-03 unavailability notice (coral, problem + working next step) | "Pedido pelo iFood chegando em breve — enquanto isso, dá uma olhada em como chegar até a loja." (points to the "Como chegar" CTA, which is a confirmed, working Maps link — not to the not-yet-built cardápio route; see UI Considerations, unresolved row) |
 | Empty state heading (LOCAL-03, empty `hours.schedule`) | "Horário de funcionamento" |
 | Empty state body (LOCAL-03) | "Em atualização — confirme no iFood ou no WhatsApp antes de vir." |
@@ -176,10 +176,16 @@ were confirmed by the user as correctly scoped by the existing rows — no misse
 | Overflow / Long-text | FAQ answer text length (CONT-02 copy, variable length per question) | 🧪 resolved (backstop) | Recommend native `<details>`/`<summary>` (zero JS, expands to fit any answer length, keyboard/screen-reader accessible by default) — no automated visual test covers long-answer overflow yet; flagged as a backstop, not a verified truth. |
 | Unresolved | "Ver cardápio" CTA target route | ⚠ unresolved — planner must treat as assumption | Phase 3 (the actual cardápio page) has not shipped yet, so this research cannot state what "Ver cardápio" links to (a stub `/cardapio` route, an in-page anchor, or another interim target). Planner must record an explicit assumption; this UI-SPEC only fixes the CTA's *label and visual tier* (secondary, accent-outline), not its destination. |
 
-**Hero focal point (Dimension 2 — Visuals, checker recommendation applied):** the garlic
-illustration is the primary visual anchor of the hero section, positioned centrally within the 1:1
-container declared below, with the headline above it and the three CTAs below it — this explicit
-ordering, not just relative type size/color, is what establishes hero hierarchy.
+**Hero focal point (Dimension 2 — Visuals, checker recommendation applied; amended 2026-09-13,
+G-02-2):** the garlic illustration remains the hero's primary visual anchor, positioned centrally
+within the 1:1 container declared below. What changes is the stated ordering: headline and
+subhead first, then the two order actions (iFood, WhatsApp), then the illustration, then its
+provisional disclosure. Hero hierarchy is therefore established by type scale and colour weight
+plus this ordering — not by the previous below-illustration ordering, which UAT found put the
+order actions below the fold at this contract's own 375×667 mobile target (see
+`.planning/debug/DEBUG-cta-row-stacked-below-fold.md`). The secondary ("Ver cardápio") and
+tertiary ("Como chegar") CTAs are unaffected by this amendment — they stay in their own block
+immediately after the hero, per 02-CONTEXT.md D-01a.
 
 Hero image container contract (supports the "Populated" row and D-04's CLS-safety requirement):
 fixed 1:1 aspect-ratio box (matches the existing square viewBox convention of
