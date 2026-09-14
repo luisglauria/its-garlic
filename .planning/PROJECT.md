@@ -27,17 +27,16 @@ site com um pedido feito no iFood ou uma conversa iniciada no WhatsApp — sem f
 
 ### Validated
 
-(Nenhum ainda — MVP ainda não lançado)
+- ✓ Hero com identidade forte da marca, conceito "Mais que um pão de alho!" e CTAs (Ver cardápio / Pedir no iFood / Como chegar) — Phase 2 (CTAs iFood/WhatsApp lado a lado corrigido em gap closure G-02-2/02-05; paleta e foco corrigidos em G-02-5/02-04)
+- ✓ Seção de localização e atendimento (endereço, modalidades, horários, link de mapa e Instagram) — Phase 2. Avaliações intencionalmente não implementadas (nenhuma avaliação real confirmada; ver constraint "nunca inventar avaliações"); mapa é link direto ao Google Maps, sem iframe embutido (decisão de performance/privacidade)
 
 ### Active
 
-- [ ] Hero com identidade forte da marca, conceito "Mais que um pão de alho!" e CTAs (Ver cardápio / Pedir no iFood / Como chegar)
 - [ ] Cardápio digital completo, organizado nas 10 categorias oficiais (pães de alho, sanduíches no pão de alho, sanduíches tradicionais, sanduíches premium, petiscos, espetinhos, almoço, bebidas, happy hour, combo do dia)
 - [ ] Área de almoço representando a variedade real (saladas, parmegiana, picadinho, "monte o seu prato")
 - [ ] Área de promoções com regras de horário configuráveis (combo do dia, happy hour, promoções por dia da semana)
 - [ ] Cards de produto com foto, nome, descrição, categoria, preço editável e destaques opcionais
-- [ ] Seção de localização e atendimento (endereço, mapa, modalidades, horários, links sociais/avaliações)
-- [ ] CTAs de iFood e WhatsApp lado a lado, com prioridade de jornada (almoço/happy hour) variando por horário
+- [ ] CTAs de iFood e WhatsApp com prioridade de jornada (almoço/happy hour) variando por horário — lado a lado já entregue na Phase 2; a parte de prioridade time-aware é escopo da Phase 4
 - [ ] Filtro por categoria e busca por produto no cardápio
 - [ ] Identidade visual reconstruída a partir dos materiais reais da marca (logo vetorial, paleta, tipografia, guia de estilo)
 - [ ] Arquitetura orientada a dados, com separação clara entre apresentação, dados e integrações — pronta para receber um backend no futuro sem reescrita total
@@ -140,6 +139,9 @@ site com um pedido feito no iFood ou uma conversa iniciada no WhatsApp — sem f
 | Sem analytics/rastreamento de eventos no MVP | Decisão explícita do cliente, alinhada à postura de privacidade mínima | — Pending |
 | Stack: Next.js 16 (App Router) + React 19 + TypeScript + Tailwind v4 + Zod | Confirmado pela pesquisa de mercado como escolha atual e adequada; Zod valida dados editáveis em build-time | — Pending |
 | Hospedagem: Vercel | Suporte nativo a `next/image` (crítico para LCP com fotos de comida) e configuração simples de headers CSP/HSTS | — Pending |
+| Phase 2: CTAs de pedido (iFood/WhatsApp) renderizam dentro do Hero, acima da ilustração, em grid de 2 colunas sem breakpoint responsivo | UAT encontrou os CTAs empilhados e fora da dobra em 375/390px (G-02-2); causa raiz era tripla (breakpoint 640px, seção irmã fora do Hero, largura insuficiente) | ✓ Shipped — Phase 2 (02-05-PLAN.md), guardado por `hero-fold.test.ts` |
+| Phase 2: paleta de marca e fontes usam blocos `@theme` Tailwind v4 separados (`static` para cores literais, `inline` com nomes de variável distintos das theme keys) | Um ciclo de auto-referência CSS (`--color-accent: var(--color-accent)`) + ordem de import trocada matava a paleta inteira e todo o focus ring do site, não só o botão relatado (G-02-5) | ✓ Shipped — Phase 2 (02-04-PLAN.md), guardado por `design-tokens.test.ts` + `npm run verify:css` |
+| Phase 2: um único componente `SectionSeparator` compartilhado (régua oliva + recorte diagonal) aplicado nas 3 costuras de mesma superfície (incl. FAQ→footer, nunca reportada) | UAT relatou seções sem separação visual (G-02-4); único wedge existente tinha contraste 1.35:1 (abaixo do mínimo 3:1 WCAG); oliva é o único valor da marca que passa | ✓ Shipped — Phase 2 (02-06-PLAN.md), guardado por `section-boundaries.test.ts` |
 
 ## Pendências (não bloqueiam o início do desenvolvimento, mas precisam de resposta)
 
@@ -168,4 +170,4 @@ Este documento evolui em transições de fase e marcos do projeto.
 4. Atualizar Context com o estado atual
 
 ---
-*Last updated: 2026-09-12 after initialization*
+*Last updated: 2026-09-14 after Phase 2*
