@@ -81,7 +81,7 @@ Plans:
   3. The location section shows the full address with a working "Como chegar" link to Google Maps (no embedded iframe), the service modalities (balcão/delivery/take away), and operating hours — hours are visibly labeled "provisório" pending client confirmation.
   4. No page offers its own checkout — every order path ends at iFood or WhatsApp.
 
-**Plans**: 5/6 plans executed in 6 waves (waves 4–6 added after UAT to close gaps G-02-2, G-02-4, G-02-5)
+**Plans**: 6/6 plans executed in 6 waves (waves 4–6 added after UAT to close gaps G-02-2, G-02-4, G-02-5)
 
 Plans:
 **Wave 1**
@@ -106,7 +106,7 @@ Plans:
 
 **Wave 6** *(gap closure — blocked on Wave 5 completion)*
 
-- [ ] 02-06-PLAN.md — G-02-4: one shared, contrast-measured section separator applied at all three same-surface seams, plus the boundary-rule guard
+- [x] 02-06-PLAN.md — G-02-4: one shared, contrast-measured section separator applied at all three same-surface seams, plus the boundary-rule guard
 
 **UI hint**: yes
 
@@ -168,7 +168,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation, Architecture, Brand Identity & Security Baseline | 6/6 | In Progress|  |
-| 2. Hero, CTAs & Location | 5/6 | In Progress|  |
+| 2. Hero, CTAs & Location | 6/6 | In Progress|  |
 | 3. Menu & Product Catalog | 0/TBD | Not started | - |
 | 4. Promotions, Almoço & Time-Aware Journey | 0/TBD | Not started | - |
 | 5. SEO, Performance & Security Verification | 0/TBD | Not started | - |

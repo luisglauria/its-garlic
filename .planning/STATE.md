@@ -3,16 +3,16 @@ gsd_state_version: "1.0"
 current_phase: 02
 current_phase_name: Hero, CTAs & Location
 status: executing
-stopped_at: Completed 02-05-PLAN.md (gap closure G-02-2) — human-check for order-CTA fold/overflow/focus at 375x667 and 390x844 still required before G-02-2 is fully closed in UAT
-last_updated: "2026-09-14T02:27:48.895Z"
+stopped_at: Completed 02-06-PLAN.md (gap closure G-02-4) -- final wave (6/6) of phase 02's gap-closure chain; human-check for the four-distinct-blocks separator still required before G-02-4 is fully closed in UAT; re-run /gsd-verify-work 02 next
+last_updated: "2026-09-14T02:38:02.711Z"
 last_activity: 2026-09-13
 last_activity_desc: Phase 02 execution started
-state_head: c6ed3d407b18df5c93c01a520c39aabc575fba2c
+state_head: 7ef3d3274feeb8ae1b21dd90c26b87806e5fa6d9
 progress:
   total_phases: 5
   completed_phases: 0
   total_plans: 12
-  completed_plans: 11
+  completed_plans: 12
   percent: 0
 ---
 
@@ -30,7 +30,7 @@ fricção, mobile-first.
 ## Current Position
 
 Phase: 02 (Hero, CTAs & Location) — EXECUTING
-Plan: 3 of 6
+Plan: 4 of 6
 Status: Ready to execute
 phase-1 checkbox intentionally left unchecked — the phase-completion predicate
 (`gsd_run phase uat-passed --require-verification`) does not pass while G-01-2 is open. User
@@ -77,6 +77,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 02 P03 | ~15min | 3 tasks | 7 files |
 | Phase 02 P04 | 9min | 2 tasks | 7 files |
 | Phase 02 P05 | ~20min | 3 tasks | 10 files |
+| Phase 02 P06 | ~15min | 3 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -129,6 +130,8 @@ Recent decisions affecting current work:
 - [Phase 02]: [Phase 02]: 02-05: D-01a amends D-01 -- order-CTA row moves inside Hero (between subhead and illustration) instead of a separate section after it, closing G-02-2's fold criterion
 - [Phase 02]: [Phase 02]: 02-05: TIER_CLASS moved from Body(16px) to Label(14px) type-size token, px-6->px-4, w-full+text-center, PendingCta renders label+suffix as two lines -- brings the two-button order row under 343px mobile content width
 - [Phase 02]: [Phase 02]: 02-05: hero-fold.test.ts guards co-visibility mechanics (real computed widths, row-vs-illustration index) rather than source adjacency, the exact gap that let G-02-2 ship uncaught
+- [Phase 02]: [Phase 02]: 02-06: SectionSeparator (one shared, olive-ruled, diagonally-clipped, token-only band) closes all three charcoal-to-charcoal seams (BrandStory->Location, Location->Faq, Faq->Footer); one-off BrandStory wedge retired (G-02-4)
+- [Phase 02]: [Phase 02]: 02-06: section-boundaries.test.ts guard scoped to charcoal-to-charcoal seams specifically, not any-same-surface generically -- Hero/CtaGroup (both bg-surface-deep, directly adjacent, unseparated) is a distinct pre-existing out-of-scope design decision, not a regression this guard should flag
 
 ### Pending Todos
 
@@ -166,8 +169,8 @@ Items acknowledged and deferred at milestone close, most recent first:
 
 ## Session Continuity
 
-Last session: 2026-09-14T02:27:48.844Z
-Stopped at: Completed 02-05-PLAN.md (gap closure G-02-2) — human-check for order-CTA fold/overflow/focus at 375x667 and 390x844 still required before G-02-2 is fully closed in UAT
+Last session: 2026-09-14T02:38:02.657Z
+Stopped at: Completed 02-06-PLAN.md (gap closure G-02-4) -- final wave (6/6) of phase 02's gap-closure chain; human-check for the four-distinct-blocks separator still required before G-02-4 is fully closed in UAT; re-run /gsd-verify-work 02 next
 Resume file: None
 Session resumed 2026-09-13, proceeding to execute gap-closure plans.
 Next: /gsd-execute-phase 02
