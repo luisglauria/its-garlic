@@ -1,52 +1,62 @@
 ---
 gsd_state_version: "1.0"
-current_phase: 02
-current_phase_name: Hero, CTAs & Location
-status: executing
-stopped_at: Completed 02-06-PLAN.md (gap closure G-02-4) -- final wave (6/6) of phase 02's gap-closure chain; human-check for the four-distinct-blocks separator still required before G-02-4 is fully closed in UAT; re-run /gsd-verify-work 02 next
-last_updated: "2026-09-14T02:38:02.711Z"
-last_activity: 2026-09-13
-last_activity_desc: Phase 02 execution started
-state_head: 7ef3d3274feeb8ae1b21dd90c26b87806e5fa6d9
+current_phase: 1
+current_phase_name: Foundation, Architecture, Brand Identity & Security Baseline
+status: planning
+stopped_at: Phase 02 complete, ready to plan Phase 1
+last_updated: "2026-09-14T03:04:13.195Z"
+last_activity: 2026-09-14
+last_activity_desc: Phase 02 complete, transitioned to Phase 1
+state_head: 76ab4e90277ca2557c2a81950ae540a5809c8bc0
 progress:
   total_phases: 5
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 12
   completed_plans: 12
-  percent: 0
+  percent: 20
 ---
 
 # Project State
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-09-12)
+See: .planning/PROJECT.md (updated 2026-09-14)
 
 **Core value:** Fazer o visitante entender em segundos que a It's Garlic é "mais que um pão de
 alho" e sair do site com um pedido feito no iFood ou uma conversa iniciada no WhatsApp — sem
 fricção, mobile-first.
-**Current focus:** Phase 02 — Hero, CTAs & Location
+**Current focus:** Phase 03 — Menu & Product Catalog (real next actionable phase)
 
 ## Current Position
 
-Phase: 02 (Hero, CTAs & Location) — EXECUTING
-Plan: 4 of 6
-Status: Ready to execute
+Phase: 1 — Foundation, Architecture, Brand Identity & Security Baseline (roadmap pointer only —
+see note below)
+Plan: Not started
+Status: Ready to plan
 phase-1 checkbox intentionally left unchecked — the phase-completion predicate
 (`gsd_run phase uat-passed --require-verification`) does not pass while G-01-2 is open. User
 explicitly authorized starting Phase 2 anyway (2026-09-13) rather than waiting on the domain
 registrar purchase, which has no ETA. Re-run `/gsd-verify-work 01` to close G-01-2 once a
 registrar is chosen and MFA/registrar-lock are configured.
-Phase 02: Hero, CTAs & Location — about to start (discuss/plan)
-Last activity: 2026-09-13 — Phase 02 execution started
 
-Progress: [░░░░░░░░░░] 0%
+**Real next actionable work is Phase 3 (Menu & Product Catalog)** — Phase 1's six plans and
+Phase 2's six plans are both fully executed; `gsd_run query phase.complete` points `current_phase`
+back at Phase 1 purely because its roadmap checkbox is unchecked (the known SEC-10 registrar gap
+above), not because there is Phase-1 work left to do. Use `/gsd-discuss-phase 3` or
+`/gsd-plan-phase 3` to continue, not `/gsd-plan-phase 1`.
+
+Phase 02: Hero, CTAs & Location — ✓ COMPLETE (2026-09-14). 6/6 plans, UAT 5/5 pass (all
+gap-closure fixes confirmed live in-browser), VERIFICATION.md status: passed (17/17),
+SECURITY.md threats_open: 0, VALIDATION.md status: validated, UI-REVIEW.md 22/24 (advisory).
+Last activity: 2026-09-14 — Phase 02 complete
+
+Progress: [██░░░░░░░░] 20%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 0
+- Total plans completed: 6
 - Average duration: - min
 - Total execution time: 0 hours
 
@@ -54,7 +64,7 @@ Progress: [░░░░░░░░░░] 0%
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 02 | 6 | - | - |
 
 **Recent Trend:**
 
@@ -144,12 +154,14 @@ None yet.
   domain registrar during Phase 1 — deferred with no ETA (AR-08 in `01-SECURITY.md`, gap G-01-2
   in `01-UAT.md`). Phase 1 is NOT marked complete in ROADMAP.md as a result. Does not block
   Phase 2 (UI work does not depend on it) — re-run `/gsd-verify-work 01` once a registrar exists.
-- [Phase 2, Phase 4] Operating hours unconfirmed — only divergent 2.5–4.8-year-old Instagram
-  stories found ("Seg-Qua 12h–22h..." vs. "Dom-Qua 11h15–21h30..."). Blocks only the *real*
-  version of LOCAL-03 and PROMO-02/03; ships provisional/labeled in the meantime.
-- [Phase 2] Exact iFood store URL and official WhatsApp number unconfirmed — INTEGRA-01/02/04
-  ship with a clearly-marked placeholder destination via the Phase 1 integrations module, never a
-  guessed link.
+- [Carried from Phase 2, still affects Phase 4] Operating hours unconfirmed — only divergent
+  2.5–4.8-year-old Instagram stories found ("Seg-Qua 12h–22h..." vs. "Dom-Qua 11h15–21h30...").
+  Phase 2 shipped the honest provisional/pending version (LOCAL-03); blocks only PROMO-02/03's
+  real version until the client confirms.
+- [Carried from Phase 2, still affects Phase 3/4] Exact iFood store URL and official WhatsApp
+  number unconfirmed — Phase 2's CTAs ship with a clearly-marked placeholder destination via the
+  Phase 1 integrations module (never a guessed link); Phase 3's menu CTAs will need the same
+  treatment until confirmed.
 - [Phase 5] Domain/hosting registrar not finalized — affects when SEC-15 (DNS registrar lock +
   MFA) can actually be completed; hosting itself is decided (Vercel).
 - [Phase 5] Existence of a Google Meu Negócio profile unknown — affects NAP consistency scope for
@@ -169,8 +181,8 @@ Items acknowledged and deferred at milestone close, most recent first:
 
 ## Session Continuity
 
-Last session: 2026-09-14T02:38:02.657Z
-Stopped at: Completed 02-06-PLAN.md (gap closure G-02-4) -- final wave (6/6) of phase 02's gap-closure chain; human-check for the four-distinct-blocks separator still required before G-02-4 is fully closed in UAT; re-run /gsd-verify-work 02 next
+Last session: 2026-09-14T03:10:00Z
+Stopped at: Phase 02 complete (gap-closure executed, UAT 5/5 pass confirmed live in-browser,
+verification passed, security/validation/UI-review gates all run). Ready to plan Phase 3.
 Resume file: None
-Session resumed 2026-09-13, proceeding to execute gap-closure plans.
-Next: /gsd-execute-phase 02
+Next: /gsd-discuss-phase 3 (or /gsd-plan-phase 3 to skip straight to planning)
