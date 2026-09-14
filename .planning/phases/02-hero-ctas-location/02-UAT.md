@@ -3,7 +3,7 @@ status: complete
 phase: 02-hero-ctas-location
 source: [02-VERIFICATION.md]
 started: 2026-09-13T22:25:00Z
-updated: 2026-09-14T02:20:00Z
+updated: 2026-09-14T03:10:00Z
 ---
 
 ## Current Test
@@ -28,12 +28,14 @@ expected: On the same two mobile viewports, confirm both order CTAs (iFood, What
   two pending buttons read as deliberately unavailable rather than broken; Tab reaches the
   directions link with a clear visible focus ring against the dark surface; the coral
   unavailability notices are legible; clicking each pending button does nothing at all.
-result: issue
-reported: "em viewports mobile de 375px e 390px, os CTAs de iFood e WhatsApp aparecem
-  empilhados, não lado a lado. Além disso, a seção de CTAs está fora do Hero e depois da
-  ilustração, portanto não fica acima da dobra. Os botões desabilitados e os avisos de
-  indisponibilidade estão corretos. Corrigir o posicionamento/layout antes de marcar o teste
-  como pass."
+result: pass
+reported: "Re-verified 2026-09-14 after gap-closure plan 02-05 (G-02-2): live browser check at
+  375x667 and 390x844 (npm run dev + claude-in-chrome) confirms both 'Pedir no iFood' and
+  'Chamar no WhatsApp' render side by side inside the hero, above the illustration, at both
+  viewport widths. Both pending buttons are natively unfocusable (Tab skips them, matching the
+  disabled-button contract) and the coral unavailability notices render legibly beneath them.
+  Tab from a neutral click reaches 'Como chegar' directly with a clear lime focus ring against
+  the dark surface. Original stacking/below-fold defect confirmed fixed."
 severity: major
 
 ### 3. Location section tone and chip-wrap on mobile
@@ -53,11 +55,14 @@ expected: Read the brand story out loud as if you were the person behind the cou
   read as the starting point rather than the ceiling; every sentence is defensible from
   PROJECT.md alone; the three adjacent charcoal sections read as distinct blocks (via the
   diagonal-wedge separator) rather than one undifferentiated field.
-result: issue
-reported: "a voz e o conteúdo da história estão corretos, mas a separação visual não está
-  totalmente clara. A cunha diagonal aparece apenas após a seção de história; Localização e
-  FAQ continuam com o mesmo fundo charcoal, sem separador próprio. Verificar se as três
-  seções precisam de divisores visuais mais explícitos."
+result: pass
+reported: "Re-verified 2026-09-14 after gap-closure plan 02-06 (G-02-4): live browser check at
+  375x667 and 390x844 (npm run dev + claude-in-chrome) confirms three distinct olive-ruled
+  diagonal separators now render at all three same-surface seams: brand-story to Location,
+  Location to FAQ, and FAQ to footer (the seam the original report never mentioned). The
+  brand-story, Location and FAQ now read as visually distinct blocks scrolling down the page,
+  not one undifferentiated charcoal field. Voice/content were already correct in the original
+  pass."
 severity: cosmetic
 
 ### 5. FAQ keyboard behavior and zero-JS honesty
@@ -67,20 +72,29 @@ expected: Use the FAQ with keyboard only (Tab to each question, Enter/Space to o
   each entry; the four answers are ones the brand owner could stand behind word for word,
   especially the ordering answer (honest about channels, no working-link promise); the FAQ
   adds no JavaScript request of its own on reload.
-result: issue
-reported: "a navegação por Tab funciona, mas nenhum anel de foco visível aparece nas
-  perguntas do FAQ nem no link 'Como chegar'. Corrigir o estado :focus-visible para que o
-  elemento atualmente focado tenha contraste claro contra o fundo."
+result: pass
+reported: "Re-verified 2026-09-14 after gap-closure plan 02-04 (G-02-5): live browser check
+  (npm run dev + claude-in-chrome) confirms a clear lime-green focus ring now paints on Tab —
+  confirmed on the FAQ question 'Onde fica a It's Garlic?' and on the 'Como chegar' link, both
+  with high contrast against the dark surface. Enter opens/closes the FAQ disclosure and the
+  ring persists through the state change. Original dead-token root cause (whole brand palette,
+  not just the focus ring) confirmed fixed — backgrounds/text/accents all render correctly."
 severity: major
 
 ## Summary
 
 total: 5
-passed: 2
-issues: 3
+passed: 5
+issues: 0
 pending: 0
 skipped: 0
 blocked: 0
+
+*Re-verified 2026-09-14: tests 2, 4, 5 changed from `issue` to `pass` after live-browser
+re-confirmation (see each test's `reported` field) that gap-closure plans 02-04/02-05/02-06
+actually fixed the reported behavior — not just that the underlying code/tests changed. All
+three `## Gaps` entries below were already reconciled to `status: resolved` by plan execution;
+this pass closes the loop on the human-observable side too.*
 
 ## Gaps
 
