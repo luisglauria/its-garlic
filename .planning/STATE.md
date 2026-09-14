@@ -3,16 +3,16 @@ gsd_state_version: "1.0"
 current_phase: 02
 current_phase_name: Hero, CTAs & Location
 status: executing
-stopped_at: Completed 02-04-PLAN.md (gap closure G-02-5) — human-check for focus ring/palette still required before G-02-5 is fully closed in UAT
-last_updated: "2026-09-14T02:11:02.612Z"
+stopped_at: Completed 02-05-PLAN.md (gap closure G-02-2) — human-check for order-CTA fold/overflow/focus at 375x667 and 390x844 still required before G-02-2 is fully closed in UAT
+last_updated: "2026-09-14T02:27:48.895Z"
 last_activity: 2026-09-13
 last_activity_desc: Phase 02 execution started
-state_head: 329c93542bad7b7b6c39282b11fb1b1550c57648
+state_head: c6ed3d407b18df5c93c01a520c39aabc575fba2c
 progress:
   total_phases: 5
   completed_phases: 0
   total_plans: 12
-  completed_plans: 10
+  completed_plans: 11
   percent: 0
 ---
 
@@ -30,7 +30,7 @@ fricção, mobile-first.
 ## Current Position
 
 Phase: 02 (Hero, CTAs & Location) — EXECUTING
-Plan: 2 of 6
+Plan: 3 of 6
 Status: Ready to execute
 phase-1 checkbox intentionally left unchecked — the phase-completion predicate
 (`gsd_run phase uat-passed --require-verification`) does not pass while G-01-2 is open. User
@@ -76,6 +76,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 02 P02 | ~5min | 2 tasks | 5 files |
 | Phase 02 P03 | ~15min | 3 tasks | 7 files |
 | Phase 02 P04 | 9min | 2 tasks | 7 files |
+| Phase 02 P05 | ~20min | 3 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -125,6 +126,9 @@ Recent decisions affecting current work:
 - [Phase 02]: [Phase 02]: 02-04: colours+script-font moved to a Tailwind static @theme block (literals), Anton/Manrope moved to an inline @theme block keyed by distinct --font-display-anton/--font-body-manrope variable names — same-name binding was the self-reference bug (G-02-5)
 - [Phase 02]: [Phase 02]: 02-04: globals.css import order swapped (tailwindcss first, design-tokens.css second) so the theme block lands inside @layer theme ahead of any unlayered literal
 - [Phase 02]: [Phase 02]: 02-04: check-brand-css.mjs checks the LAST (cascade-winning) declaration of each colour token against design-tokens.json, not mere presence, since a presence-only check would have passed on the original outage
+- [Phase 02]: [Phase 02]: 02-05: D-01a amends D-01 -- order-CTA row moves inside Hero (between subhead and illustration) instead of a separate section after it, closing G-02-2's fold criterion
+- [Phase 02]: [Phase 02]: 02-05: TIER_CLASS moved from Body(16px) to Label(14px) type-size token, px-6->px-4, w-full+text-center, PendingCta renders label+suffix as two lines -- brings the two-button order row under 343px mobile content width
+- [Phase 02]: [Phase 02]: 02-05: hero-fold.test.ts guards co-visibility mechanics (real computed widths, row-vs-illustration index) rather than source adjacency, the exact gap that let G-02-2 ship uncaught
 
 ### Pending Todos
 
@@ -162,8 +166,8 @@ Items acknowledged and deferred at milestone close, most recent first:
 
 ## Session Continuity
 
-Last session: 2026-09-14T02:11:02.555Z
-Stopped at: Completed 02-04-PLAN.md (gap closure G-02-5) — human-check for focus ring/palette still required before G-02-5 is fully closed in UAT
+Last session: 2026-09-14T02:27:48.844Z
+Stopped at: Completed 02-05-PLAN.md (gap closure G-02-2) — human-check for order-CTA fold/overflow/focus at 375x667 and 390x844 still required before G-02-2 is fully closed in UAT
 Resume file: None
 Session resumed 2026-09-13, proceeding to execute gap-closure plans.
 Next: /gsd-execute-phase 02
