@@ -26,7 +26,7 @@ explicit follow-up once the client confirms.
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [ ] **Phase 1: Foundation, Architecture, Brand Identity & Security Baseline** - Data layer, centralized/allowlisted integrations module, brand SVGs + design tokens + style guide, approved first-draft copy, and repo/account security setup (branch protection, MFA, secret scanning)
-- [ ] **Phase 2: Hero, CTAs & Location** - Homepage hero with the "Mais que um pão de alho!" identity, iFood/WhatsApp CTAs, and the location/store-info section — first half of the client's launch gate
+- [x] **Phase 2: Hero, CTAs & Location** - Homepage hero with the "Mais que um pão de alho!" identity, iFood/WhatsApp CTAs, and the location/store-info section — first half of the client's launch gate (completed 2026-09-14)
 - [ ] **Phase 3: Menu & Product Catalog** - Full 10-category cardápio with product cards, category filter, search, and optimized product photography — second half of the client's launch gate
 - [ ] **Phase 4: Promotions, Almoço & Time-Aware Journey** - Combo do dia, day-of-week promotions, happy hour, and the almoço showcase, all driven by configurable time-window data
 - [ ] **Phase 5: SEO, Performance & Security Verification** - Production-verified Lighthouse/Core Web Vitals, JSON-LD/sitemap/robots, enforced CSP, manual XSS testing, and launch-readiness checks (DNS lock, rollback)
@@ -168,7 +168,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation, Architecture, Brand Identity & Security Baseline | 6/6 | In Progress|  |
-| 2. Hero, CTAs & Location | 6/6 | In Progress|  |
+| 2. Hero, CTAs & Location | 6/6 | Complete    | 2026-09-14 |
 | 3. Menu & Product Catalog | 0/TBD | Not started | - |
 | 4. Promotions, Almoço & Time-Aware Journey | 0/TBD | Not started | - |
 | 5. SEO, Performance & Security Verification | 0/TBD | Not started | - |
