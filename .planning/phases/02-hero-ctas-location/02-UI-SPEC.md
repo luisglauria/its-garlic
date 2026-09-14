@@ -65,7 +65,7 @@ Declared values (multiples of 4 — already the project's convention, no phase o
 | md | 16px | Default element spacing (section internal padding, mobile page gutter) |
 | lg | 24px | Section padding on larger viewports, gap between hero elements |
 | xl | 32px | Layout gaps between major hero sub-blocks |
-| 2xl | 48px | Vertical gap between the five homepage sections (Hero/CTAs/Marca/Localização/FAQ) |
+| 2xl | 48px | Vertical gap between the five homepage sections (Hero/CTAs/Marca/Localização/FAQ) — at every same-surface seam (Marca→Localização, Localização→FAQ, FAQ→footer) this value is delivered as the height of the shared `SectionSeparator` band's mobile base, not as a bare margin (amended 2026-09-13, G-02-4: this value was declared but never implemented anywhere before this plan) |
 | 3xl | 64px | Top/bottom page-level padding on wide viewports |
 
 Exceptions:
@@ -109,7 +109,7 @@ hero CTA labels ("Ver cardápio", "Pedir no iFood", "Como chegar") and the hero 
 | Role | Value | Usage |
 |------|-------|-------|
 | Dominant (60%) | `--color-surface-deep` `#000000` (Preto) | Hero section background, page's outer `<body>` background (already set in `layout.tsx`) |
-| Secondary (30%) | `--color-surface-primary` `#202526` (Carvão) | Brand-story, Localização, and FAQ section backgrounds (alternating with Preto per `docs/brand-guidelines.md`'s "variação de seção"); footer (already built) |
+| Secondary (30%) | `--color-surface-primary` `#202526` (Carvão) | Brand-story, Localização, FAQ and footer section backgrounds — a deliberate shared surface, not an alternation (amended 2026-09-13, G-02-4: the original wording cited `docs/brand-guidelines.md`'s "variação de seção" alternation rule but never assigned any of these four blocks a second surface, so no alternation was ever available to implement). Every seam between two of these same-surface sections carries the shared `SectionSeparator` device (`src/components/layout/SectionSeparator.tsx`), whose olive rule is the only brand value clearing the 3:1 non-text contrast minimum against Carvão (3.74:1) — the brand's alternate dark surface, Roxo, only reaches 1.20:1 against Carvão and would not have been visible either. |
 | Accent (10%) | `--color-accent` `#B8FF00` (Verde-limão) | Reserved for: (1) the primary/secondary CTA button fills ("Pedir no iFood", WhatsApp CTA, "Ver cardápio" border+text); (2) the global `:focus-visible` ring (already implemented, `globals.css`); (3) the hero's kicker/tagline line ("Mais que um pão de alho!") rendered `font-display text-accent uppercase`, matching the existing pattern in `Footer.tsx`'s store-name line; (4) small line-art accent strokes inside the hero's garlic illustration. Never a full section background (brand-guidelines.md: "uma página inteira em lima... é ilegível"). |
 | Destructive/Alert | `--color-accent-coral` `#FF3B30` (Coral) | Reserved for exactly one use in this phase: the INTEGRA-03 "iFood indisponível" notice text/icon. No destructive (delete/cancel) actions exist in this phase — see Copywriting Contract. Use coral text on `--color-surface-deep`, never on Carvão (contrast table: Coral/Carvão fails 4.5:1 for body text). |
 

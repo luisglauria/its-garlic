@@ -7,6 +7,7 @@ import { CtaGroup } from "@/components/home/CtaGroup";
 import { BrandStory } from "@/components/home/BrandStory";
 import { Location } from "@/components/home/Location";
 import { Faq } from "@/components/home/Faq";
+import { SectionSeparator } from "@/components/layout/SectionSeparator";
 
 // Data/integration builders are called once here and passed down as typed props (RESEARCH.md
 // Pattern 1) — no `home/` component fetches its own data. Neither this file nor any `home/`
@@ -26,11 +27,18 @@ export default function Home() {
           D-01a (G-02-2): Hero now owns the order-CTA row (iFood, WhatsApp) directly, so both
           order actions land above the fold — the page passes those links to Hero, not to a
           sibling section, and renders no order row of its own. CtaGroup keeps only the
-          secondary/tertiary CTAs. */}
+          secondary/tertiary CTAs.
+          G-02-4: adjacent sections that share the same dark surface (bg-surface-primary, Carvão)
+          are separated by the shared `SectionSeparator` device, never a local one-off divider — a
+          new section added to the charcoal run needs one at each of its own same-surface edges.
+          The footer closes the third such seam (FAQ → footer) at its own top edge, wired inside
+          Footer.tsx itself, since the footer isn't composed here. */}
       <Hero ifood={ifood} whatsapp={whatsapp} />
       <CtaGroup maps={maps} />
       <BrandStory />
+      <SectionSeparator />
       <Location store={store} maps={maps} />
+      <SectionSeparator />
       <Faq />
     </>
   );

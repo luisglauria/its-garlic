@@ -6,6 +6,7 @@
 // wraps it in the page's single <footer> landmark.
 import { getStoreInfo } from "@/lib/repositories/store-repository";
 import { buildInstagramUrl } from "@/lib/integrations/instagram";
+import { SectionSeparator } from "./SectionSeparator";
 
 export function Footer() {
   const store = getStoreInfo();
@@ -13,6 +14,10 @@ export function Footer() {
 
   return (
     <div className="bg-surface-primary text-text-on-dark">
+      {/* The footer sits on the same charcoal surface (bg-surface-primary) as the FAQ section
+          above it, so it needs its own top separator — the third of three same-surface seams
+          this plan closes, and the one the user never reported (G-02-4). */}
+      <SectionSeparator />
       <div className="mx-auto flex max-w-5xl flex-col gap-2 px-4 py-8 sm:px-6">
         <p className="font-display text-lg tracking-wide text-accent uppercase">{store.name}</p>
         <p className="text-sm">
